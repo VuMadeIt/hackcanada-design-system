@@ -49,7 +49,7 @@ export default function Typography() {
                 <span className="font-bold">{name}</span>
                 <span className="font-mono text-mono text-text-muted">{size} · {weight} · {track}</span>
               </div>
-              <p className={`${cls} min-w-0 truncate`}>{name === "Mono" ? "w 112 · h 40 · p 24" : "Find your people"}</p>
+              <p className={`${cls} min-w-0 break-words`}>{name === "Mono" ? "w 112 · h 40 · p 24" : "Find your people"}</p>
               <span className="text-sm text-text-muted">{use}</span>
             </div>
           ))}

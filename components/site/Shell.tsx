@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { MotionConfig } from "motion/react";
 import { ScrollProgress } from "@/components/motion-primitives/scroll-progress";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
@@ -37,7 +38,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <ScrollProgress className="fixed z-50 h-half bg-primary" />
       <a
         href="#main"
@@ -65,6 +66,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </div>
       {grid && <GridOverlay />}
       <CommandMenu open={searchOpen} onClose={() => setSearchOpen(false)} />
-    </>
+    </MotionConfig>
   );
 }

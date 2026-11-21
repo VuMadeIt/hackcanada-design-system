@@ -18,7 +18,7 @@ function Frame({ b }: { b: (typeof bps)[number] }) {
         </div>
         <div className="absolute inset-x-0 top-0 flex h-3 items-center justify-center border-b border-border bg-surface/80 font-mono text-mono text-text-muted">{b.w}</div>
       </div>
-      <figcaption className="flex items-baseline justify-between">
+      <figcaption className="flex flex-col">
         <span className="font-bold">{b.name}</span>
         <span className="font-mono text-mono text-text-muted">{b.cols} col · {b.gutter} gutter · {b.margin} margin</span>
       </figcaption>

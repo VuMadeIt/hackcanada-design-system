@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
 import {
@@ -398,7 +399,7 @@ const dd: Record<string, [React.ReactNode, React.ReactNode]> = {
   input: [<div key="d" className="w-30"><Input label="Email" placeholder="name@school.ca" /></div>, <div key="n" className="w-30"><input aria-label="Email" placeholder="Email" className="h-6 w-full rounded-sm border border-border bg-surface px-2" /></div>],
   timeline: [<div key="d" className="w-30"><Timeline steps={steps.slice(0, 2)} /></div>, <div key="n" className="relative flex w-30 flex-col gap-3 pl-1"><span className="absolute top-1 bottom-1 left-[19px] w-[2px] bg-primary" /><span className="relative z-0 flex items-center gap-2"><span className="size-3 rounded-pill border-2 border-primary bg-transparent" />Start</span><span className="relative flex items-center gap-2"><span className="size-3 rounded-pill border-2 border-primary bg-transparent" />Scan</span></div>],
   "market-card": [<div key="d" className="grid w-30 grid-cols-2 gap-1"><Button>Yes</Button><Button variant="secondary">No</Button></div>, <div key="n" className="grid w-30 grid-cols-2 gap-1"><Button>Yes</Button><button className="h-5 rounded-sm text-sm font-bold text-text-muted/50">No</button></div>],
-  "shop-item-card": [<div key="d" className="grid size-16 place-items-center rounded-sm bg-surface p-2">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={asset("/img/shop/charger.jpg")} alt="" className="size-full object-contain mix-blend-multiply dark:mix-blend-normal" /></div>, <div key="n" className="size-16 overflow-hidden rounded-sm">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={asset("/img/shop/charger.jpg")} alt="" className="size-full scale-150 object-cover" /></div>],
+  "shop-item-card": [<div key="d" className="grid size-16 place-items-center rounded-sm bg-surface p-2"><img src={asset("/img/shop/charger.jpg")} alt="" className="size-full object-contain mix-blend-multiply dark:mix-blend-normal" /></div>, <div key="n" className="size-16 overflow-hidden rounded-sm"><img src={asset("/img/shop/charger.jpg")} alt="" className="size-full scale-150 object-cover" /></div>],
   badge: [<Badge key="d" tone="success" dot>Completed</Badge>, <div key="n" className="flex gap-half"><Badge tone="success">Done</Badge><Badge tone="gold">Hot</Badge><Badge tone="danger">New</Badge></div>],
 };
 

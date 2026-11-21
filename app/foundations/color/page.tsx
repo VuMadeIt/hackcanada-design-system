@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader, Section, P, Table, Callout, DoDont, Grid, InfoCard } from "@/components/site/Doc";
+import { PageHeader, Section, Table, Callout, DoDont, Grid, InfoCard } from "@/components/site/Doc";
 import { contrast, grade } from "@/lib/contrast";
 import { palette, type ColorToken } from "@/lib/tokens";
 import { Button } from "@/components/hc/Button";

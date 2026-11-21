@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hack Canada Design System
 
-## Getting Started
+The rules, tokens and components behind the Hack Canada hacker dashboard: principles, UX laws, contrast, color, type, a strict rule-of-8 spacing scale, grid, motion, 35 documented components with live redlines, patterns, micro-interactions and full-screen blueprints.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run check      # types, ESLint and the rule-of-8 spacing check
+npm run build      # static export to out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To build for GitHub Pages under a sub-path:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+NEXT_PUBLIC_BASE_PATH=/hackcanada-design-system npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`.github/workflows/pages.yml` does this on every push to `main`. Turn on Pages in the repo settings with "GitHub Actions" as the source.
 
-## Learn More
+## Rules in one breath
 
-To learn more about Next.js, take a look at the following resources:
+- Spacing, sizes and line heights are multiples of 8. 4 is the only half step, for tight spots inside a component. Tailwind's default spacing scale is turned off, so `p-1` is 8 px, `p-2` 16 px, `p-3` 24 px.
+- Blue is for actions, gold only means points, red is only for errors.
+- WCAG 2.2 AA in light and dark. Contrast is calculated from the real tokens on `/principles/contrast`.
+- Motion is 100, 200, 300 or 500 ms, and respects reduced motion.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Where things live
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path | What |
+|---|---|
+| `app/globals.css` | All tokens (`@theme` and the light/dark `--hc-*` values) |
+| `lib/tokens.ts` | Hex mirror of the color tokens, used for contrast math |
+| `components/hc` | Hack Canada components |
+| `components/site` | The docs shell: sidebar, search, grid overlay, `Spec` redlines |
+| `components/docs` | Live demos for docs pages |
+| `lib/registry-*.ts` | Docs content for every component page |
+| `scripts/lint-spacing.mjs` | Fails on off-grid arbitrary values like `p-[10px]` |
 
-## Deploy on Vercel
+## Shortcuts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`Ctrl K` or `/` opens search. `G` toggles the column grid on any page.

@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:spacing": "node scripts/lint-spacing.mjs",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint && npm run lint:spacing"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

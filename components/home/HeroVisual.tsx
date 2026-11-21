@@ -54,7 +54,7 @@ export function HeroVisual() {
           <span className="pointer-events-none absolute inset-y-0 left-0 w-2 bg-spec-soft" aria-hidden />
           <span className="pointer-events-none absolute inset-y-0 right-0 w-2 bg-spec-soft" aria-hidden />
         </span>
-        <span className="font-mono text-mono text-spec">h 40 · pad 16 · gap 8 · r 8</span>
+        <span className="font-mono text-mono text-spec-ink">h 40 · pad 16 · gap 8 · r 8</span>
       </motion.div>
     </div>
   );

@@ -43,7 +43,7 @@ export function TopBar({
             title="Show the column grid (G)"
             className={cn(
               "hidden h-5 items-center gap-1 rounded-sm px-2 text-sm md:flex",
-              grid ? "bg-spec-soft text-spec" : "text-text-secondary hover:bg-bg-muted",
+              grid ? "bg-spec-soft text-spec-ink" : "text-text-secondary hover:bg-bg-muted",
             )}
           >
             <Squares2X2Icon className="size-2" />

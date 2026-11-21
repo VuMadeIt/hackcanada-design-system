@@ -59,17 +59,17 @@ export default function GridPage() {
         <div className="blueprint overflow-hidden rounded-md border border-border">
           <div className="grid h-40 grid-cols-[64px_1fr] md:grid-cols-[128px_1fr]">
             <div className="flex flex-col gap-1 border-r border-border bg-surface p-1">
-              <span className="font-mono text-mono text-spec">256</span>
+              <span className="font-mono text-mono text-spec-ink">256</span>
               {Array.from({ length: 6 }).map((_, i) => <span key={i} className={`h-2 rounded-xs ${i === 1 ? "bg-primary-soft" : "bg-bg-muted"}`} />)}
             </div>
             <div className="flex flex-col">
-              <div className="flex h-4 items-center justify-between border-b border-border bg-surface px-2 font-mono text-mono text-spec"><span>Top bar 56</span><span>Search · theme</span></div>
+              <div className="flex h-4 items-center justify-between border-b border-border bg-surface px-2 font-mono text-mono text-spec-ink"><span>Top bar 56</span><span>Search · theme</span></div>
               <div className="flex flex-1 gap-2 p-2">
-                <div className="flex flex-1 flex-col gap-1 rounded-sm border border-dashed border-spec p-1 font-mono text-mono text-spec">
+                <div className="flex flex-1 flex-col gap-1 rounded-sm border border-dashed border-spec p-1 font-mono text-mono text-spec-ink">
                   <span>Content · max 1200 · padding 32</span>
                   <div className="grid flex-1 grid-cols-3 gap-1">{[0, 1, 2].map((i) => <span key={i} className="rounded-xs bg-surface shadow-card" />)}</div>
                 </div>
-                <div className="hidden w-16 flex-col gap-half rounded-sm border border-dashed border-spec p-1 font-mono text-mono text-spec xl:flex">On this page 192</div>
+                <div className="hidden w-16 flex-col gap-half rounded-sm border border-dashed border-spec p-1 font-mono text-mono text-spec-ink xl:flex">On this page 192</div>
               </div>
             </div>
           </div>

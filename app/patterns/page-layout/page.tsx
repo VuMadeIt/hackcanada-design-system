@@ -4,7 +4,7 @@ import { PageHeader, Section, Table, List, Grid, InfoCard } from "@/components/s
 export const metadata: Metadata = { title: "Page layout" };
 
 function Block({ label, className = "" }: { label: string; className?: string }) {
-  return <div className={`flex items-start rounded-sm border border-dashed border-spec bg-spec-soft p-1 font-mono text-mono text-spec ${className}`}>{label}</div>;
+  return <div className={`flex items-start rounded-sm border border-dashed border-spec bg-spec-soft p-1 font-mono text-mono text-spec-ink ${className}`}>{label}</div>;
 }
 
 export default function PageLayout() {

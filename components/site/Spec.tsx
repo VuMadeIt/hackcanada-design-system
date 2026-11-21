@@ -136,7 +136,7 @@ export function Spec({
     <figure className="overflow-hidden rounded-md border border-border">
       <div className="flex h-5 items-center gap-2 border-b border-border bg-surface px-2">
         <span className="font-mono text-mono text-text-muted">{label ?? "Spec"}</span>
-        {z !== 1 && <span className="rounded-xs bg-spec-soft px-half font-mono text-mono text-spec">{z}× zoom</span>}
+        {z !== 1 && <span className="rounded-xs bg-spec-soft px-half font-mono text-mono text-spec-ink">{z}× zoom</span>}
         <label className="ml-auto flex cursor-pointer items-center gap-1 text-caption text-text-muted">
           <input type="checkbox" checked={on} onChange={(e) => setOn(e.target.checked)} className="accent-[var(--hc-spec)]" />
           Measurements
@@ -166,8 +166,8 @@ export function Spec({
             {P.b > 0 && <div className="absolute bg-spec-soft" style={{ left: b.x, top: b.y + b.h - P.b, width: b.w, height: P.b }} />}
             {P.l > 0 && <div className="absolute bg-spec-soft" style={{ left: b.x, top: b.y + P.t, width: P.l, height: b.h - P.t - P.b }} />}
             {P.r > 0 && <div className="absolute bg-spec-soft" style={{ left: b.x + b.w - P.r, top: b.y + P.t, width: P.r, height: b.h - P.t - P.b }} />}
-            {P.l >= 16 && <span className="absolute font-mono text-mono text-spec" style={{ left: b.x + P.l / 2, top: b.y + b.h / 2, transform: "translate(-50%,-50%)" }}>{r(m.pad.l)}</span>}
-            {P.r >= 16 && <span className="absolute font-mono text-mono text-spec" style={{ left: b.x + b.w - P.r / 2, top: b.y + b.h / 2, transform: "translate(-50%,-50%)" }}>{r(m.pad.r)}</span>}
+            {P.l >= 16 && <span className="absolute rounded-xs bg-spec px-half font-mono text-mono text-on-spec" style={{ left: b.x + P.l / 2, top: b.y + b.h / 2, transform: "translate(-50%,-50%)" }}>{r(m.pad.l)}</span>}
+            {P.r >= 16 && <span className="absolute rounded-xs bg-spec px-half font-mono text-mono text-on-spec" style={{ left: b.x + b.w - P.r / 2, top: b.y + b.h / 2, transform: "translate(-50%,-50%)" }}>{r(m.pad.r)}</span>}
             {m.gap && m.gap.value > 0 && (
               <div className="absolute bg-[repeating-linear-gradient(45deg,var(--hc-spec)_0_1px,transparent_1px_4px)] opacity-70" style={{ left: m.gap.box.x, top: m.gap.box.y, width: m.gap.box.w, height: m.gap.box.h }} />
             )}

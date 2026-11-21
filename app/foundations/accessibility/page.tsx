@@ -40,7 +40,7 @@ export default function Accessibility() {
             <p className="text-sm text-text-secondary">A 24 px icon gets a 48 px hit area on phones.</p>
             <span className="relative grid size-6 place-items-center rounded-sm outline outline-1 outline-dashed outline-spec">
               <span className="size-3 rounded-xs bg-primary" />
-              <span className="absolute -bottom-3 font-mono text-mono text-spec">48</span>
+              <span className="absolute -bottom-3 font-mono text-mono text-spec-ink">48</span>
             </span>
           </div>
         </Grid>

@@ -29,7 +29,7 @@ export default function Typography() {
       <Section title="Satoshi" intro="A geometric sans with a friendly, slightly rounded feel. It's the face in the Hack Canada Figma file, and it holds up from 11 px captions to 56 px headlines.">
         <div className="blueprint flex flex-col gap-2 rounded-md border border-border p-4">
           <p className="text-6xl font-black tracking-tight">Aa Bb Cc 0123</p>
-          <p className="text-2xl">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</p>
+          <p className="text-2xl break-all">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</p>
           <div className="flex flex-wrap gap-3 pt-1">
             {[300, 400, 500, 600, 700, 900].map((w) => (
               <span key={w} className="flex flex-col">

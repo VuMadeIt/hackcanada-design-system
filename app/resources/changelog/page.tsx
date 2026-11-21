@@ -14,6 +14,7 @@ export default function Changelog() {
             "Spacing scale replaced with the rule of 8, with 4 as the only half step.",
             "New tokens: primary-ink for blue text on blue tints, border-input for 3 : 1 control borders.",
             "Success darkened to #157043 to pass AA on its soft background.",
+            "Primary darkened from #1c74c9 to #1a6dbd so blue eyebrows and links pass AA on the page background and on blue tints. Spec red darkened to #d1373d so labels on it pass.",
             "Live redlines on every component page, measured from the real DOM.",
             "21 micro-interactions, all respecting reduced motion.",
           ]}

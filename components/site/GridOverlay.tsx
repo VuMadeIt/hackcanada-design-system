@@ -11,7 +11,7 @@ export function GridOverlay() {
           />
         ))}
       </div>
-      <p className="fixed right-2 bottom-2 rounded-sm bg-spec px-1 py-half font-mono text-mono text-white">
+      <p className="fixed right-2 bottom-2 rounded-sm bg-spec px-1 py-half font-mono text-mono text-on-spec">
         <span className="md:hidden">4 col · 16 gutter · 16 margin</span>
         <span className="hidden md:inline xl:hidden">8 col · 24 gutter · 32 margin</span>
         <span className="hidden xl:inline">12 col · 24 gutter · 40 margin</span>

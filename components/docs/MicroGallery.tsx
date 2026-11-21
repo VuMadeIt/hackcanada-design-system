@@ -206,7 +206,7 @@ function SpotlightDemo() {
 function GlowDemo() {
   return (
     <div className="relative">
-      <GlowEffect colors={["#e0a45e", "#f0b86c", "#1c74c9", "#4a9eef"]} mode="colorShift" blur="soft" duration={4} scale={0.9} />
+      <GlowEffect colors={["#e0a45e", "#f0b86c", "#1a6dbd", "#4a9eef"]} mode="colorShift" blur="soft" duration={4} scale={0.9} />
       <span className="relative flex h-6 items-center gap-1 rounded-sm bg-surface px-3 font-bold">You won 120 pts</span>
     </div>
   );
@@ -322,7 +322,7 @@ function ConfettiDemo({ k }: { k: number }) {
   const bits = Array.from({ length: 28 }, (_, i) => ({
     x: Math.cos((i / 28) * Math.PI * 2) * (64 + ((i * 37) % 48)),
     y: Math.sin((i / 28) * Math.PI * 2) * (48 + ((i * 53) % 40)) - 24,
-    c: ["#1c74c9", "#e0a45e", "#4a9eef", "#f0b86c"][i % 4],
+    c: ["#1a6dbd", "#e0a45e", "#4a9eef", "#f0b86c"][i % 4],
     r: (i * 47) % 360,
   }));
   return (

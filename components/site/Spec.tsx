@@ -19,7 +19,7 @@ const r = (n: number) => Math.round(n);
 
 function Tag({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
   return (
-    <span className={cn("absolute z-10 rounded-xs bg-spec px-half font-mono text-mono whitespace-nowrap text-white shadow-card", className)} style={style}>
+    <span className={cn("absolute z-10 rounded-xs bg-spec px-half font-mono text-mono whitespace-nowrap text-on-spec shadow-card", className)} style={style}>
       {children}
     </span>
   );

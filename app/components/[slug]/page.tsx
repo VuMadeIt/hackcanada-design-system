@@ -53,7 +53,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         <ol className="grid gap-1 sm:grid-cols-2">
           {doc.anatomy.map((a, i) => (
             <li key={a} className="flex items-center gap-2 rounded-sm border border-border bg-surface p-2 text-sm">
-              <span className="grid size-3 shrink-0 place-items-center rounded-pill bg-spec font-mono text-mono text-white">{i + 1}</span>
+              <span className="grid size-3 shrink-0 place-items-center rounded-pill bg-spec font-mono text-mono text-on-spec">{i + 1}</span>
               {a}
             </li>
           ))}

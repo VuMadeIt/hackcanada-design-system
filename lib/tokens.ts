@@ -1,7 +1,7 @@
 // Mirrors the --hc-* values in app/globals.css. Used for contrast math on the docs pages.
 export const palette = {
   light: {
-    "primary": "#1c74c9",
+    "primary": "#1a6dbd",
     "primary-hover": "#155a9e",
     "primary-soft": "#e8f2fd",
     "primary-ink": "#155a9e",
@@ -26,7 +26,7 @@ export const palette = {
     "border": "#e1e7ef",
     "border-strong": "#c9d3df",
     "border-input": "#8193a8",
-    "spec": "#e5484d",
+    "spec": "#d1373d",
   },
   dark: {
     "primary": "#4a9eef",

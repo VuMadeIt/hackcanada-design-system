@@ -80,7 +80,7 @@ function Swatch({ s }: { s: Sw }) {
             <span className="font-mono text-mono font-bold" style={{ color: palette[t][s.on ?? (t === "light" ? "text" : "text")] }}>
               {s.on ? "Aa" : ""}
             </span>
-            <span className="font-mono text-mono" style={{ color: contrast(palette[t][s.token], "#ffffff") > 3 ? "#ffffff" : "#0f2233" }}>{t}</span>
+            <span className="font-mono text-mono" style={{ color: contrast(palette[t][s.token], "#ffffff") >= contrast(palette[t][s.token], "#0f2233") ? "#ffffff" : "#0f2233" }}>{t}</span>
           </div>
         ))}
       </div>
@@ -167,7 +167,7 @@ export default function Color() {
 
       <Section title="Dark mode isn't inverted">
         <Grid cols={3}>
-          <InfoCard kicker="Brand" title="Lighter, less saturated">#1c74c9 becomes #4a9eef. The same blue would be too dark to read on navy.</InfoCard>
+          <InfoCard kicker="Brand" title="Lighter, less saturated">#1a6dbd becomes #4a9eef. The same blue would be too dark to read on navy.</InfoCard>
           <InfoCard kicker="Surfaces" title="Elevation by lightness">Shadows barely show on dark. Raised surfaces are lighter instead: #0a1520, #101d2a, #152536.</InfoCard>
           <InfoCard kicker="Text" title="Never pure white">#eef3f8 at about 17 : 1. Pure white glows on dark backgrounds.</InfoCard>
         </Grid>

@@ -51,7 +51,7 @@ export default function DarkMode() {
           <InfoCard kicker="D1" title="Not pure black">The page is #0a1520, a deep navy. Pure black makes surfaces look like holes, and smears on OLED screens when you scroll.</InfoCard>
           <InfoCard kicker="D2" title="Not pure white">Text is #eef3f8. Large white areas, like photo tiles and the NO button, use a soft blue gray instead.</InfoCard>
           <InfoCard kicker="D3" title="Lighter means higher">bg → surface → raised gets lighter as it gets closer. Shadows help a bit, but lightness does most of the work.</InfoCard>
-          <InfoCard kicker="D4" title="Brand gets lighter">Primary goes from #1c74c9 to #4a9eef, and the text on it flips to dark navy so it still passes.</InfoCard>
+          <InfoCard kicker="D4" title="Brand gets lighter">Primary goes from #1a6dbd to #4a9eef, and the text on it flips to dark navy so it still passes.</InfoCard>
           <InfoCard kicker="D5" title="Native controls follow">color-scheme is set, so dropdowns, scrollbars and date pickers are dark too. The old dashboard had white dropdowns in dark mode.</InfoCard>
           <InfoCard kicker="D6" title="No flash on load">A small inline script sets the theme before the page paints, so there&apos;s no white flash.</InfoCard>
         </Grid>

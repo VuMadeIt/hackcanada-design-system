@@ -17,7 +17,7 @@ function Redline({ className, label }: { className: string; label: string }) {
   return (
     <span className={`pointer-events-none absolute flex items-center ${className}`} aria-hidden>
       <span className="h-px flex-1 bg-spec" />
-      <span className="rounded-xs bg-spec px-half font-mono text-mono text-white">{label}</span>
+      <span className="rounded-xs bg-spec px-half font-mono text-mono text-on-spec">{label}</span>
       <span className="h-px flex-1 bg-spec" />
     </span>
   );

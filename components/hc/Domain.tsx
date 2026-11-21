@@ -107,7 +107,7 @@ export function MarketCard({ question, yes, pool, closes, onPick }: { question: 
         <span className="ml-auto tabular">{pool.toLocaleString()} pts in pool</span>
       </div>
       <p className="text-lg font-bold">{question}</p>
-      <div className="flex h-1 overflow-hidden rounded-pill bg-bg-muted" aria-label={`${yes}% yes`}>
+      <div className="flex h-1 overflow-hidden rounded-pill bg-bg-muted" role="img" aria-label={`${yes}% yes`}>
         <motion.span className="bg-primary" initial={{ width: 0 }} animate={{ width: `${yes}%` }} transition={{ duration: 0.5 }} />
       </div>
       <div className="grid grid-cols-2 gap-1">

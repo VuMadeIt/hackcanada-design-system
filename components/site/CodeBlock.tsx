@@ -4,7 +4,7 @@ import { CopyButton } from "./CopyButton";
 export async function CodeBlock({ code, lang = "tsx", title }: { code: string; lang?: string; title?: string }) {
   const html = await codeToHtml(code.trim(), {
     lang,
-    themes: { light: "github-light", dark: "github-dark-dimmed" },
+    themes: { light: "github-light-high-contrast", dark: "github-dark-dimmed" },
     defaultColor: false,
   });
   return (

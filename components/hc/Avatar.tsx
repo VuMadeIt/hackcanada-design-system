@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const sizes = { xs: "size-3 text-[10px]", sm: "size-4 text-caption", md: "size-5 text-sm", lg: "size-8 text-xl", xl: "size-12 text-3xl" };
-const palette = ["bg-primary-soft text-primary", "bg-gold-soft text-gold-ink", "bg-success-soft text-success", "bg-warning-soft text-warning"];
+const palette = ["bg-primary-soft text-primary-ink", "bg-gold-soft text-gold-ink", "bg-success-soft text-success", "bg-warning-soft text-warning"];
 
 export function Avatar({
   name,

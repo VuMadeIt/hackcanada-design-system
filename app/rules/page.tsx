@@ -75,7 +75,7 @@ export default function Rules() {
             <ul className="divide-y divide-border">
               {g.rules.map(([code, text]) => (
                 <li key={code} className="flex gap-2 px-3 py-2">
-                  <span className="h-3 shrink-0 rounded-xs bg-primary-soft px-half font-mono text-mono leading-[24px] font-bold text-primary">{code}</span>
+                  <span className="h-3 shrink-0 rounded-xs bg-primary-soft px-half font-mono text-mono leading-[24px] font-bold text-primary-ink">{code}</span>
                   <span className="text-sm text-text-secondary">{text}</span>
                 </li>
               ))}

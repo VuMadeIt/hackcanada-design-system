@@ -89,7 +89,7 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
                     onClick={() => go(r.href)}
                     className={cn(
                       "flex h-5 w-full items-center gap-2 rounded-sm px-2 text-left text-sm",
-                      i === index ? "bg-primary-soft text-primary" : "text-text-secondary",
+                      i === index ? "bg-primary-soft text-primary-ink" : "text-text-secondary",
                     )}
                   >
                     <span className="font-medium">{r.title}</span>

@@ -60,7 +60,7 @@ export function Input({
           aria-invalid={!!error || undefined}
           aria-describedby={hint || error ? `${id}-msg` : undefined}
           required={required}
-          className={cn(control, "h-6 px-2", leading && "pl-5", error ? "border-danger" : "border-border", className)}
+          className={cn(control, "h-6 px-2", leading && "pl-5", error ? "border-danger" : "border-border-input", className)}
           {...props}
         />
       </div>
@@ -89,7 +89,7 @@ export function Textarea({
           maxLength={maxLength}
           aria-invalid={!!error || undefined}
           aria-describedby={hint || error ? `${id}-msg` : undefined}
-          className={cn(control, "min-h-16 resize-y px-2 py-1", error ? "border-danger" : "border-border", className)}
+          className={cn(control, "min-h-16 resize-y px-2 py-1", error ? "border-danger" : "border-border-input", className)}
           {...props}
         />
         {maxLength && (
@@ -118,7 +118,7 @@ export function Select({
         <select
           id={id}
           aria-invalid={!!error || undefined}
-          className={cn(control, "h-6 appearance-none pr-5 pl-2", error ? "border-danger" : "border-border", className)}
+          className={cn(control, "h-6 appearance-none pr-5 pl-2", error ? "border-danger" : "border-border-input", className)}
           {...props}
         >
           {options.map((o) => (

@@ -49,7 +49,7 @@ export function ShopItemCard({ item, balance = 300, onRedeem }: { item: ShopItem
 }
 
 const catTone: Record<string, string> = {
-  Social: "bg-primary-soft text-primary",
+  Social: "bg-primary-soft text-primary-ink",
   Sponsor: "bg-gold-soft text-gold-ink",
   Build: "bg-success-soft text-success",
 };

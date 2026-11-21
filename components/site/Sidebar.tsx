@@ -66,7 +66,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
                         className={cn(
                           "flex h-4 items-center rounded-sm px-1 text-sm transition-colors duration-200",
                           active
-                            ? "bg-primary-soft font-bold text-primary"
+                            ? "bg-primary-soft font-bold text-primary-ink"
                             : "text-text-secondary hover:bg-bg-muted hover:text-text",
                         )}
                       >

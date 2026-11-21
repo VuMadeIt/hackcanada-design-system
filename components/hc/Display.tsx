@@ -156,7 +156,7 @@ export function NavItem({ icon, label, active, badge }: { icon: React.ReactNode;
       aria-current={active ? "page" : undefined}
       className={cn(
         "flex h-5 w-full items-center gap-1 rounded-sm px-1 text-sm transition-colors duration-200",
-        active ? "bg-primary-soft font-bold text-primary" : "text-text-secondary hover:bg-bg-muted hover:text-text",
+        active ? "bg-primary-soft font-bold text-primary-ink" : "text-text-secondary hover:bg-bg-muted hover:text-text",
       )}
     >
       <span data-spec="icon" className="grid size-3 place-items-center [&>svg]:size-3">{icon}</span>
@@ -170,7 +170,7 @@ export function StatCard({ label, value, delta, icon }: { label: string; value: 
   return (
     <div className="flex min-w-30 flex-col gap-1 rounded-md border border-border bg-surface p-3 shadow-card">
       <div className="flex items-center gap-1 text-sm text-text-muted">
-        {icon && <span className="grid size-4 place-items-center rounded-sm bg-primary-soft text-primary [&>svg]:size-2">{icon}</span>}
+        {icon && <span className="grid size-4 place-items-center rounded-sm bg-primary-soft text-primary-ink [&>svg]:size-2">{icon}</span>}
         {label}
       </div>
       <p className="text-3xl font-bold tabular">{value}</p>

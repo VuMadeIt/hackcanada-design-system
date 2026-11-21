@@ -195,7 +195,7 @@ export default function Home() {
           { icon: BookOpenIcon, t: "Read the redlines", b: "Every spec view is measured from the live component, so the numbers can't drift." },
         ].map(({ icon: Icon, t, b }) => (
           <div key={t} className="flex gap-2 rounded-md border border-border bg-surface p-3">
-            <span className="grid size-5 shrink-0 place-items-center rounded-sm bg-primary-soft text-primary">
+            <span className="grid size-5 shrink-0 place-items-center rounded-sm bg-primary-soft text-primary-ink">
               <Icon className="size-3" />
             </span>
             <div>

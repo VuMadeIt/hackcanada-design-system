@@ -155,7 +155,7 @@ export function Tooltip({ label, children, side = "top" }: { label: string; chil
 }
 
 const alertTones = {
-  info: { icon: InformationCircleIcon, cls: "bg-primary-soft text-primary" },
+  info: { icon: InformationCircleIcon, cls: "bg-primary-soft text-primary-ink" },
   success: { icon: CheckCircleIcon, cls: "bg-success-soft text-success" },
   warning: { icon: ExclamationTriangleIcon, cls: "bg-warning-soft text-warning" },
   danger: { icon: XCircleIcon, cls: "bg-danger-soft text-danger" },

@@ -14,13 +14,14 @@ const pairs: [ColorToken, ColorToken, string][] = [
   ["text-muted", "bg-muted", "Muted text on a tile"],
   ["on-primary", "primary", "Primary button label"],
   ["primary", "surface", "Links, active nav"],
-  ["primary", "primary-soft", "Active nav item"],
+  ["primary-ink", "primary-soft", "Active nav item, primary badges"],
   ["gold-ink", "gold-soft", "Points chip"],
   ["success", "success-soft", "Success badge"],
   ["warning", "warning-soft", "Warning badge"],
   ["danger", "danger-soft", "Error badge"],
   ["danger", "surface", "Error message"],
-  ["border-strong", "surface", "Input border (3 : 1 needed)"],
+  ["border-input", "surface", "Input, checkbox and switch borders (3 : 1)"],
+  ["border-strong", "surface", "Decorative dividers (no minimum)"],
 ];
 
 function Cell({ r }: { r: number }) {
@@ -73,7 +74,7 @@ export default function Contrast() {
         />
         <Callout title="What we changed to pass" tone="warn">
           The old light red error text was 3.1 : 1 on its pink background and failed. Danger is now #b42318, which passes AA on both white and its soft background.
-          Muted text was darkened from #66768a to #5c6b7e so it passes on tiles too, not only on white.
+          Muted text was darkened from #66768a to #5c6b7e so it passes on tiles too. Blue text on blue tints uses primary-ink, because brand blue drops to 4.2 : 1 there. Input borders got their own darker token to reach 3 : 1.
         </Callout>
       </Section>
 

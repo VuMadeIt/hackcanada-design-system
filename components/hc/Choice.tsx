@@ -32,7 +32,7 @@ export function Checkbox({
           disabled={disabled}
           onChange={(e) => onChange(e.target.checked)}
           aria-checked={indeterminate ? "mixed" : checked}
-          className="peer absolute inset-0 cursor-pointer appearance-none rounded-xs border-2 border-border-strong bg-surface transition-colors duration-100 checked:border-primary checked:bg-primary focus-visible:shadow-focus"
+          className="peer absolute inset-0 cursor-pointer appearance-none rounded-xs border-2 border-border-input bg-surface transition-colors duration-100 checked:border-primary checked:bg-primary focus-visible:shadow-focus"
           style={indeterminate ? { background: "var(--hc-primary)", borderColor: "var(--hc-primary)" } : undefined}
         />
         {on && (
@@ -78,7 +78,7 @@ export function RadioGroup({
             value={o.value}
             checked={value === o.value}
             onChange={() => onChange(o.value)}
-            className="mt-half size-2 shrink-0 cursor-pointer appearance-none rounded-pill border-2 border-border-strong bg-surface transition-[border-width,border-color] duration-200 checked:border-[5px] checked:border-primary focus-visible:shadow-focus"
+            className="mt-half size-2 shrink-0 cursor-pointer appearance-none rounded-pill border-2 border-border-input bg-surface transition-[border-width,border-color] duration-200 checked:border-[6px] checked:border-primary focus-visible:shadow-focus"
           />
           <span>
             <span className="block text-sm font-bold">{o.label}</span>
@@ -117,7 +117,7 @@ export function Switch({
         className={cn(
           "relative flex shrink-0 items-center rounded-pill px-half transition-colors duration-200",
           track,
-          checked ? "justify-end bg-primary" : "justify-start bg-border-strong",
+          checked ? "justify-end bg-primary" : "justify-start bg-border-input",
         )}
       >
         <motion.span layout transition={{ type: "spring", stiffness: 700, damping: 40 }} className={cn("rounded-pill bg-white shadow-card", thumb)} />

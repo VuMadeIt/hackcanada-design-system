@@ -304,9 +304,18 @@ const specs: Record<string, () => React.ReactNode> = {
   "mini-game-card": () => <MiniGameCard title="Cup Shuffle" body="Find the ball." image={asset("/img/games/cup.svg")} plays="3 left" />,
 };
 
+const specWidth: Record<string, number> = {
+  "shop-item-card": 288,
+  "challenge-card": 320,
+  "market-card": 384,
+  "bet-slip": 320,
+  leaderboard: 384,
+  "mini-game-card": 320,
+};
+
 export function DemoSpec({ slug }: { slug: string }) {
   const s = specs[slug];
-  return s ? <Spec label={`${slug} · measured live`}>{s()}</Spec> : null;
+  return s ? <Spec label={`${slug} · measured live`} width={specWidth[slug]}>{s()}</Spec> : null;
 }
 
 /* ---------- Variants ---------- */

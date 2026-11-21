@@ -51,7 +51,7 @@ export function Section({
   const anchor = id ?? slugify(title);
   return (
     <section className={cn("pt-8 first-of-type:pt-0", className)} aria-labelledby={anchor}>
-      <h2 id={anchor} className="group flex items-center gap-1 text-2xl font-bold tracking-tight">
+      <h2 id={anchor} data-toc={title} className="group flex items-center gap-1 text-2xl font-bold tracking-tight">
         {title}
         <a href={`#${anchor}`} className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100" aria-label={`Link to ${title}`}>
           #

@@ -23,7 +23,7 @@ export function ShopItemCard({ item, balance = 300, onRedeem }: { item: ShopItem
           <img src={item.image} alt={item.name} className={cn("absolute inset-0 size-full object-contain p-2 mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04] dark:mix-blend-normal", soldOut && "opacity-40 grayscale")} />
         ) : null}
         <span className="absolute top-1 left-1">
-          {soldOut ? <Badge tone="neutral">Sold out</Badge> : low ? <Badge tone="danger">Only {item.stock} left</Badge> : null}
+          {soldOut ? <span className="inline-flex h-3 items-center rounded-pill bg-ink px-1 text-caption font-bold text-white">Sold out</span> : low ? <Badge tone="danger">Only {item.stock} left</Badge> : null}
         </span>
         {item.image && (
           <span className="absolute right-1 bottom-1 grid size-4 place-items-center rounded-sm bg-surface/90 text-text-secondary opacity-0 shadow-card transition-opacity group-hover:opacity-100">

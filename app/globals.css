@@ -241,3 +241,8 @@
 [data-theme="dark"] .shiki-wrap span {
   color: var(--shiki-dark);
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hc-border-strong) transparent;
+}

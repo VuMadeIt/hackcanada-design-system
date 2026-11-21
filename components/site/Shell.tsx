@@ -60,7 +60,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               {children}
               <PrevNext />
             </main>
-            {pathname.replace(/\/$/, "") !== "" && <Toc />}
+            {pathname.replace(/\/$/, "") !== "" && !/^\/blueprints\/(store|bets)/.test(pathname) && <Toc />}
           </div>
         </div>
       </div>

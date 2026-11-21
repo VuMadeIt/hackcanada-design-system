@@ -22,7 +22,7 @@ function Header({ title, sub, right }: { title: string; sub: string; right?: Rea
 export function StoreBlueprint() {
   const [tab, setTab] = useState("All");
   return (
-    <Spec label="Store · desktop main column" width={928} hugWidth={false}>
+    <Spec label="Store · desktop main column" width={928} hugWidth={false} className="px-4">
       <div className="flex flex-col gap-4 bg-bg p-4">
         <Header title="Store" sub="Spend the points you earn. Limited stock." right={<PointsPill value={300} />} />
         <div data-spec="filters" className="flex items-center gap-2">
@@ -39,11 +39,11 @@ export function StoreBlueprint() {
 
 export function BetsBlueprint() {
   return (
-    <Spec label="Bet Points · desktop" width={928} hugWidth={false}>
+    <Spec label="Bet Points · desktop" width={928} hugWidth={false} className="px-4">
       <div className="flex flex-col gap-4 bg-bg p-4">
         <Header title="Bet Points" sub="Put points on what happens this weekend." right={<PointsPill value={240} />} />
         <div className="grid grid-cols-[1fr_320px] gap-3">
-          <div data-spec="markets" className="flex flex-col gap-3">
+          <div data-spec="markets" className="flex flex-col gap-3 [&>article]:max-w-none">
             <MarketCard question="Will a team ship a hardware hack?" yes={72} pool={4820} closes="Sat 18:00" />
             <MarketCard question="Will the winning team use a beaver in their demo?" yes={38} pool={2210} closes="Sun 11:00" />
           </div>

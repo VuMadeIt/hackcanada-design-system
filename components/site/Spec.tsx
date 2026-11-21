@@ -142,8 +142,8 @@ export function Spec({
           Measurements
         </label>
       </div>
-      <div ref={wrap} className={cn("blueprint relative flex min-h-36 items-center justify-center overflow-hidden px-12 py-12", className)}>
-        <div ref={holder} className="relative [&>*]:max-w-none" style={{ width, ...(z !== 1 ? { transform: `scale(${z})`, margin: `${((z - 1) * realH) / 2}px ${((z - 1) * realW) / 2}px` } : {}) }}>
+      <div ref={wrap} className={cn("blueprint relative flex min-h-36 items-center justify-center-safe overflow-x-auto px-12 py-12", className)}>
+        <div ref={holder} className="relative shrink-0 [&>*]:max-w-none" style={{ width, ...(z !== 1 ? { transform: `scale(${z})`, margin: `${((z - 1) * realH) / 2}px ${((z - 1) * realW) / 2}px` } : {}) }}>
           {children}
         </div>
         {on && m && b && P && (
@@ -185,8 +185,8 @@ export function Spec({
           {m.gap && <Readout label="Gap" value={`${m.gap.value}`} grid={onGrid(m.gap.value)} />}
           <Readout label="Radius" value={m.radius >= 999 ? "pill" : `${r(m.radius)}`} grid={m.radius >= 999 || onGrid(r(m.radius))} />
           {m.font && <Readout label="Type" value={m.font} />}
-          {m.marks.map((k) => (
-            <Readout key={k.name} label={k.name} value={`${r(k.w / z)}×${r(k.h / z)}`} grid={onGrid(r(k.w / z)) && onGrid(r(k.h / z))} />
+          {m.marks.map((k, i) => (
+            <Readout key={`${k.name}-${i}`} label={k.name} value={`${r(k.w / z)}×${r(k.h / z)}`} grid={onGrid(r(k.w / z)) && onGrid(r(k.h / z))} />
           ))}
         </dl>
       )}

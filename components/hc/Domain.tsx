@@ -16,11 +16,11 @@ export function ShopItemCard({ item, balance = 300, onRedeem }: { item: ShopItem
   const low = !soldOut && item.stock <= 5;
   const short = item.price > balance;
   return (
-    <article className="flex w-full max-w-36 flex-col gap-2 rounded-md border border-border bg-surface p-2 shadow-card">
-      <div data-spec="image tile" className="group relative aspect-square overflow-hidden rounded-sm bg-bg-muted">
+    <article className="flex w-full max-w-36 flex-col gap-2 rounded-md bg-surface p-2 shadow-card ring-1 ring-border ring-inset">
+      <div data-spec="image tile" className="group relative aspect-square overflow-hidden rounded-sm bg-bg-muted dark:bg-[#b4c2d1]">
         {item.image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.image} alt={item.name} className={cn("absolute inset-0 size-full object-contain p-2 mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04] dark:mix-blend-normal", soldOut && "opacity-40 grayscale")} />
+          <img src={item.image} alt={item.name} className={cn("absolute inset-0 size-full object-contain p-2 mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04]", soldOut && "opacity-40 grayscale")} />
         ) : null}
         <span className="absolute top-1 left-1">
           {soldOut ? <span className="inline-flex h-3 items-center rounded-pill bg-ink px-1 text-caption font-bold text-white">Sold out</span> : low ? <Badge tone="danger">Only {item.stock} left</Badge> : null}

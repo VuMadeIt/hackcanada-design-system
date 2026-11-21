@@ -19,7 +19,7 @@ export function SegmentedControl({
 }) {
   const id = useId();
   return (
-    <div role="radiogroup" aria-label={label} className={cn("inline-flex h-5 gap-half rounded-sm bg-bg-muted p-half", full && "flex w-full")}>
+    <div role="radiogroup" aria-label={label} className={cn("inline-flex h-5 gap-half rounded-sm bg-bg-muted p-half dark:bg-bg dark:ring-1 dark:ring-border dark:ring-inset", full && "flex w-full")}>
       {options.map((o) => {
         const on = o === value;
         return (
@@ -31,7 +31,7 @@ export function SegmentedControl({
             className={cn("relative flex-1 rounded-xs px-2 text-sm font-bold transition-colors duration-200", on ? "text-text" : "text-text-muted hover:text-text")}
           >
             {on && (
-              <motion.span layoutId={`seg-${id}`} className="absolute inset-0 rounded-xs bg-surface shadow-card" transition={{ type: "spring", stiffness: 500, damping: 40 }} />
+              <motion.span layoutId={`seg-${id}`} className="absolute inset-0 rounded-xs bg-surface shadow-card dark:bg-surface-raised dark:ring-1 dark:ring-border-strong" transition={{ type: "spring", stiffness: 500, damping: 40 }} />
             )}
             <span className="relative">{o}</span>
           </button>

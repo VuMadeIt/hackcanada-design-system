@@ -154,7 +154,6 @@ function DialogPlay() {
       <Button leading={<GiftIcon />} onClick={() => setOpen(true)}>Redeem LED Strips</Button>
       <Dialog open={open} onClose={() => setOpen(false)} title="Redeem LED Strips for 60 pts?" description="Pick it up at the prize desk. You'll have 60 pts left." footer={<><Button variant="secondary" onClick={() => setOpen(false)}>Cancel</Button><Button onClick={() => setOpen(false)}>Redeem</Button></>}>
         <div className="flex items-center gap-2 rounded-sm bg-bg-muted p-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset("/img/shop/led-strips.jpg")} alt="" className="size-8 rounded-xs object-contain mix-blend-multiply dark:mix-blend-normal" />
           <div className="flex-1"><p className="font-bold">LED Strips</p><p className="text-sm text-text-muted">10 ft · 4 left</p></div>
           <p className="font-bold tabular">60 pts</p>

@@ -10,6 +10,7 @@ import { Toc } from "./Toc";
 import { PrevNext } from "./PrevNext";
 import { GridOverlay } from "./GridOverlay";
 import { CommandMenu } from "./CommandMenu";
+import { ImageProvider } from "./Images";
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,6 +40,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   return (
     <MotionConfig reducedMotion="user">
+      <ImageProvider>
       <ScrollProgress className="fixed z-50 h-half bg-primary" />
       <a
         href="#main"
@@ -56,7 +58,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             onGrid={() => setGrid((g) => !g)}
           />
           <div className="mx-auto flex w-full max-w-page gap-5 px-2 pb-16 md:px-4 xl:px-5">
-            <main id="main" className="min-w-0 flex-1 pt-4 md:pt-5">
+            <main id="main" className="min-w-0 flex-1 pt-4 [counter-reset:sec] md:pt-6">
               {children}
               <PrevNext />
             </main>
@@ -66,6 +68,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </div>
       {grid && <GridOverlay />}
       <CommandMenu open={searchOpen} onClose={() => setSearchOpen(false)} />
+      </ImageProvider>
     </MotionConfig>
   );
 }

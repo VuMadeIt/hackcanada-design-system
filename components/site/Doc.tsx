@@ -1,3 +1,4 @@
+import { HeaderArt } from "./HeaderArt";
 import { CheckCircleIcon, XCircleIcon, InformationCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 import { cn } from "@/lib/utils";
 
@@ -18,15 +19,20 @@ export function PageHeader({
 }) {
   return (
     <header className="pb-6">
-      <p className="text-caption font-bold tracking-wide text-primary uppercase">{eyebrow}</p>
-      <h1 className="pt-1 text-3xl font-bold tracking-tight md:text-4xl">{title}</h1>
-      <p className="max-w-prose pt-2 text-lg text-text-secondary">{lead}</p>
+      <div className="flex items-end justify-between gap-4">
+        <div className="min-w-0">
+          <p className="font-mono text-mono text-text-muted uppercase">{eyebrow}</p>
+          <h1 className="pt-1 text-4xl font-bold tracking-[-0.02em] text-balance md:text-5xl">{title}</h1>
+          <p className="max-w-prose pt-2 text-lg text-pretty text-text-secondary">{lead}</p>
+        </div>
+        <HeaderArt />
+      </div>
       {meta && (
-        <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t border-border pt-2">
+        <dl className="mt-4 flex flex-wrap overflow-hidden rounded-sm border border-border bg-surface">
           {meta.map((m) => (
-            <div key={m.label} className="flex items-baseline gap-1 text-sm">
-              <dt className="text-text-muted">{m.label}</dt>
-              <dd className="font-medium">{m.value}</dd>
+            <div key={m.label} className="flex min-w-20 flex-1 flex-col gap-half border-r border-border px-2 py-1 last:border-r-0">
+              <dt className="font-mono text-mono text-text-muted uppercase">{m.label}</dt>
+              <dd className="text-sm font-bold">{m.value}</dd>
             </div>
           ))}
         </dl>
@@ -50,8 +56,12 @@ export function Section({
 }) {
   const anchor = id ?? slugify(title);
   return (
-    <section className={cn("pt-8 first-of-type:pt-0", className)} aria-labelledby={anchor}>
-      <h2 id={anchor} data-toc={title} className="group flex items-center gap-1 text-2xl font-bold tracking-tight">
+    <section className={cn("mt-8 border-t border-border pt-3 first-of-type:mt-0", className)} aria-labelledby={anchor}>
+      <h2
+        id={anchor}
+        data-toc={title}
+        className="group flex items-baseline gap-2 text-2xl font-bold tracking-tight [counter-increment:sec] before:w-4 before:shrink-0 before:font-mono before:text-mono before:font-normal before:text-text-muted before:content-[counter(sec,decimal-leading-zero)]"
+      >
         {title}
         <a href={`#${anchor}`} className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100" aria-label={`Link to ${title}`}>
           #

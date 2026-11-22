@@ -7,6 +7,7 @@ import { Badge } from "./Badge";
 import { Button } from "./Button";
 import { Avatar } from "./Avatar";
 import { asset } from "@/lib/asset";
+import { useSrc } from "@/components/site/Images";
 import { cn } from "@/lib/utils";
 
 export type ShopItem = { name: string; detail: string; price: number; stock: number; image?: string };
@@ -14,13 +15,14 @@ export type ShopItem = { name: string; detail: string; price: number; stock: num
 export function ShopItemCard({ item, balance = 300, onRedeem }: { item: ShopItem; balance?: number; onRedeem?: () => void }) {
   const soldOut = item.stock === 0;
   const low = !soldOut && item.stock <= 5;
+  const image = useSrc(item.image);
   const short = item.price > balance;
   return (
     <article className="flex w-full max-w-36 flex-col gap-2 rounded-md bg-surface p-2 shadow-card ring-1 ring-border ring-inset">
       <div data-spec="image tile" className="group relative aspect-square overflow-hidden rounded-sm bg-bg-muted dark:bg-[#b4c2d1]">
         {item.image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.image} alt={item.name} className={cn("absolute inset-0 size-full object-contain p-2 mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04]", soldOut && "opacity-40 grayscale")} />
+          <img src={image} alt={item.name} className={cn("absolute inset-0 size-full object-contain p-2 mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04]", soldOut && "opacity-40 grayscale")} />
         ) : null}
         <span className="absolute top-1 left-1">
           {soldOut ? <span className="inline-flex h-3 items-center rounded-pill bg-ink px-1 text-caption font-bold text-white">Sold out</span> : low ? <Badge tone="danger">Only {item.stock} left</Badge> : null}
@@ -170,11 +172,12 @@ export function Leaderboard({ rows }: { rows: { name: string; points: number; yo
 }
 
 export function MiniGameCard({ title, body, image, plays }: { title: string; body: string; image: string; plays: string }) {
+  const src = useSrc(image);
   return (
     <article className="group flex w-full max-w-40 flex-col overflow-hidden rounded-lg border border-border bg-surface shadow-card transition-[transform,box-shadow] duration-300 ease-standard hover:-translate-y-half hover:shadow-float">
       <div className="relative aspect-[16/10] overflow-hidden bg-ink">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" className="size-full object-cover transition-transform duration-500 ease-standard group-hover:scale-105" />
+        <img src={src} alt="" className="size-full object-cover transition-transform duration-500 ease-standard group-hover:scale-105" />
         <span className="absolute top-2 left-2"><Badge tone="gold">{plays}</Badge></span>
       </div>
       <div className="flex flex-col gap-1 p-3">

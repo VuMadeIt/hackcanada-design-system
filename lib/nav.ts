@@ -100,6 +100,7 @@ export const nav: NavGroup[] = [
     title: "Resources",
     items: [
       { title: "Tokens", href: "/resources/tokens" },
+      { title: "Images", href: "/resources/images" },
       { title: "Changelog", href: "/resources/changelog" },
     ],
   },

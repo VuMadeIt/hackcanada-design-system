@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { PageHeader, Section, Table, Callout, Grid, InfoCard } from "@/components/site/Doc";
-import { asset } from "@/lib/asset";
+import { Img } from "@/components/site/Images";
+import { imageSlots } from "@/lib/images";
 
 export const metadata: Metadata = { title: "Imagery" };
 
-const beavers = ["beaver-laptop", "beaver-idea", "beaver-star", "beaver-money", "beaver-pencil", "beaver-business"];
-const shop = ["sour-patch-kids", "led-strips", "tamagotchi", "charger", "microcontroller", "screwdrivers"];
+const beavers = imageSlots.filter((i) => i.group === "Mascot").map((i) => i.id);
+const shop = imageSlots.filter((i) => i.group === "Store").map((i) => i.id);
 
 export default function Imagery() {
   return (
@@ -17,8 +18,7 @@ export default function Imagery() {
           {beavers.map((b) => (
             <li key={b} className="flex flex-col gap-1">
               <div className="grid h-16 place-items-center rounded-md bg-bg-muted p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset(`/img/${b}.png`)} alt="" className="h-12 w-auto object-contain" />
+                <Img id={b} alt="" className="h-12 w-auto object-contain" />
               </div>
               <span className="font-mono text-mono text-text-muted">{b}</span>
             </li>
@@ -30,8 +30,7 @@ export default function Imagery() {
         <ul className="grid grid-cols-3 gap-2 md:grid-cols-6">
           {shop.map((s) => (
             <li key={s} className="grid aspect-square place-items-center rounded-sm bg-bg-muted p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset(`/img/shop/${s}.jpg`)} alt={s.replace(/-/g, " ")} className="max-h-full w-auto rounded-xs object-contain mix-blend-multiply dark:mix-blend-normal" />
+              <Img id={s} className="max-h-full w-auto rounded-xs object-contain mix-blend-multiply dark:mix-blend-normal" />
             </li>
           ))}
         </ul>
@@ -50,11 +49,9 @@ export default function Imagery() {
       <Section title="Game art">
         <Grid cols={2}>
           <div className="grid h-30 place-items-center rounded-md bg-bg-muted">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset("/img/games/cup.svg")} alt="Blue cup from Cup Shuffle" className="h-20 w-auto" />
+            <Img id="games.cup" alt="Blue cup from Cup Shuffle" className="h-20 w-auto" />
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset("/img/games/timber-preview.jpg")} alt="Timber Tycoon gameplay" className="h-30 w-full rounded-md object-cover" />
+          <Img id="games.timber" alt="Timber Tycoon gameplay" className="h-30 w-full rounded-md object-cover" />
         </Grid>
         <Grid cols={2} className="pt-2">
           <InfoCard kicker="Source" title="From Figma, recolored">The cup is the exact Figma art, recolored to brand blue. Never redraw an asset that already exists.</InfoCard>

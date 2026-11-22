@@ -9,7 +9,7 @@ import { isActive } from "./Sidebar";
 export function PrevNext() {
   const pathname = usePathname();
   const i = flatNav.findIndex((n) => isActive(pathname, n.href));
-  if (i < 0) return null;
+  if (i <= 0) return null;
   const prev = flatNav[i - 1];
   const next = flatNav[i + 1];
   return (

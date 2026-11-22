@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, ChevronRightIcon as Sep } from "@heroicons/react/20/solid";
+import { useSrc } from "@/components/site/Images";
 import { cn } from "@/lib/utils";
 
 export function Progress({ value, max = 100, label, tone = "primary" }: { value: number; max?: number; label?: string; tone?: "primary" | "gold" | "success" }) {
@@ -133,11 +134,12 @@ export function Pagination({ page, pages, onChange }: { page: number; pages: num
 }
 
 export function EmptyState({ image, title, body, action }: { image?: string; title: string; body: string; action?: React.ReactNode }) {
+  const src = useSrc(image);
   return (
     <div className="flex max-w-40 flex-col items-center gap-2 text-center">
       {image && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={image} alt="" data-spec="illustration" className="h-12 w-auto object-contain" />
+        <img src={src} alt="" data-spec="illustration" className="h-12 w-auto object-contain" />
       )}
       <div>
         <p className="text-lg font-bold">{title}</p>
@@ -148,16 +150,19 @@ export function EmptyState({ image, title, body, action }: { image?: string; tit
   );
 }
 
+export const navItemClasses = (active?: boolean) =>
+  cn(
+    "flex h-5 w-full items-center gap-1 rounded-sm px-1 text-sm transition-colors duration-200",
+    active ? "bg-primary-soft font-bold text-primary-ink" : "text-text-secondary hover:bg-bg-muted hover:text-text",
+  );
+
 export function NavItem({ icon, label, active, badge }: { icon: React.ReactNode; label: string; active?: boolean; badge?: string }) {
   return (
     <a
       href="#"
       onClick={(e) => e.preventDefault()}
       aria-current={active ? "page" : undefined}
-      className={cn(
-        "flex h-5 w-full items-center gap-1 rounded-sm px-1 text-sm transition-colors duration-200",
-        active ? "bg-primary-soft font-bold text-primary-ink" : "text-text-secondary hover:bg-bg-muted hover:text-text",
-      )}
+      className={navItemClasses(active)}
     >
       <span data-spec="icon" className="grid size-3 place-items-center [&>svg]:size-3">{icon}</span>
       {label}

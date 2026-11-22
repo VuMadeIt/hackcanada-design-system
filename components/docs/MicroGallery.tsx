@@ -1,7 +1,7 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useRef, useState } from "react";
+import { Img, useImage } from "@/components/site/Images";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowPathIcon, CheckIcon, ClipboardDocumentIcon, PlayIcon } from "@heroicons/react/20/solid";
 import { Button } from "@/components/hc/Button";
@@ -20,7 +20,6 @@ import { GlowEffect } from "@/components/motion-primitives/glow-effect";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { TransitionPanel } from "@/components/motion-primitives/transition-panel";
 import { ProgressiveBlur } from "@/components/motion-primitives/progressive-blur";
-import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 
 type Meta = { name: string; trigger: string; token: string; source: "Hack Canada" | "Motion Primitives"; children: React.ReactNode; onReplay?: () => void; wide?: boolean };
@@ -186,7 +185,7 @@ function TiltDemo() {
   return (
     <Tilt rotationFactor={8} isRevese className="w-full max-w-30">
       <div className="overflow-hidden rounded-md border border-border bg-surface shadow-float">
-        <img src={asset("/img/games/timber-preview.jpg")} alt="" className="h-16 w-full object-cover" />
+        <Img id="games.timber" alt="" className="h-16 w-full object-cover" />
         <p className="p-1 text-sm font-bold">Timber Tycoon</p>
       </div>
     </Tilt>
@@ -347,6 +346,7 @@ function ConfettiDemo({ k }: { k: number }) {
 
 function CupsDemo() {
   const [order, setOrder] = useState([0, 1, 2]);
+  const cupSrc = useImage("games.cup");
   const [ball] = useState(1);
   const [phase, setPhase] = useState<"show" | "shuffle" | "pick" | "reveal">("show");
   const [picked, setPicked] = useState<number | null>(null);
@@ -386,7 +386,7 @@ function CupsDemo() {
               className="relative flex w-10 flex-col items-center disabled:cursor-default"
               aria-label={`Cup ${order.indexOf(cup) + 1}`}
             >
-              <motion.img src={asset("/img/games/cup.svg")} alt="" className="relative z-10 h-12 w-auto" animate={{ y: up ? -24 : 0 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
+              <motion.img src={cupSrc} alt="" className="relative z-10 h-12 w-auto" animate={{ y: up ? -24 : 0 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
               {cup === ball && <span className="absolute bottom-0 size-2 rounded-pill bg-gold" />}
             </motion.button>
           );

@@ -426,10 +426,34 @@ export const hackcanadaTheme = {
     },
     "progress-bar-fill": {
       "variant:neutral": {
-        "backgroundColor": "light-dark(var(--color-text-secondary), #b9b9b9)"
+        "backgroundColor": "light-dark(var(--color-text-secondary), #b9b9b9)",
+        "@dark": {
+          "backgroundColor": "#58a6f0"
+        }
       },
       "variant:disabled": {
         "backgroundColor": "light-dark(var(--color-text-secondary), #b9b9b9)"
+      },
+      "base": {},
+      "variant:accent": {
+        "@dark": {
+          "backgroundColor": "#58a6f0"
+        }
+      },
+      "variant:success": {
+        "@dark": {
+          "backgroundColor": "#58a6f0"
+        }
+      },
+      "variant:warning": {
+        "@dark": {
+          "backgroundColor": "#58a6f0"
+        }
+      },
+      "variant:error": {
+        "@dark": {
+          "backgroundColor": "#58a6f0"
+        }
       }
     },
     "card": {
@@ -467,6 +491,29 @@ export const hackcanadaTheme = {
     "section": {
       "base": {
         "padding": "var(--spacing-3)"
+      }
+    },
+    "toast": {
+      "type:error": {
+        "@dark": {
+          "--color-on-dark": "#ffffff",
+          "--color-on-light": "#ffffff",
+          "--color-text-primary": "#ffffff",
+          "color": "#ffffff"
+        },
+        "@light": {
+          "--color-on-dark": "#ffffff",
+          "--color-on-light": "#ffffff",
+          "--color-text-primary": "#ffffff",
+          "color": "#ffffff"
+        }
+      }
+    },
+    "progress-bar-track": {
+      "base": {
+        "@dark": {
+          "backgroundColor": "#1c2e40"
+        }
       }
     }
   },

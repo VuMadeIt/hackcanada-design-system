@@ -62,7 +62,7 @@
   --radius-xl: 32px;
   --radius-pill: 999px;
 
-  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
 
   --text-*: initial;
@@ -215,7 +215,7 @@
   body {
     background: var(--hc-bg);
     color: var(--hc-text);
-    font-family: var(--font-satoshi), "Satoshi", system-ui, sans-serif;
+    font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }

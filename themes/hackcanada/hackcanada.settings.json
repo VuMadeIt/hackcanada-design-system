@@ -67,6 +67,36 @@
       "value": "#0b1520",
       "source": "token",
       "mode": "dark"
+    },
+    {
+      "thing": "color",
+      "value": "#ffffff",
+      "source": "property",
+      "on": "toast",
+      "when": "type:error",
+      "mode": "dark"
+    },
+    {
+      "thing": "background-color",
+      "value": "#58a6f0",
+      "source": "property",
+      "on": "progress-bar-fill",
+      "mode": "dark"
+    },
+    {
+      "thing": "color",
+      "value": "#ffffff",
+      "source": "property",
+      "on": "toast",
+      "when": "type:error",
+      "mode": "light"
+    },
+    {
+      "thing": "background-color",
+      "value": "#1c2e40",
+      "source": "property",
+      "on": "progress-bar-track",
+      "mode": "dark"
     }
   ],
   "lifted": [],

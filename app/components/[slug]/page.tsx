@@ -8,7 +8,7 @@ import { registry } from "@/lib/registry";
 import { Section, Table, List } from "@/components/site/Doc";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ExampleTabs } from "@/components/site/ExampleTabs";
-import { DemoPlayground, DemoVariants, DemoStates, DemoSpec, DemoDoDont, DemoThumb } from "@/components/docs/demos";
+import { DemoPlayground, DemoVariants, DemoStates, DemoSpec, DemoDoDont, DemoThumb, DemoThemes } from "@/components/docs/demos";
 
 export function generateStaticParams() {
   return registry.map((c) => ({ slug: c.slug }));
@@ -63,7 +63,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         </dl>
       </header>
 
-      <ExampleTabs preview={<DemoPlayground slug={doc.slug} />} code={<CodeBlock code={doc.code} title={`${doc.name}.tsx`} />} />
+      <ExampleTabs preview={<DemoPlayground slug={doc.slug} />} themes={<DemoThemes slug={doc.slug} />} code={<CodeBlock code={doc.code} title={`${doc.name}.tsx`} />} />
 
       <Section title="Usage">
         {importLine && <CodeBlock code={importLine} title="Import" />}

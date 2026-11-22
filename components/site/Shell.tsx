@@ -26,6 +26,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   }, [grid]);
   const home = pathname.replace(/\/$/, "") === "";
   const wide = /^\/(blueprints\/(store|bets)|components)\/?$/.test(pathname);
+  const detail = /^\/components\/[^/]+\/?$/.test(pathname);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -58,7 +59,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <TopBar onMenu={() => setMenuOpen(true)} onSearch={() => setSearchOpen(true)} />
       <div className="flex w-full gap-6 px-2 md:px-3 xl:gap-8">
         <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
-        <main id="main" className={cn("min-w-0 flex-1 pt-6 pb-16 md:pt-8", !home && (wide ? "max-w-page" : "max-w-doc"))}>
+        <main id="main" className={cn("min-w-0 flex-1 pt-6 pb-16 md:pt-8", !home && (wide ? "max-w-page" : detail ? "max-w-content" : "max-w-doc"))}>
           {children}
           <PrevNext />
         </main>

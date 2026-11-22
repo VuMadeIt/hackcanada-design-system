@@ -10,7 +10,7 @@
   font-display: swap;
 }
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *):not(:where([data-theme="dark"] [data-theme="light"], [data-theme="dark"] [data-theme="light"] *)));
 
 /*
  * Hack Canada design tokens.
@@ -135,7 +135,8 @@
   --ease-exit: cubic-bezier(0.3, 0, 1, 1);
 }
 
-:root {
+:root,
+[data-theme="light"] {
   color-scheme: light;
   --hc-primary: #1a6dbd;
   --hc-primary-hover: #155a9e;

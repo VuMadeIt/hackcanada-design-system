@@ -76,7 +76,7 @@ export function ChallengeCard({
       <div className="flex items-center gap-1">
         <span className={cn("rounded-pill px-1 text-caption font-bold leading-[24px]", catTone[category])}>{category}</span>
         <span className="text-caption text-text-muted">{difficulty}</span>
-        <span className="ml-auto rounded-pill bg-gold-soft px-1 text-caption leading-[24px] font-bold text-gold-ink tabular">+{points} pts</span>
+        <span className="ml-auto shrink-0 rounded-pill bg-gold-soft px-1 text-caption leading-[24px] font-bold whitespace-nowrap text-gold-ink tabular">+{points} pts</span>
       </div>
       <p className="text-lg font-bold">{title}</p>
       <div className="flex items-center gap-1 text-sm text-text-muted">

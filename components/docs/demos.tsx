@@ -47,10 +47,12 @@ function Shell({ children, controls }: { children: React.ReactNode; controls?: R
 
 function Matrix({ items, cols = 4 }: { items: [string, React.ReactNode][]; cols?: 2 | 3 | 4 }) {
   return (
-    <div className={cn("grid overflow-hidden rounded-md border border-border sm:grid-cols-2 [&>*]:shadow-[1px_0_0_var(--hc-border),0_1px_0_var(--hc-border)]", cols === 3 && "lg:grid-cols-3", cols === 4 && "lg:grid-cols-4")}>
-      {items.map(([l, n]) => (
-        <Stage key={l} label={l}>{n}</Stage>
-      ))}
+    <div className="@container">
+      <div className={cn("grid overflow-hidden rounded-md border border-border @min-[480px]:grid-cols-2 [&>*]:shadow-[1px_0_0_var(--hc-border),0_1px_0_var(--hc-border)]", cols === 3 && "@min-[800px]:grid-cols-3", cols === 4 && "@min-[960px]:grid-cols-4")}>
+        {items.map(([l, n]) => (
+          <Stage key={l} label={l}>{n}</Stage>
+        ))}
+      </div>
     </div>
   );
 }
@@ -341,6 +343,19 @@ export function DemoVariants({ slug }: { slug: string }) {
   const v = variants[slug];
   if (v) return <>{v()}</>;
   return <p className="text-base text-text-secondary">This component has one variant. Its look changes only by state, shown below.</p>;
+}
+
+export function DemoThemes({ slug }: { slug: string }) {
+  return (
+    <div className="flex flex-col gap-2">
+      {(["light", "dark"] as const).map((t) => (
+        <section key={t} data-theme={t} aria-label={`${t} theme`} className="flex min-w-0 flex-col gap-2 rounded-lg border border-border bg-bg p-2 text-text md:p-3">
+          <p className="text-sm font-medium capitalize text-text-muted">{t}</p>
+          <div className="min-w-0 overflow-x-auto">{variants[slug] ? <DemoVariants slug={slug} /> : <DemoStates slug={slug} />}</div>
+        </section>
+      ))}
+    </div>
+  );
 }
 
 /* ---------- States ---------- */

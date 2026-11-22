@@ -7,7 +7,7 @@ export function PointsPill({ value, className, size = "md" }: { value: number; c
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-pill bg-gold-soft font-bold text-gold-ink tabular",
+        "inline-flex shrink-0 items-center gap-1 rounded-pill bg-gold-soft font-bold whitespace-nowrap text-gold-ink tabular",
         size === "md" ? "h-4 pr-2 pl-half text-sm" : "h-3 pr-1 pl-half text-caption",
         className,
       )}

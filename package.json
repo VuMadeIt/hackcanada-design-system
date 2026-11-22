@@ -12,7 +12,10 @@
     "check": "npm run typecheck && npm run lint && npm run lint:spacing"
   },
   "dependencies": {
+    "@astryxdesign/core": "0.7.17",
+    "@astryxdesign/theme-neutral": "0.7.17",
     "@heroicons/react": "^2.2.0",
+    "@stylexjs/stylex": "0.19.2",
     "clsx": "^2.1.1",
     "motion": "^14.14.0",
     "next": "15.5.29",
@@ -23,6 +26,7 @@
     "tailwind-merge": "^3.7.1"
   },
   "devDependencies": {
+    "@astryxdesign/cli": "0.7.17",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

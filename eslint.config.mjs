@@ -20,6 +20,8 @@ const eslintConfig = [
       "next-env.d.ts",
       "components/motion-primitives/**",
       "hooks/**",
+      "themes/**",
+      "src/themes/**",
     ],
   },
 ];

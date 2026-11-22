@@ -1,0 +1,74 @@
+{
+  "name": "hackcanada",
+  "like": "neutral",
+  "mode": "both",
+  "settings": [
+    {
+      "thing": "accent",
+      "value": "#1a6dbd",
+      "source": "dial"
+    },
+    {
+      "thing": "font",
+      "value": "Satoshi",
+      "source": "dial",
+      "on": "body"
+    },
+    {
+      "thing": "font",
+      "value": "Satoshi",
+      "source": "dial",
+      "on": "heading"
+    },
+    {
+      "thing": "--color-background-body",
+      "value": "#0b1520",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-background-surface",
+      "value": "#0b1520",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-background-card",
+      "value": "#122130",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-border",
+      "value": "#1c2e40",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-text-primary",
+      "value": "#0f2233",
+      "source": "token",
+      "mode": "light"
+    },
+    {
+      "thing": "--color-text-primary",
+      "value": "#eef3f8",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-accent",
+      "value": "#4a9eef",
+      "source": "token",
+      "mode": "dark"
+    },
+    {
+      "thing": "--color-on-accent",
+      "value": "#0b1520",
+      "source": "token",
+      "mode": "dark"
+    }
+  ],
+  "lifted": [],
+  "palette": "6f23184576c5a5bfeed1c146d9e5007188a90cf4ef8d935bbdbbb9eeea9acc8d"
+}

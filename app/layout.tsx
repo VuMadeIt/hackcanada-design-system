@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { JetBrains_Mono } from "next/font/google";
 import { Shell } from "@/components/site/Shell";
+import { AstryxProvider } from "@/components/site/AstryxProvider";
+import "./layers.css";
 import "./globals.css";
 
 const satoshi = localFont({
@@ -35,7 +37,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="antialiased">
-        <Shell>{children}</Shell>
+        <AstryxProvider>
+          <Shell>{children}</Shell>
+        </AstryxProvider>
       </body>
     </html>
   );

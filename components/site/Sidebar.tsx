@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { SideNav as AxSideNav, SideNavItem, SideNavSection } from "@astryxdesign/core/SideNav";
+import { TextInput } from "@astryxdesign/core/TextInput";
+import { IconButton } from "@astryxdesign/core/IconButton";
 import { nav } from "@/lib/nav";
-import { IconButton } from "@/components/hc/IconButton";
 import { Img } from "./Images";
 import { cn } from "@/lib/utils";
 
@@ -15,35 +18,25 @@ export function isActive(pathname: string, href: string) {
 
 export function SideNav() {
   const pathname = usePathname();
+  const [q, setQ] = useState("");
+  const query = q.trim().toLowerCase();
+  const groups = nav
+    .map((g) => ({ ...g, items: g.items.filter((i) => !query || i.title.toLowerCase().includes(query)) }))
+    .filter((g) => g.items.length);
   return (
-    <nav aria-label="Docs">
-      <ul className="flex flex-col gap-4 pb-8">
-        {nav.map((group) => (
-          <li key={group.title}>
-            <p className="pb-2 text-sm font-medium text-text">{group.title}</p>
-            <ul className="flex flex-col gap-1 border-l border-border">
-              {group.items.map((item) => {
-                const active = isActive(pathname, item.href);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "-ml-px flex items-center border-l py-half pl-2 text-sm transition-colors duration-200",
-                        active ? "border-primary font-medium text-text" : "border-transparent text-text-muted hover:text-text",
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
+    <div className="flex flex-col gap-2">
+      <TextInput label="Filter pages" isLabelHidden placeholder="Search pages…" startIcon="search" value={q} onChange={setQ} hasClear size="sm" />
+      <AxSideNav>
+        {groups.map((g) => (
+          <SideNavSection key={g.title} title={g.title}>
+            {g.items.map((item) => (
+              <SideNavItem key={item.href} label={item.title} href={item.href} isSelected={isActive(pathname, item.href)} size="sm" />
+            ))}
+          </SideNavSection>
         ))}
-      </ul>
-    </nav>
+      </AxSideNav>
+      {!groups.length && <p className="px-1 text-sm text-text-muted">No pages match “{q}”.</p>}
+    </div>
   );
 }
 
@@ -52,7 +45,6 @@ export function Brand() {
     <Link href="/" className="flex items-center gap-1 rounded-sm">
       <Img id="brand.logo" alt="" className="size-4" />
       <span className="text-base font-bold tracking-tight whitespace-nowrap">Hack Canada</span>
-      <span className="hidden rounded-pill border border-border px-1 text-caption font-medium text-text-muted sm:inline">Design</span>
     </Link>
   );
 }
@@ -60,7 +52,7 @@ export function Brand() {
 export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
     <>
-      <aside className="sticky top-8 hidden h-[calc(100dvh-64px)] w-28 shrink-0 overflow-y-auto pt-6 lg:block" style={{ scrollbarWidth: "none" }}>
+      <aside className="sticky top-8 hidden h-[calc(100dvh-64px)] w-30 shrink-0 overflow-y-auto pt-2 pb-8 lg:block" style={{ scrollbarWidth: "thin" }}>
         <SideNav />
       </aside>
       <div
@@ -75,13 +67,11 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
           open ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex h-8 shrink-0 items-center justify-between px-3">
+        <div className="flex h-8 shrink-0 items-center justify-between px-2">
           <Brand />
-          <IconButton label="Close menu" onClick={onClose}>
-            <XMarkIcon />
-          </IconButton>
+          <IconButton variant="ghost" label="Close menu" icon={<XMarkIcon className="size-2" />} onClick={onClose} />
         </div>
-        <div className="flex-1 overflow-y-auto px-3 pt-2">
+        <div className="flex-1 overflow-y-auto px-2 pt-1 pb-4">
           <SideNav />
         </div>
       </aside>

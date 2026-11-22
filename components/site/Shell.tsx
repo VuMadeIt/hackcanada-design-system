@@ -55,7 +55,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <TopBar onMenu={() => setMenuOpen(true)} onSearch={() => setSearchOpen(true)} />
-      <div className="mx-auto flex w-full max-w-wide gap-6 px-3 md:px-4 xl:gap-8">
+      <div className="flex w-full gap-6 px-2 md:px-3 xl:gap-8">
         <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
         <main id="main" className={cn("min-w-0 flex-1 pt-6 pb-16 md:pt-8", !home && (/^\/blueprints\/(store|bets)/.test(pathname) ? "max-w-page" : "max-w-doc"))}>
           {children}

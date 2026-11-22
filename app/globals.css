@@ -1,4 +1,14 @@
-@import "tailwindcss";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "@astryxdesign/core/reset.css";
+@import "@astryxdesign/core/astryx.css";
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -8,7 +18,7 @@
  * only step below it. Default Tailwind spacing is removed, so classes like
  * p-3 (12px) do not exist in this project.
  */
-@theme {
+@theme inline reference {
   --spacing-*: initial;
   --spacing-0: 0px;
   --spacing-px: 1px;
@@ -205,7 +215,7 @@
   body {
     background: var(--hc-bg);
     color: var(--hc-text);
-    font-family: var(--font-sans);
+    font-family: var(--font-satoshi), "Satoshi", system-ui, sans-serif;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }

@@ -30,11 +30,11 @@ const themeScript = `(function(){try{var t=localStorage.getItem('hc-theme');docu
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en" data-theme="light" className={`${satoshi.variable} ${jetbrains.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${satoshi.variable} ${jetbrains.variable} antialiased`}>
+      <body className="antialiased">
         <Shell>{children}</Shell>
       </body>
     </html>

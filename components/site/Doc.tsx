@@ -1,5 +1,6 @@
 import { CheckIcon, XMarkIcon, InformationCircleIcon, ExclamationTriangleIcon, LightBulbIcon } from "@heroicons/react/20/solid";
 import { cn } from "@/lib/utils";
+import { FitToWidth } from "./FitToWidth";
 
 export function slugify(s: string) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -126,13 +127,15 @@ export function DoDont({
   dontText: React.ReactNode;
 }) {
   return (
-    <div className="grid gap-3 pb-3 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
       {[
         { ok: true, ex: doExample, text: doText },
         { ok: false, ex: dontExample, text: dontText },
       ].map(({ ok, ex, text }) => (
-        <figure key={String(ok)}>
-          <div className="blueprint grid min-h-24 place-items-center rounded-md hairline p-3">{ex}</div>
+        <figure key={String(ok)} className="min-w-0">
+          <div className="blueprint grid min-h-24 grid-cols-1 place-items-center rounded-md hairline p-3">
+            <FitToWidth>{ex}</FitToWidth>
+          </div>
           <figcaption className="flex gap-1 pt-2 text-sm">
             <span className={cn("grid size-2 shrink-0 translate-y-half place-items-center rounded-pill text-white", ok ? "bg-success" : "bg-danger")}>
               {ok ? <CheckIcon className="size-[12px]" /> : <XMarkIcon className="size-[12px]" />}
@@ -180,7 +183,7 @@ export function Table({
 }) {
   return (
     <div className="mt-3 mb-3 overflow-x-auto rounded-md hairline first:mt-0">
-      <table className="w-full min-w-60 border-collapse text-left text-sm">
+      <table className="w-full border-collapse text-left text-sm">
         <thead>
           <tr className="bg-bg-muted">
             {head.map((h) => (
@@ -194,7 +197,7 @@ export function Table({
           {rows.map((r, i) => (
             <tr key={i} className="hairline-t align-top">
               {r.map((c, j) => (
-                <td key={j} className={cn("px-2 py-1 text-text-secondary", mono.includes(j) && "font-mono text-caption whitespace-nowrap text-text")}>
+                <td key={j} className={cn("px-2 py-1 text-text-secondary", mono.includes(j) && "font-mono text-caption [overflow-wrap:anywhere] text-text sm:whitespace-nowrap")}>
                   {c}
                 </td>
               ))}

@@ -117,7 +117,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
       </Section>
 
       <Section title="Related">
-        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {doc.related.map((r) => {
             const rel = registry.find((c) => c.slug === r);
             return rel ? (

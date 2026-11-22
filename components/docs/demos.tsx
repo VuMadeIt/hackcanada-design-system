@@ -419,7 +419,7 @@ const dd: Record<string, [React.ReactNode, React.ReactNode]> = {
 
 export function DemoDoDont({ slug, doText, dontText }: { slug: string; doText: string; dontText: string }) {
   const pair = dd[slug] ?? [specs[slug]?.(), null];
-  return <DoDont doExample={pair[0]} dontExample={pair[1] ?? <span className="text-sm text-text-muted">See the rule on the left.</span>} doText={doText} dontText={dontText} />;
+  return <DoDont doExample={pair[0]} dontExample={pair[1] ?? <span className="text-sm text-text-muted">Shown in words below.</span>} doText={doText} dontText={dontText} />;
 }
 
 export function DemoThumb({ slug }: { slug: string }) {

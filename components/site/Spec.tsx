@@ -88,8 +88,11 @@ export function Spec({
     const box = rel(target);
     if (zoom === undefined) {
       const natural = box.w / z;
-      const want = natural <= 160 && o.width > natural * 2 + 160 ? 2 : 1;
-      if (want !== z) {
+      const ws = getComputedStyle(w);
+      const avail = o.width - parseFloat(ws.paddingLeft) - parseFloat(ws.paddingRight);
+      let want = natural <= 160 && o.width > natural * 2 + 160 ? 2 : 1;
+      if (natural * want > avail + 0.5) want = Math.floor((avail / natural) * 20) / 20;
+      if (Math.abs(want - z) > 0.001) {
         setZ(want);
         return;
       }
@@ -137,14 +140,14 @@ export function Spec({
   return (
     <figure className="overflow-hidden rounded-md hairline">
       <div className="flex h-5 items-center gap-2 border-b border-border px-2">
-        <span className="text-caption font-medium text-text-muted">{label ?? "Spec"}</span>
-        {z !== 1 && <span className="rounded-xs bg-spec-soft px-half font-mono text-mono text-spec-ink">{z}× zoom</span>}
-        <label className="ml-auto flex cursor-pointer items-center gap-1 text-caption text-text-muted">
+        <span className="min-w-0 truncate text-caption font-medium text-text-muted">{label ?? "Spec"}</span>
+        {z !== 1 && <span className="shrink-0 rounded-xs bg-spec-soft px-half font-mono text-mono whitespace-nowrap text-spec-ink">{z}× zoom</span>}
+        <label className="ml-auto flex shrink-0 cursor-pointer items-center gap-1 text-caption text-text-muted">
           <input type="checkbox" checked={on} onChange={(e) => setOn(e.target.checked)} className="accent-[var(--hc-spec)]" />
           Measurements
         </label>
       </div>
-      <div ref={wrap} className={cn("blueprint relative flex min-h-40 items-center justify-center-safe overflow-x-auto px-12 py-12", className)}>
+      <div ref={wrap} className={cn("blueprint relative flex min-h-40 items-center justify-center-safe overflow-x-auto px-8 py-12 sm:px-12", className)}>
         <div ref={holder} className="relative shrink-0 [&>*]:max-w-none" style={{ width, ...(z !== 1 ? { transform: `scale(${z})`, margin: `${((z - 1) * realH) / 2}px ${((z - 1) * realW) / 2}px` } : {}) }}>
           {children}
         </div>

@@ -29,7 +29,7 @@ export default function ComponentsIndex() {
               <h2 id={cat} data-toc={cat} className="pb-2 text-2xl font-bold tracking-tight">
                 {cat}
               </h2>
-              <ul className="grid gap-x-2 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
+              <ul className="grid grid-cols-1 gap-x-2 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
                 {items.map((c) => (
                   <li key={c.slug}>
                     <div className="group relative flex flex-col gap-1 rounded-lg has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-primary">

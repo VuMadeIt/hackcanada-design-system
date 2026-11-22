@@ -7,7 +7,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { SideNav as AxSideNav, SideNavItem, SideNavSection } from "@astryxdesign/core/SideNav";
 import { TextInput } from "@astryxdesign/core/TextInput";
 import { IconButton } from "@astryxdesign/core/IconButton";
-import { nav } from "@/lib/nav";
+import { nav, componentNav, type NavGroup } from "@/lib/nav";
 import { Img } from "./Images";
 import { cn } from "@/lib/utils";
 
@@ -16,16 +16,23 @@ export function isActive(pathname: string, href: string) {
   return href === "/" ? clean === "/" : clean === href;
 }
 
+const groupOrder = ["Actions", "Inputs", "Navigation", "Display", "Feedback", "Overlays", "Hack Canada"];
+const libraryNav: NavGroup[] = [
+  { title: "Library", items: [{ title: "Overview", href: "/components" }, { title: "All docs", href: "/getting-started" }] },
+  ...groupOrder.map((g) => ({ title: g, items: componentNav.filter((i) => i.group === g) })),
+];
+
 export function SideNav() {
   const pathname = usePathname();
   const [q, setQ] = useState("");
   const query = q.trim().toLowerCase();
-  const groups = nav
+  const inLibrary = /^\/components(\/|$)/.test(pathname);
+  const groups = (inLibrary ? libraryNav : nav)
     .map((g) => ({ ...g, items: g.items.filter((i) => !query || i.title.toLowerCase().includes(query)) }))
     .filter((g) => g.items.length);
   return (
     <div className="flex flex-col gap-2">
-      <TextInput label="Filter pages" isLabelHidden placeholder="Search pages…" startIcon="search" value={q} onChange={setQ} hasClear size="sm" />
+      <TextInput label="Filter pages" isLabelHidden placeholder={inLibrary ? "Search components…" : "Search pages…"} startIcon="search" value={q} onChange={setQ} hasClear size="sm" />
       <AxSideNav>
         {groups.map((g) => (
           <SideNavSection key={g.title} title={g.title}>

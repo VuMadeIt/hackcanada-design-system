@@ -8,6 +8,7 @@ import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
 import { Toc } from "./Toc";
 import { PrevNext } from "./PrevNext";
+import { Footer } from "./Footer";
 import { GridOverlay } from "./GridOverlay";
 import { CommandMenu } from "./CommandMenu";
 import { ImageProvider } from "./Images";
@@ -62,6 +63,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <main id="main" className={cn("min-w-0 flex-1 pt-6 pb-16 md:pt-8", !home && (wide ? "max-w-page" : detail ? "max-w-content" : "max-w-doc"))}>
           {children}
           <PrevNext />
+          <Footer />
         </main>
         {!home && !wide && <Toc />}
       </div>

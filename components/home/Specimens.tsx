@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 function Tile({ href, name, kind, className, children }: { href: string; name: string; kind: string; className?: string; children: React.ReactNode }) {
   return (
     <div className={cn("group flex flex-col gap-1", className)}>
-      <div className="blueprint flex min-h-30 flex-1 items-center justify-center rounded-md border border-border p-4 transition-colors duration-200 group-hover:border-border-strong">
+      <div className="flex min-h-30 flex-1 items-center justify-center rounded-lg bg-bg-muted p-4 transition-colors duration-200">
         {children}
       </div>
       <Link href={href} className="flex items-baseline justify-between gap-1 rounded-xs text-sm">

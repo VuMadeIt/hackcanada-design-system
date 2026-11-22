@@ -96,7 +96,7 @@ export default function Contrast() {
       <Section title="Glare in dark mode">
         <P>
           High contrast isn&apos;t always better. Pure white on near-black is 19 : 1 and causes halation: letters seem to blur and glow, especially for people with
-          astigmatism. Dark mode text is #eef3f8 on #0a1520 (about 17 : 1), and large white areas like photo tiles use a soft blue gray instead of white.
+          astigmatism. Dark mode text is #eef3f8 on #0b1520 (about 17 : 1), and large white areas like photo tiles use a soft blue gray instead of white.
         </P>
       </Section>
     </article>

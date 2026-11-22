@@ -170,7 +170,7 @@ export default function Color() {
       <Section title="Dark mode isn't inverted">
         <Grid cols={3}>
           <InfoCard kicker="Brand" title="Lighter, less saturated">#1a6dbd becomes #4a9eef. The same blue would be too dark to read on navy.</InfoCard>
-          <InfoCard kicker="Surfaces" title="Elevation by lightness">Shadows barely show on dark. Raised surfaces are lighter instead: #0a1520, #101d2a, #152536.</InfoCard>
+          <InfoCard kicker="Surfaces" title="Elevation by lightness">Shadows barely show on dark. Raised surfaces are lighter instead: #0b1520, #122130.</InfoCard>
           <InfoCard kicker="Text" title="Never pure white">#eef3f8 at about 17 : 1. Pure white glows on dark backgrounds.</InfoCard>
         </Grid>
         <Callout title="Contrast on every swatch" tone="rule">

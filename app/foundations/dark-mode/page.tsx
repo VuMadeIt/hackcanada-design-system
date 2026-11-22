@@ -48,7 +48,7 @@ export default function DarkMode() {
 
       <Section title="Rules">
         <Grid cols={2}>
-          <InfoCard kicker="D1" title="Not pure black">The page is #0a1520, a deep navy. Pure black makes surfaces look like holes, and smears on OLED screens when you scroll.</InfoCard>
+          <InfoCard kicker="D1" title="Not pure black">The page is #0b1520, a deep navy. Pure black makes surfaces look like holes, and smears on OLED screens when you scroll.</InfoCard>
           <InfoCard kicker="D2" title="Not pure white">Text is #eef3f8. Large white areas, like photo tiles and the NO button, use a soft blue gray instead.</InfoCard>
           <InfoCard kicker="D3" title="Lighter means higher">bg → surface → raised gets lighter as it gets closer. Shadows help a bit, but lightness does most of the work.</InfoCard>
           <InfoCard kicker="D4" title="Brand gets lighter">Primary goes from #1a6dbd to #4a9eef, and the text on it flips to dark navy so it still passes.</InfoCard>

@@ -179,7 +179,7 @@ export function Table({
   mono?: number[];
 }) {
   return (
-    <div className="mb-3 overflow-x-auto rounded-md border border-border">
+    <div className="mt-3 mb-3 overflow-x-auto rounded-md border border-border first:mt-0">
       <table className="w-full min-w-60 border-collapse text-left text-sm">
         <thead>
           <tr className="bg-bg-muted">

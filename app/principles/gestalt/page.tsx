@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader, Section, P, Grid, InfoCard } from "@/components/site/Doc";
+import { PageHeader } from "@/components/site/Doc";
 
 export const metadata: Metadata = { title: "Gestalt" };
 
@@ -56,17 +56,20 @@ export default function Gestalt() {
   return (
     <article>
       <PageHeader eyebrow="Principles" title="Gestalt" lead="How people group what they see. These six ideas explain why spacing, color and borders do so much of the work in a layout." />
-      <P>Gestalt psychology came out of Berlin in the 1920s. Its core finding is that we see wholes before parts. Design with that, and a screen organizes itself.</P>
-      {items.map(([k, t, rule, here]) => (
-        <Section key={k} title={t}>
-          <Grid cols={2}>
-            <div className="blueprint grid min-h-30 place-items-center rounded-md border border-border p-3">
+      <ul className="grid gap-x-3 gap-y-6 sm:grid-cols-2">
+        {items.map(([k, t, rule, here]) => (
+          <li key={k} className="flex flex-col gap-1">
+            <div className="blueprint grid h-24 place-items-center rounded-md border border-border p-3">
               <Dots kind={k} />
             </div>
-            <InfoCard kicker={rule} title="How we use it">{here}</InfoCard>
-          </Grid>
-        </Section>
-      ))}
+            <h2 id={k} data-toc={t} className="scroll-mt-12 pt-1 text-base font-bold">
+              {t}
+            </h2>
+            <p className="text-sm text-text">{rule}</p>
+            <p className="text-sm text-text-muted">{here}</p>
+          </li>
+        ))}
+      </ul>
     </article>
   );
 }

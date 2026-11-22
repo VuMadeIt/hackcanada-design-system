@@ -12,7 +12,7 @@ const bps = [
 function Frame({ b }: { b: (typeof bps)[number] }) {
   return (
     <figure className="flex flex-col gap-1">
-      <div className="relative overflow-hidden rounded-md border border-border bg-surface" style={{ aspectRatio: b.w === 375 ? "375 / 640" : b.w === 768 ? "768 / 640" : "1440 / 640" }}>
+      <div className="relative h-20 overflow-hidden rounded-md border border-border bg-surface">
         <div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${b.cols}, 1fr)`, columnGap: `${(b.gutter / b.w) * 100}%`, padding: `0 ${(b.margin / b.w) * 100}%` }}>
           {Array.from({ length: b.cols }).map((_, i) => <span key={i} className="bg-primary/10" />)}
         </div>
@@ -20,7 +20,8 @@ function Frame({ b }: { b: (typeof bps)[number] }) {
       </div>
       <figcaption className="flex flex-col">
         <span className="font-bold">{b.name}</span>
-        <span className="font-mono text-mono text-text-muted">{b.cols} col · {b.gutter} gutter · {b.margin} margin</span>
+        <span className="text-sm text-text-muted">{b.cols} columns</span>
+        <span className="text-sm text-text-muted">{b.gutter} gutter, {b.margin} margin</span>
       </figcaption>
     </figure>
   );
@@ -38,7 +39,7 @@ export default function GridPage() {
       <Callout title="Press G" tone="rule">Turn on the column overlay right now and check this page against its own grid.</Callout>
 
       <Section title="Breakpoints">
-        <div className="grid items-end gap-3 md:grid-cols-[1fr_2fr_3fr]">
+        <div className="grid items-start gap-3 md:grid-cols-[1fr_2fr_3fr]">
           {bps.map((b) => <Frame key={b.name} b={b} />)}
         </div>
         <Table

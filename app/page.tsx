@@ -46,14 +46,13 @@ export default function Home() {
   return (
     <div className="mx-auto flex max-w-page flex-col gap-16 lg:pt-4">
       <section className="flex flex-col items-center gap-2 pt-4 text-center">
-        <Img id="mascot.laptop" alt="" className="w-24" />
         <Link href="/components/button" className="inline-flex h-4 items-center gap-1 rounded-pill border border-border pr-1 pl-2 text-caption font-medium text-text-secondary transition-colors hover:border-border-strong hover:text-text">
           New: view every component in light and dark
           <ArrowRightIcon className="size-2" />
         </Link>
-        <h1 className="max-w-content pt-1 text-4xl font-bold tracking-tight text-balance md:text-6xl">The design system behind the Hack Canada dashboard</h1>
+        <h1 className="max-w-content pt-1 text-4xl font-bold tracking-tight text-balance md:text-6xl">Hack Canada&apos;s Library</h1>
         <p className="max-w-prose text-lg text-pretty text-text-secondary">
-          {registry.length} components, tokens and motion, measured from the live code and built on an 8 point grid.
+          {registry.length} components, tokens and motion, optimized for designers, engineers, and Claude. Founded by Lucas Vu, and team.
         </p>
         <div className="flex flex-wrap justify-center gap-1 pt-2">
           <Button variant="primary" size="lg" label="Get started" href="/getting-started" />
@@ -92,7 +91,7 @@ export default function Home() {
             Open the image library <ArrowRightIcon className="size-2" />
           </Link>
         </div>
-        <Img id="games.timber" className="aspect-[4/3] w-full rounded-lg object-cover" />
+        <Img id="games.timber" className="aspect-[3/2] w-full rounded-lg" />
         <div className="grid grid-cols-2 gap-3">
           {["mascot.money", "teams.join", "shop.pico", "games.cup"].map((id) => (
             <div key={id} className="grid aspect-square place-items-center rounded-lg bg-bg-muted p-2">

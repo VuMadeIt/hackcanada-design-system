@@ -145,7 +145,7 @@ export function BetSlip({ side = "YES", balance = 240 }: { side?: "YES" | "NO"; 
         <span className="font-bold text-success tabular">+{payout} pts</span>
       </div>
       <Button size="lg" disabled={stake > balance}>Place bet</Button>
-      <p className="text-center text-caption text-text-muted">Balance {balance} pts · bets lock when the market closes</p>
+      <p className="text-center text-caption text-text-muted">Note: Bets lock when the market closes.</p>
     </div>
   );
 }
@@ -175,9 +175,9 @@ export function MiniGameCard({ title, body, image, plays }: { title: string; bod
   const src = useSrc(image);
   return (
     <article className="group flex w-full max-w-40 flex-col overflow-hidden rounded-lg border border-border bg-surface shadow-card transition-[transform,box-shadow] duration-300 ease-standard hover:-translate-y-half hover:shadow-float">
-      <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+      <div className="relative aspect-[3/2] overflow-hidden bg-ink">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="" className="size-full object-cover transition-transform duration-500 ease-standard group-hover:scale-105" />
+        <img src={src} alt="" className="size-full" />
         <span className="absolute top-2 left-2"><Badge tone="gold">{plays}</Badge></span>
       </div>
       <div className="flex flex-col gap-1 p-3">

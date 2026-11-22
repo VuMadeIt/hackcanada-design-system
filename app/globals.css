@@ -8,6 +8,9 @@
   src: url("./fonts/Satoshi-Variable.woff2") format("woff2");
   font-weight: 300 900;
   font-display: swap;
+  ascent-override: 95%;
+  descent-override: 30%;
+  line-gap-override: 0%;
 }
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *):not(:where([data-theme="dark"] [data-theme="light"], [data-theme="dark"] [data-theme="light"] *)));
@@ -272,4 +275,17 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--hc-border-strong) transparent;
+}
+
+/* Sidebar: section titles sit on the left edge, links are inset 8 px. */
+.astryx-side-nav { width: 100%; }
+.astryx-side-nav > div { padding-inline: 0; }
+.astryx-side-nav-section > div:first-child { padding-inline-start: 0; }
+.astryx-side-nav-item { padding-inline: 8px; }
+
+.baseline-rule {
+  background-image: linear-gradient(to bottom, transparent calc(var(--rule-at) - 1px), var(--hc-spec-soft) calc(var(--rule-at) - 1px), var(--hc-spec-soft) var(--rule-at), transparent var(--rule-at));
+  background-size: 100% var(--rule-step);
+  background-repeat: repeat-y;
+  background-clip: content-box;
 }

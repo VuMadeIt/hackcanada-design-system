@@ -25,7 +25,7 @@ export default function DarkMode() {
               <div key={t} className="flex flex-col gap-2 p-3" style={{ background: p.bg, color: p.text }}>
                 <span className="font-mono text-mono" style={{ color: p["text-muted"] }}>{t}</span>
                 <div className="flex flex-col gap-1 rounded-md p-3" style={{ background: p.surface, border: `1px solid ${p.border}` }}>
-                  <p className="text-xl font-semibold">Meet a sponsor</p>
+                  <p className="text-xl font-semibold" style={{ color: p.text }}>Meet a sponsor</p>
                   <p className="text-sm" style={{ color: p["text-secondary"] }}>Get scanned at any booth for points.</p>
                   <div className="flex items-center gap-1 pt-1">
                     <span className="flex h-5 items-center rounded-sm px-2 text-sm font-bold" style={{ background: p.primary, color: p["on-primary"] }}>Start</span>

@@ -54,7 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       ) : (
         leading && <span data-spec="icon" className={cn(icon, "grid place-items-center [&>svg]:size-full")}>{leading}</span>
       )}
-      <span>{children}</span>
+      <span className="inline-flex items-center gap-1">{children}</span>
       {trailing && !loading && <span className={cn(icon, "grid place-items-center [&>svg]:size-full")}>{trailing}</span>}
     </button>
   );

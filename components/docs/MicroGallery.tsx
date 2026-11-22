@@ -187,7 +187,7 @@ function TiltDemo() {
   return (
     <Tilt rotationFactor={8} isRevese className="w-full max-w-30">
       <div className="overflow-hidden rounded-md border border-border bg-surface shadow-float">
-        <Img id="games.timber" alt="" className="h-16 w-full object-cover" />
+        <Img id="games.timber" alt="" className="aspect-[3/2] w-full" />
         <p className="p-1 text-sm font-bold">Timber Tycoon</p>
       </div>
     </Tilt>
@@ -197,9 +197,9 @@ function TiltDemo() {
 function SpotlightDemo() {
   return (
     <div className="relative h-20 w-full max-w-40 overflow-hidden rounded-md bg-ink p-2 text-white">
-      <Spotlight className="from-primary via-primary/40 to-transparent" size={96} />
+      <Spotlight className="from-primary/80 via-primary/40 to-transparent" size={160} />
       <p className="relative font-mono text-mono text-white/70">Top prize</p>
-      <p className="relative text-xl font-bold">Anker MagGo charger</p>
+      <p className="relative text-xl font-bold text-white">Anker MagGo charger</p>
     </div>
   );
 }

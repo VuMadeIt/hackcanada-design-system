@@ -59,35 +59,14 @@ export default function Typography() {
       <Section title="Line height on the grid" intro="Each line box is a multiple of 4, and most are a multiple of 8. Stack them and the baselines fall on the same rhythm as the spacing.">
         <div
           className="rounded-md border border-border bg-surface p-3"
-          style={{ backgroundImage: "linear-gradient(var(--hc-spec-soft) 1px, transparent 1px)", backgroundSize: "100% 8px", backgroundPosition: "0 24px" }}
         >
-          <p className="pb-1 text-3xl font-bold tracking-tight">Meet a sponsor</p>
-          <p className="max-w-content text-base text-text-secondary">
+          <p className="baseline-rule pb-1 text-3xl font-bold tracking-tight" style={{ "--rule-step": "40px", "--rule-at": "31px" } as React.CSSProperties}>Meet a sponsor</p>
+          <p className="baseline-rule max-w-content text-base text-text-secondary" style={{ "--rule-step": "24px", "--rule-at": "17px" } as React.CSSProperties}>
             Visit any sponsor booth and get your QR scanned. Points land in your account right away. Each line here is 24 px, three rows of the 8 px grid, so
             paragraphs and the space between them always line up.
           </p>
         </div>
-        <p className="pt-1 font-mono text-mono text-text-muted">Red lines every 8 px. Title 40 px box, body 24 px boxes.</p>
-      </Section>
-
-      <Section title="From the Figma file" intro="The Figma styles used ratios like 1.35, which gives line heights like 75.6 and 18.9. Those can't sit on any grid. Here's how they map.">
-        <Table
-          head={["Figma style", "Figma value", "System style", "New value"]}
-          mono={[1, 3]}
-          rows={[
-            ["Header 1", "56 / 75.6 · 700", "Display", "56 / 64 · 700"],
-            ["Header 2", "32 / 43.2 · 500", "Heading 1", "32 / 40 · 700"],
-            ["Large Body", "22 / 29.7 · 700", "Heading 3", "20 / 28 · 600"],
-            ["Body", "18 / 24.3 · 400", "Body large", "18 / 28 · 400"],
-            ["Secondary", "14 / 18.9 · 400", "Body small", "14 / 20 · 400"],
-            ["(unnamed)", "15 / 20 · 500", "Body", "16 / 24 · 400"],
-            ["(unnamed)", "13 / 18", "Body small", "14 / 20"],
-            ["(unnamed)", "11 / 15", "Overline or Mono", "11 / 16"],
-          ]}
-        />
-        <Callout title="Why Header 2 went to 700" tone="info">
-          At 500, a 32 px title next to 18 px bold body text looked about the same weight. Hierarchy needs a clear jump in size or weight, ideally both.
-        </Callout>
+        <p className="pt-1 font-mono text-mono text-text-muted">Red lines mark each baseline. The title line is 40 px, body lines are 24 px.</p>
       </Section>
 
       <Section title="Rules">

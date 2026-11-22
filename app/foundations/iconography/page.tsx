@@ -18,14 +18,14 @@ export default function Iconography() {
       />
 
       <Section title="Sizes" intro="Three sizes, all on the grid. The icon sits in a box of the same size, so it lines up with text and other icons.">
-        <div className="blueprint flex items-end gap-6 rounded-md border border-border p-4">
+        <div className="blueprint grid gap-4 rounded-md border border-border p-4 sm:grid-cols-3">
           {[
             [16, "size-2", "20 solid set. Inline with 14 px text, inputs."],
             [24, "size-3", "24 outline set. Default: nav, buttons, cards."],
             [32, "size-4", "24 outline, scaled. Empty states, feature cards."],
           ].map(([px, cls, use]) => (
             <div key={px as number} className="flex flex-col items-start gap-1">
-              <span className="outline outline-1 outline-dashed outline-spec"><TrophyIcon className={cls as string} /></span>
+              <span className="flex h-4 items-end"><span className="outline outline-1 outline-dashed outline-spec"><TrophyIcon className={cls as string} /></span></span>
               <span className="font-mono text-mono font-bold">{px}</span>
               <span className="max-w-30 text-sm text-text-secondary">{use}</span>
             </div>
@@ -62,7 +62,7 @@ export default function Iconography() {
         <DoDont
           doText="One set, one stroke, the label next to it."
           dontText="Filled and outline mixed, a colored icon on a colored tile on a card."
-          doExample={<Button variant="secondary"><BellIcon className="size-3" />Notify me</Button>}
+          doExample={<Button variant="secondary" leading={<BellIcon />}>Notify me</Button>}
           dontExample={
             <span className="flex items-center gap-1 rounded-md border border-border p-1">
               <span className="grid size-6 place-items-center rounded-sm bg-success-soft"><BellIcon className="size-3 text-success" /></span>

@@ -24,7 +24,7 @@ export const imageSlots: ImageSlot[] = [
   { id: "mascot.money", file: "/img/beaver-money.png", label: "Beaver with points", group: "Mascot", alt: "Beaver holding a money bag", usedOn: ["Resources pages", "Home"] },
   { id: "teams.start", file: "/img/teams/start-team.png", label: "Start a team", group: "Teams", alt: "Beaver starting a team", usedOn: ["Home gallery"] },
   { id: "teams.join", file: "/img/teams/join-team.png", label: "Join a team", group: "Teams", alt: "Beaver joining a team", usedOn: ["Home gallery"] },
-  { id: "games.timber", file: "/img/games/timber-preview.jpg", label: "Timber Tycoon", group: "Games", alt: "Timber Tycoon gameplay", usedOn: ["Mini game card", "Imagery", "Home gallery"] },
+  { id: "games.timber", file: "/img/games/timber-title.jpg", label: "Timber Tycoon", group: "Games", alt: "Timber Tycoon title card", usedOn: ["Mini game card", "Imagery", "Home gallery"] },
   { id: "games.cup", file: "/img/games/cup.svg", label: "Cup Shuffle cup", group: "Games", alt: "Blue cup from Cup Shuffle", usedOn: ["Mini game card", "Micro-interactions", "Imagery"] },
   { id: "shop.candy", file: "/img/shop/sour-patch-kids.jpg", label: "Sour Patch Kids", group: "Store", alt: "Bag of Sour Patch Kids", usedOn: ["Shop item card", "Store blueprint"] },
   { id: "shop.led", file: "/img/shop/led-strips.jpg", label: "LED strips", group: "Store", alt: "Roll of LED strips", usedOn: ["Shop item card", "Store blueprint"] },

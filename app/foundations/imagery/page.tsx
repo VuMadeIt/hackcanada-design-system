@@ -51,7 +51,7 @@ export default function Imagery() {
           <div className="grid h-30 place-items-center rounded-md bg-bg-muted">
             <Img id="games.cup" alt="Blue cup from Cup Shuffle" className="h-20 w-auto" />
           </div>
-          <Img id="games.timber" alt="Timber Tycoon gameplay" className="h-30 w-full rounded-md object-cover" />
+          <Img id="games.timber" alt="Timber Tycoon gameplay" className="aspect-[3/2] w-full rounded-md" />
         </Grid>
         <Grid cols={2} className="pt-2">
           <InfoCard kicker="Source" title="From Figma, recolored">The cup is the exact Figma art, recolored to brand blue. Never redraw an asset that already exists.</InfoCard>

@@ -28,9 +28,9 @@ export function PageHeader({
         <HeaderArt />
       </div>
       {meta && (
-        <dl className="mt-4 flex flex-wrap overflow-hidden rounded-sm border border-border bg-surface">
+        <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
           {meta.map((m) => (
-            <div key={m.label} className="flex min-w-20 flex-1 flex-col gap-half border-r border-border px-2 py-1 last:border-r-0">
+            <div key={m.label} className="flex flex-col gap-half bg-surface px-2 py-1 last:odd:col-span-2 sm:last:odd:col-span-1">
               <dt className="font-mono text-mono text-text-muted uppercase">{m.label}</dt>
               <dd className="text-sm font-bold">{m.value}</dd>
             </div>
@@ -60,7 +60,11 @@ export function Section({
       <h2
         id={anchor}
         data-toc={title}
-        className="group flex items-baseline gap-2 text-2xl font-bold tracking-tight [counter-increment:sec] before:w-4 before:shrink-0 before:font-mono before:text-mono before:font-normal before:text-text-muted before:content-[counter(sec,decimal-leading-zero)]"
+        className={cn(
+          "group flex items-baseline gap-2 text-2xl font-bold tracking-tight",
+          !/^\d/.test(title) &&
+            "[counter-increment:sec] before:w-4 before:shrink-0 before:font-mono before:text-mono before:font-normal before:text-text-muted before:content-[counter(sec,decimal-leading-zero)]",
+        )}
       >
         {title}
         <a href={`#${anchor}`} className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100" aria-label={`Link to ${title}`}>
@@ -194,7 +198,7 @@ export function Table({
         <thead>
           <tr className="bg-bg-muted">
             {head.map((h) => (
-              <th key={h} scope="col" className="h-5 px-2 text-caption font-bold tracking-wide text-text-muted uppercase">
+              <th key={h} scope="col" className="h-5 px-2 font-mono text-mono font-normal text-text-muted uppercase">
                 {h}
               </th>
             ))}
@@ -237,8 +241,8 @@ export function InfoCard({
   className?: string;
 }) {
   return (
-    <div className={cn("rounded-md border border-border bg-surface p-3", className)}>
-      {kicker && <p className="font-mono text-mono text-primary uppercase">{kicker}</p>}
+    <div className={cn("border-t-2 border-text pt-2", className)}>
+      {kicker && <p className="font-mono text-mono text-text-muted uppercase">{kicker}</p>}
       <p className="pt-half text-lg font-bold">{title}</p>
       <div className="pt-1 text-sm text-text-secondary">{children}</div>
     </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader, Section, P, List, Grid, InfoCard, Callout } from "@/components/site/Doc";
+import { PageHeader, Section, P, List, Callout } from "@/components/site/Doc";
 
 export const metadata: Metadata = { title: "Design principles" };
 
@@ -61,15 +61,11 @@ export default function Principles() {
       </Callout>
       {principles.map((p) => (
         <Section key={p.n} id={`p-${p.n}`} title={`${p.n} · ${p.t}`}>
-          <P className="text-lg">{p.lead}</P>
-          <Grid cols={2}>
-            <InfoCard kicker="In practice" title="What it means">
-              <List items={p.means} className="pt-1 pb-0" />
-            </InfoCard>
-            <InfoCard kicker="The test" title="Ask yourself">
-              <p className="pt-1 text-base">{p.test}</p>
-            </InfoCard>
-          </Grid>
+          <P className="text-lg text-text">{p.lead}</P>
+          <List items={p.means} />
+          <p className="text-sm text-text-muted">
+            <span className="font-medium text-text">The test:</span> {p.test}
+          </p>
         </Section>
       ))}
       <Section title="Where these come from">

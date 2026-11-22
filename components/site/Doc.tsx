@@ -228,7 +228,7 @@ export function InfoCard({
 }) {
   return (
     <div className={cn("flex flex-col gap-half", className)}>
-      {kicker && <p className="text-sm font-medium text-primary">{kicker}</p>}
+      {kicker && <p className="text-caption font-medium text-text-muted">{kicker}</p>}
       <p className="text-base font-bold">{title}</p>
       <div className="text-sm text-text-muted">{children}</div>
     </div>

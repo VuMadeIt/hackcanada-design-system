@@ -59,6 +59,7 @@ export function Spec({
   zoom,
   hugWidth = true,
   width,
+  defaultOn = true,
 }: {
   children: React.ReactNode;
   label?: string;
@@ -66,11 +67,12 @@ export function Spec({
   zoom?: number;
   hugWidth?: boolean;
   width?: number;
+  defaultOn?: boolean;
 }) {
   const wrap = useRef<HTMLDivElement>(null);
   const holder = useRef<HTMLDivElement>(null);
   const [m, setM] = useState<Measure | null>(null);
-  const [on, setOn] = useState(true);
+  const [on, setOn] = useState(defaultOn);
   const [z, setZ] = useState(zoom ?? 1);
 
   const measure = useCallback(() => {
@@ -185,7 +187,7 @@ export function Spec({
           {m.gap && <Readout label="Gap" value={`${m.gap.value}`} grid={onGrid(m.gap.value)} />}
           <Readout label="Radius" value={m.radius >= 999 ? "pill" : `${r(m.radius)}`} grid={m.radius >= 999 || onGrid(r(m.radius))} />
           {m.font && <Readout label="Type" value={m.font} />}
-          {m.marks.map((k, i) => (
+          {m.marks.filter((k, i, all) => all.findIndex((x) => x.name === k.name) === i).map((k, i) => (
             <Readout key={`${k.name}-${i}`} label={k.name} value={`${r(k.w / z)}×${r(k.h / z)}`} grid={onGrid(r(k.w / z)) && onGrid(r(k.h / z))} />
           ))}
         </dl>

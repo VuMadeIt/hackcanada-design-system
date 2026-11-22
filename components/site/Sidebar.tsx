@@ -51,8 +51,8 @@ export function Brand() {
   return (
     <Link href="/" className="flex items-center gap-1 rounded-sm">
       <Img id="brand.logo" alt="" className="size-4" />
-      <span className="text-base font-bold tracking-tight">Hack Canada</span>
-      <span className="rounded-pill border border-border px-1 text-caption font-medium text-text-muted">Design</span>
+      <span className="text-base font-bold tracking-tight whitespace-nowrap">Hack Canada</span>
+      <span className="hidden rounded-pill border border-border px-1 text-caption font-medium text-text-muted sm:inline">Design</span>
     </Link>
   );
 }

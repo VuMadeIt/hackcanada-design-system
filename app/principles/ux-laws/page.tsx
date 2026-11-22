@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader, Section, P, Grid, InfoCard, Callout } from "@/components/site/Doc";
+import { PageHeader, Section, Callout } from "@/components/site/Doc";
 import { DohertyDemo, FittsDemo, GoalGradientDemo, HickDemo, MillerDemo, VonRestorffDemo } from "@/components/docs/LawDemos";
 
 export const metadata: Metadata = { title: "UX laws" };
@@ -37,18 +37,33 @@ export default function UxLaws() {
       <Callout title="Laws, not rules" tone="info">
         These describe how people behave. The rules on the other pages are how we act on them.
       </Callout>
-      {laws.map((l) => (
-        <Section key={l.t} title={l.t}>
-          <P className="text-lg">{l.rule}</P>
-          <Grid cols={2}>
-            <InfoCard kicker="At Hack Canada" title="How we apply it">
-              {l.here}
-            </InfoCard>
-            {l.demo ? <div>{l.demo}</div> : <InfoCard kicker="Source" title={l.source}>Research this design system relies on.</InfoCard>}
-          </Grid>
-          {l.demo && <p className="pt-1 font-mono text-mono text-text-muted">Source · {l.source}</p>}
-        </Section>
-      ))}
+      {laws
+        .filter((l) => l.demo)
+        .map((l) => (
+          <Section key={l.t} title={l.t} intro={l.rule}>
+            {l.demo}
+            <p className="pt-2 text-sm text-text-secondary">{l.here}</p>
+            <p className="pt-1 text-caption text-text-muted">{l.source}</p>
+          </Section>
+        ))}
+      <Section title="More laws" intro="No demo needed. Here is what each one changes.">
+        <dl className="divide-y divide-border border-y border-border">
+          {laws
+            .filter((l) => !l.demo)
+            .map((l) => (
+              <div key={l.t} className="grid gap-1 py-3 md:grid-cols-[192px_1fr] md:gap-3">
+                <dt>
+                  <p className="text-sm font-bold">{l.t}</p>
+                  <p className="text-caption text-text-muted">{l.source}</p>
+                </dt>
+                <dd className="text-sm">
+                  <p className="text-text">{l.rule}</p>
+                  <p className="pt-half text-text-muted">{l.here}</p>
+                </dd>
+              </div>
+            ))}
+        </dl>
+      </Section>
     </article>
   );
 }

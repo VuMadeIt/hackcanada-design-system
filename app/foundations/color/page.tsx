@@ -73,34 +73,36 @@ function Chip({ fg, bg }: { fg: string; bg: string }) {
 
 function Swatch({ s }: { s: Sw }) {
   return (
-    <li className="overflow-hidden rounded-md border border-border bg-surface">
-      <div className="grid h-12 grid-cols-2">
+    <li className="grid grid-cols-[96px_1fr] items-center gap-3 py-2 md:grid-cols-[96px_1fr_auto]">
+      <div className="grid h-6 grid-cols-2 overflow-hidden rounded-sm border border-border">
         {(["light", "dark"] as const).map((t) => (
-          <div key={t} className="flex items-end justify-between p-1" style={{ background: palette[t][s.token] }}>
-            <span className="font-mono text-mono font-bold" style={{ color: palette[t][s.on ?? (t === "light" ? "text" : "text")] }}>
-              {s.on ? "Aa" : ""}
-            </span>
-            <span className="font-mono text-mono" style={{ color: contrast(palette[t][s.token], "#ffffff") >= contrast(palette[t][s.token], "#0f2233") ? "#ffffff" : "#0f2233" }}>{t}</span>
+          <div key={t} className="grid place-items-center" style={{ background: palette[t][s.token] }} title={`${t} ${palette[t][s.token]}`}>
+            {s.on && (
+              <span className="text-sm font-bold" style={{ color: palette[t][s.on] }}>
+                Aa
+              </span>
+            )}
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-half p-2">
-        <p className="font-bold">{s.name}</p>
-        <p className="font-mono text-mono text-text-muted">--hc-{s.token}</p>
-        <p className="text-sm text-text-secondary">{s.use}</p>
-        <dl className="grid grid-cols-2 gap-x-1 pt-1 font-mono text-mono">
-          <dt className="text-text-muted">Light</dt>
-          <dt className="text-text-muted">Dark</dt>
-          <dd>{palette.light[s.token]}</dd>
-          <dd>{palette.dark[s.token]}</dd>
-          {s.on && (
-            <>
-              <dd><Chip fg={palette.light[s.on]} bg={palette.light[s.token]} /></dd>
-              <dd><Chip fg={palette.dark[s.on]} bg={palette.dark[s.token]} /></dd>
-            </>
-          )}
-        </dl>
+      <div className="min-w-0">
+        <p className="text-sm font-bold">
+          {s.name} <span className="pl-half font-mono text-mono font-normal text-text-muted">--hc-{s.token}</span>
+        </p>
+        <p className="text-sm text-text-muted">{s.use}</p>
       </div>
+      <dl className="col-span-2 grid grid-cols-[auto_auto] gap-x-2 font-mono text-mono md:col-span-1 md:text-right">
+        <dt className="sr-only">Light</dt>
+        <dd>{palette.light[s.token]}</dd>
+        <dt className="sr-only">Dark</dt>
+        <dd className="text-text-muted">{palette.dark[s.token]}</dd>
+        {s.on && (
+          <>
+            <dd><Chip fg={palette.light[s.on]} bg={palette.light[s.token]} /></dd>
+            <dd><Chip fg={palette.dark[s.on]} bg={palette.dark[s.token]} /></dd>
+          </>
+        )}
+      </dl>
     </li>
   );
 }
@@ -127,7 +129,7 @@ export default function Color() {
 
       {groups.map((g) => (
         <Section key={g.title} title={g.title} intro={g.intro}>
-          <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="divide-y divide-border border-y border-border">
             {g.items.map((s) => <Swatch key={s.token} s={s} />)}
           </ul>
         </Section>

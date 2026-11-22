@@ -27,15 +27,15 @@ export default function GettingStarted() {
       </Section>
 
       <Section title="The three rules" intro="If you remember nothing else, remember these.">
-        <ol className="grid gap-2 md:grid-cols-3">
+        <ol className="flex flex-col divide-y divide-border border-y border-border">
           {[
             ["Everything is a multiple of 8", "Spacing, sizes and line heights use 8, 16, 24, 32 and so on. 4 is the only half step, for tight spots inside a component."],
             ["Blue acts, gold rewards", "Primary blue means you can do something. Gold only ever means points. Red is only for errors and destructive actions."],
             ["One thing leads", "Every screen has one primary button and one focal point. If two things shout, neither is heard."],
           ].map(([t, b], i) => (
-            <li key={t} className="flex flex-col gap-1 rounded-md border border-border bg-surface p-3">
-              <span className="grid size-4 place-items-center rounded-pill bg-primary font-mono text-mono font-bold text-on-primary">{i + 1}</span>
-              <p className="pt-1 text-lg font-bold">{t}</p>
+            <li key={t} className="grid gap-1 py-3 md:grid-cols-[32px_224px_1fr] md:gap-3">
+              <span className="font-mono text-sm text-text-muted">0{i + 1}</span>
+              <p className="text-base font-bold">{t}</p>
               <p className="text-sm text-text-secondary">{b}</p>
             </li>
           ))}

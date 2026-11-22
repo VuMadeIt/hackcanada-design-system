@@ -26,20 +26,22 @@ type Meta = { name: string; trigger: string; token: string; source: "Hack Canada
 
 function Micro({ name, trigger, token, source, children, onReplay, wide }: Meta) {
   return (
-    <li className={cn("flex flex-col overflow-hidden rounded-md border border-border bg-surface", wide && "md:col-span-2")}>
-      <div className="blueprint relative grid min-h-30 flex-1 place-items-center overflow-hidden p-3">{children}</div>
-      <div className="flex items-start gap-2 border-t border-border p-2">
-        <div className="min-w-0 flex-1">
-          <p className="font-bold">{name}</p>
-          <p className="text-sm text-text-secondary">{trigger}</p>
-          <p className="pt-half font-mono text-mono text-text-muted">{token} · {source}</p>
-        </div>
+    <li className={cn("group flex flex-col gap-1", wide && "md:col-span-2")}>
+      <div className="blueprint relative grid min-h-30 flex-1 place-items-center overflow-hidden rounded-md border border-border p-3">
+        {children}
         {onReplay && (
-          <button onClick={onReplay} aria-label={`Replay ${name}`} className="grid size-4 shrink-0 place-items-center rounded-sm text-text-muted hover:bg-bg-muted hover:text-text focus-visible:shadow-focus focus-visible:outline-none">
+          <button onClick={onReplay} aria-label={`Replay ${name}`} className="absolute top-1 right-1 grid size-4 place-items-center rounded-sm text-text-muted hover:bg-bg-muted hover:text-text focus-visible:shadow-focus focus-visible:outline-none">
             <ArrowPathIcon className="size-2" />
           </button>
         )}
       </div>
+      <div className="flex items-baseline justify-between gap-2 text-sm">
+        <p className="font-medium">{name}</p>
+        <p className="text-text-muted">{trigger}</p>
+      </div>
+      <p className="sr-only">
+        {token} · {source}
+      </p>
     </li>
   );
 }
@@ -403,7 +405,7 @@ export function MicroGallery() {
   const [r, setR] = useState({ text: 0, confetti: 0 });
   const bump = (k: keyof typeof r) => setR((s) => ({ ...s, [k]: s[k] + 1 }));
   return (
-    <ul className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+    <ul className="grid gap-x-3 gap-y-4 md:grid-cols-2">
       <Micro name="Press" trigger="Pointer down on any button" token="100 ms · scale 0.98" source="Hack Canada"><PressDemo /></Micro>
       <Micro name="Points count up" trigger="Balance changes" token="800 ms spring, bounce 0" source="Motion Primitives"><PointsDemo /></Micro>
       <Micro name="Redeem" trigger="Click, server responds" token="spring 500/36 · label slides 16" source="Hack Canada"><RedeemDemo /></Micro>

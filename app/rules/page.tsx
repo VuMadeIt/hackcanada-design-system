@@ -65,18 +65,18 @@ export default function Rules() {
   return (
     <article>
       <PageHeader eyebrow="Start here" title="Rules at a glance" lead="Every rule in the system on one page, each with a code you can cite in a design review: “this breaks S4”." />
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="flex flex-col gap-6">
         {groups.map((g) => (
-          <section key={g.title} aria-labelledby={g.title} className="rounded-md border border-border bg-surface">
-            <div className="flex items-center justify-between border-b border-border px-3 py-2">
-              <h2 id={g.title} data-toc={g.title} className="text-lg font-bold">{g.title}</h2>
-              <Link href={g.href} className="text-sm font-bold text-primary hover:underline">Details</Link>
+          <section key={g.title} aria-labelledby={g.title}>
+            <div className="flex items-baseline justify-between pb-2">
+              <h2 id={g.title} data-toc={g.title} className="text-xl font-bold tracking-tight">{g.title}</h2>
+              <Link href={g.href} className="text-sm font-medium text-text-muted hover:text-text">Details</Link>
             </div>
-            <ul className="divide-y divide-border">
+            <ul className="divide-y divide-border border-y border-border">
               {g.rules.map(([code, text]) => (
-                <li key={code} className="flex gap-2 px-3 py-2">
-                  <span className="h-3 shrink-0 rounded-xs bg-primary-soft px-half font-mono text-mono leading-[24px] font-bold text-primary-ink">{code}</span>
-                  <span className="text-sm text-text-secondary">{text}</span>
+                <li key={code} id={code.toLowerCase()} className="flex gap-3 py-2">
+                  <span className="w-4 shrink-0 font-mono text-sm text-text-muted">{code}</span>
+                  <span className="text-sm text-text">{text}</span>
                 </li>
               ))}
             </ul>

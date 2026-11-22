@@ -13,7 +13,7 @@ const links = [
   { title: "Components", href: "/components", match: /^\/components/ },
   { title: "Motion", href: "/micro-interactions", match: /^\/micro-interactions/ },
   { title: "Patterns", href: "/patterns/page-layout", match: /^\/(patterns|blueprints)/ },
-  { title: "Images", href: "/resources/images", match: /^\/resources/ },
+  { title: "Resources", href: "/resources/images", match: /^\/resources/ },
 ];
 
 function GitHubMark() {

@@ -1,36 +1,32 @@
-# AGENTS.md
+# Hack Canada design system: guide for AI agents (Claude, Devin, Codex, Gemini)
 
-Project-specific guidance for AI coding agents.
+This repo documents and implements the Hack Canada hacker dashboard design system. Read this before generating any Hack Canada screen or component.
 
-<!-- ASTRYX:START -->
-Astryx v0.7.17 · 174 components
-CLI: run every command as `npx astryx <cmd>` (shown below as `astryx ...`).
+## Source of truth
+| What | Where |
+|---|---|
+| Tokens (color, type, spacing, radius, motion) | `app/globals.css` (`@theme` + light/dark `--hc-*`), hex mirror in `lib/tokens.ts` |
+| Components | `components/hc/*.tsx` |
+| Component docs (usage, anatomy, specs, do/don't, a11y, props) | `lib/registry-*.ts`, typed by `lib/registry-types.ts` |
+| Images (mascot, brand, teams, games, store) | `lib/images.ts` |
+| Astryx theme (site chrome) | `themes/hackcanada/hackcanada.theme.ts`, built copy in `src/themes/hackcanada` |
 
-SETUP (once, in app entry e.g. main.tsx) — without these, components render unstyled:
-  import "@astryxdesign/core/reset.css";
-  import "@astryxdesign/core/astryx.css";
+## Hard rules
+- Spacing, sizes and line heights are multiples of 8. 4 px is the only half step (inside components). 1 px is for borders only. Tailwind spacing is remapped: `p-1` = 8 px, `p-2` = 16 px, `gap-0.5` = 4 px. `npm run check` fails on anything else.
+- Blue `#1a6dbd` (dark `#4a9eef`) is for actions and links. Gold `#e0a45e` only means points. Red only means errors or destructive actions.
+- One primary button per view. Labels are verbs in sentence case ("Redeem", "Place bet").
+- Type: Satoshi for UI, JetBrains Mono for numbers in code and specs. Body 16/24, captions 14/24.
+- WCAG 2.2 AA in both themes: 4.5:1 text, 3:1 UI. Visible 2 px focus ring. Hit targets 40 px (44 on touch).
+- Motion: 100, 200, 300 or 500 ms with `ease-out`; respect `prefers-reduced-motion`.
+- Light is the default theme. Dark uses `#0b1520` surfaces, never pure black or white glare.
+- Use the real art in `lib/images.ts` (beavers, product photos); don't draw replacements.
 
-WORKFLOW — start every page from a template, never from scratch:
-1. `astryx build "<idea>"` — names the template to scaffold from and the parts it lacks.
-2. `astryx template <name> <path>` — scaffold it; keep its frame, gap and padding; replace the content.
-3. `astryx component <Name>` to read props before using one; `astryx template <Block>` prints a block example to read for a part it lacks. Astryx names differ from other libraries: buttons, badges, tokens and tabs take their text in `label` (Text, Heading and Link take children), booleans start with `is` or `has` (`isOpen`, `isDisabled`), and every input takes `value` and `onChange`.
-Changing an existing page? Keep it: skip step 2 and add components inside its sections; read a block example when it helps.
-Before you deliver a build, run `astryx doctor --built <dir>`; don't deliver it if it fails.
+## Site chrome
+The docs shell uses Meta's Astryx (`@astryxdesign/core`, MIT) themed as `hackcanada`: TopNav, SideNav, TextInput, Button, Badge. Read a component's API with `npx astryx component <Name>` before using it. Theme changes go through `npx astryx experimental theme editor set hackcanada ...`, then `npx astryx theme add hackcanada`; never edit generated files in `src/themes`.
 
-RULES:
-- No <div> — components handle all layout and spacing.
-- Read `astryx docs layout` before changing a template's frame.
-- Dense data = rows (Table, List/Item), not Card-wrapped lists. Badge = counts only.
-- Style with component props first, then Tailwind utilities backed by tokens. No raw hex/px.
-- THEMES: palettes and custom colors go through the theme, never :root overrides; so does a denser or roomier app (`editor set <name> spacing tight`), never gap and padding changes page by page. A change to one kind of part (the sidebar, its selected item, the gaps in a form) is a theme change too, not props on one page: `editor how "<ask>"` names the `set … --on <part>` line. No app yet: `astryx experimental theme preview app <dir>` makes a starter app that shows the theme. To make or change a theme (colors, fonts, corners, spacing, a look from a picture), prefer the experimental theme editor over hand-written theme files: `astryx experimental theme editor new <name> --like neutral`, then `editor set <name> <thing> <value>` or `editor how "<what you want>"`; wire it with `astryx theme add <name>`; after each change look at it with `astryx experimental theme editor show <name> --png` (takes pictures of real components) and open the PNGs it writes; a theme change is not done until you have looked at the pictures. In code, extend an imported theme to customize it; `theme eject <slug>` only forks source. See `astryx docs theme`.
-- SELF-CHECK: re-read the file; replace any style={{…}}, raw <div>/<span>, imported .css/@apply, or hardcoded/arbitrary value (bg-[#fff], p-[13px]) with the component or a token-backed utility.
+CSS layer order lives in `app/layers.css`. Tailwind preflight is intentionally not imported (Astryx's reset replaces it), and `@theme` is `inline reference` so Tailwind variables don't collide with Astryx tokens of the same name.
 
-`astryx help` lists every command. Key ones beyond the workflow:
-  search "<query>"   find any component / hook / doc / template
-  discover <words>   integrations you could add
-  docs <topic>       getting-started, principles, tokens, theme … (`astryx docs` lists all)
-  docs cli           commands and API reference
-  docs authoring     build an integration package, and every field it holds
-  upgrade --from <old version> --apply   run after a dependency bump
-To remove this block, run `astryx init --remove-agents`, which removes it from the agent files at the project root and in the folder you run it in; from any other file it leaves, delete everything from ASTRYX:START to ASTRYX:END.
-<!-- ASTRYX:END -->
+## Workflow
+- `npm run dev -- -p 4100`, then `npm run check` (types, ESLint, rule-of-8 lint) before every commit.
+- New component: add it to `components/hc`, a docs entry to `lib/registry-*.ts`, live demos to `components/docs/demos.tsx`.
+- Check light, dark, 375 px and 1440 px before shipping.

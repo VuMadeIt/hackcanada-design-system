@@ -411,7 +411,7 @@ export function DemoThumb({ slug }: { slug: string }) {
   const s = specs[slug];
   const w = specWidth[slug] ?? 288;
   return (
-    <div aria-hidden inert className="blueprint pointer-events-none relative grid h-24 place-items-center overflow-hidden bg-bg-muted/40">
+    <div aria-hidden inert className="pointer-events-none relative grid h-20 place-items-center sm:h-28 overflow-hidden">
       {s && <div className="grid shrink-0 place-items-center [&_*]:!transition-none" style={{ width: w, transform: `scale(${Math.min(0.8, 256 / w)})` }}>{s()}</div>}
     </div>
   );

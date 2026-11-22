@@ -11,6 +11,7 @@ import { PrevNext } from "./PrevNext";
 import { GridOverlay } from "./GridOverlay";
 import { CommandMenu } from "./CommandMenu";
 import { ImageProvider } from "./Images";
+import { cn } from "@/lib/utils";
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +20,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => setMenuOpen(false), [pathname]);
+  useEffect(() => {
+    if (grid) document.documentElement.dataset.grid = "";
+    else delete document.documentElement.dataset.grid;
+  }, [grid]);
+  const home = pathname.replace(/\/$/, "") === "";
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -41,30 +47,21 @@ export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <MotionConfig reducedMotion="user">
       <ImageProvider>
-      <ScrollProgress className="fixed z-50 h-half bg-primary" />
+      <ScrollProgress className="fixed top-0 z-50 h-px bg-primary" />
       <a
         href="#main"
         className="sr-only z-50 rounded-sm bg-primary px-2 py-1 text-on-primary focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
       >
         Skip to content
       </a>
-      <div className="flex min-h-screen">
+      <TopBar onMenu={() => setMenuOpen(true)} onSearch={() => setSearchOpen(true)} />
+      <div className="mx-auto flex w-full max-w-wide gap-6 px-3 md:px-4 xl:gap-8">
         <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
-        <div className="flex min-w-0 flex-1 flex-col lg:pl-32">
-          <TopBar
-            onMenu={() => setMenuOpen(true)}
-            onSearch={() => setSearchOpen(true)}
-            grid={grid}
-            onGrid={() => setGrid((g) => !g)}
-          />
-          <div className="mx-auto flex w-full max-w-page gap-5 px-2 pb-16 md:px-4 xl:px-5">
-            <main id="main" className="min-w-0 flex-1 pt-4 [counter-reset:sec] md:pt-6">
-              {children}
-              <PrevNext />
-            </main>
-            {pathname.replace(/\/$/, "") !== "" && !/^\/blueprints\/(store|bets)/.test(pathname) && <Toc />}
-          </div>
-        </div>
+        <main id="main" className={cn("min-w-0 flex-1 pt-6 pb-16 md:pt-8", !home && "max-w-doc")}>
+          {children}
+          <PrevNext />
+        </main>
+        {!home && !/^\/blueprints\/(store|bets)/.test(pathname) && <Toc />}
       </div>
       {grid && <GridOverlay />}
       <CommandMenu open={searchOpen} onClose={() => setSearchOpen(false)} />

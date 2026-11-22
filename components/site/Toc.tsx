@@ -25,22 +25,20 @@ export function Toc() {
     return () => obs.disconnect();
   }, [pathname]);
 
-  if (headings.length < 2) return <div className="hidden w-30 shrink-0 xl:block" />;
+  if (headings.length < 2) return <div className="hidden w-28 shrink-0 xl:block" />;
 
   return (
-    <aside className="hidden w-30 shrink-0 xl:block">
-      <nav aria-label="On this page" className="sticky top-12 pt-5">
-        <p className="pb-1 text-caption font-bold tracking-wide text-text-muted uppercase">On this page</p>
-        <ul className="border-l border-border">
+    <aside className="hidden w-28 shrink-0 xl:block">
+      <nav aria-label="On this page" className="sticky top-8 pt-8">
+        <p className="pb-2 text-sm font-medium text-text">On this page</p>
+        <ul className="flex flex-col gap-1">
           {headings.map((h) => (
             <li key={h.id}>
               <a
                 href={`#${h.id}`}
                 className={cn(
-                  "-ml-px block border-l-2 py-half pl-2 text-sm transition-colors duration-200",
-                  active === h.id
-                    ? "border-primary font-medium text-primary"
-                    : "border-transparent text-text-muted hover:text-text",
+                  "block text-sm transition-colors duration-200",
+                  active === h.id ? "text-text" : "text-text-muted hover:text-text",
                 )}
               >
                 {h.text}

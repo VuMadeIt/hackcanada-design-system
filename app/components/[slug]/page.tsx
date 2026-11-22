@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { registry } from "@/lib/registry";
 import { PageHeader, Section, Table, List, Grid, InfoCard } from "@/components/site/Doc";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ExampleTabs } from "@/components/site/ExampleTabs";
 import { DemoPlayground, DemoVariants, DemoStates, DemoSpec, DemoDoDont } from "@/components/docs/demos";
 
 export function generateStaticParams() {
@@ -27,55 +28,35 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         eyebrow={`Components · ${doc.category}`}
         title={doc.name}
         lead={doc.summary}
-        meta={[
-          { label: "Status", value: "Stable" },
-          { label: "Source", value: <code className="font-mono text-caption">components/hc</code> },
-          ...(doc.figma ? [{ label: "Figma", value: doc.figma }] : []),
-        ]}
+        meta={doc.figma ? [{ label: "Figma", value: doc.figma }] : undefined}
       />
 
-      <Section title="Playground" intro="Change the props and see the component update. Everything here is the real component, not a picture of it.">
-        <DemoPlayground slug={doc.slug} />
+      <ExampleTabs preview={<DemoPlayground slug={doc.slug} />} code={<CodeBlock code={doc.code} title={`${doc.name}.tsx`} />} />
+
+      <Section title="Variants">
+        <DemoVariants slug={doc.slug} />
       </Section>
 
-      <Section title="Usage">
-        <Grid cols={2}>
-          <InfoCard kicker="Use it" title="When to use">
-            <List items={doc.whenToUse} className="pt-1 pb-0" />
-          </InfoCard>
-          <InfoCard kicker="Skip it" title="When not to use">
-            <List items={doc.whenNot} className="pt-1 pb-0" />
-          </InfoCard>
-        </Grid>
+      <Section title="States">
+        <DemoStates slug={doc.slug} />
       </Section>
 
-      <Section title="Anatomy" intro="Every part has a name, so design reviews and code use the same words.">
-        <ol className="grid gap-1 sm:grid-cols-2">
-          {doc.anatomy.map((a, i) => (
-            <li key={a} className="flex items-center gap-2 rounded-sm border border-border bg-surface p-2 text-sm">
-              <span className="grid size-3 shrink-0 place-items-center rounded-pill bg-spec font-mono text-mono text-on-spec">{i + 1}</span>
-              {a}
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section title="Specs" intro="Redlines are measured from the live component. Toggle them off to see it clean. Every value sits on the 8 point grid.">
+      <Section title="Specs" intro="Measured from the live component. Press G to show the 8 px grid.">
         <DemoSpec slug={doc.slug} />
         <div className="pt-3">
           <Table head={["Property", "Value", "Token"]} rows={doc.specs} mono={[1, 2]} />
         </div>
       </Section>
 
-      <Section title="Variants">
-        <DemoVariants slug={doc.slug} />
-      </Section>
-
-      <Section title="States" intro="Each state is shown in the current theme. Switch the theme at the top right to check the other one.">
-        <DemoStates slug={doc.slug} />
-      </Section>
-
-      <Section title="Do and don't">
+      <Section title="Usage">
+        <Grid cols={2}>
+          <InfoCard title="Use it for">
+            <List items={doc.whenToUse} className="pt-1 pb-0 [&_li]:text-sm" />
+          </InfoCard>
+          <InfoCard title="Skip it for">
+            <List items={doc.whenNot} className="pt-1 pb-0 [&_li]:text-sm" />
+          </InfoCard>
+        </Grid>
         <DemoDoDont slug={doc.slug} doText={doc.doText} dontText={doc.dontText} />
       </Section>
 
@@ -83,12 +64,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
         <List items={doc.a11y} />
       </Section>
 
-      <Section title="Content">
-        <List items={doc.content} />
-      </Section>
-
-      <Section title="Code">
-        <CodeBlock code={doc.code} title={`${doc.name}.tsx`} />
+      <Section title="API">
         <Table head={["Prop", "Type", "Default", "Notes"]} rows={doc.props} mono={[0, 1, 2]} />
       </Section>
 
@@ -97,7 +73,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
           {doc.related.map((r) => {
             const rel = registry.find((c) => c.slug === r);
             return rel ? (
-              <Link key={r} href={`/components/${r}`} className="flex h-5 items-center rounded-pill border border-border bg-surface px-2 text-sm font-bold hover:border-primary hover:text-primary">
+              <Link key={r} href={`/components/${r}`} className="flex h-4 items-center rounded-pill border border-border px-2 text-sm font-medium text-text-secondary transition-colors hover:border-border-strong hover:text-text">
                 {rel.name}
               </Link>
             ) : null;

@@ -1,5 +1,4 @@
-import { HeaderArt } from "./HeaderArt";
-import { CheckCircleIcon, XCircleIcon, InformationCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import { CheckIcon, XMarkIcon, InformationCircleIcon, ExclamationTriangleIcon, LightBulbIcon } from "@heroicons/react/20/solid";
 import { cn } from "@/lib/utils";
 
 export function slugify(s: string) {
@@ -19,20 +18,15 @@ export function PageHeader({
 }) {
   return (
     <header className="pb-6">
-      <div className="flex items-end justify-between gap-4">
-        <div className="min-w-0">
-          <p className="font-mono text-mono text-text-muted uppercase">{eyebrow}</p>
-          <h1 className="pt-1 text-4xl font-bold tracking-[-0.02em] text-balance md:text-5xl">{title}</h1>
-          <p className="max-w-prose pt-2 text-lg text-pretty text-text-secondary">{lead}</p>
-        </div>
-        <HeaderArt />
-      </div>
-      {meta && (
-        <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
+      <p className="text-sm font-medium text-primary">{eyebrow.split(" · ")[0]}</p>
+      <h1 className="pt-1 text-3xl font-bold tracking-tight text-balance">{title}</h1>
+      <p className="max-w-prose pt-1 text-base text-pretty text-text-muted">{lead}</p>
+      {meta && meta.length > 0 && (
+        <dl className="flex flex-wrap gap-x-3 gap-y-1 pt-2 text-sm">
           {meta.map((m) => (
-            <div key={m.label} className="flex flex-col gap-half bg-surface px-2 py-1 last:odd:col-span-2 sm:last:odd:col-span-1">
-              <dt className="font-mono text-mono text-text-muted uppercase">{m.label}</dt>
-              <dd className="text-sm font-bold">{m.value}</dd>
+            <div key={m.label} className="flex items-center gap-1">
+              <dt className="text-text-muted">{m.label}</dt>
+              <dd className="font-medium text-text">{m.value}</dd>
             </div>
           ))}
         </dl>
@@ -56,29 +50,21 @@ export function Section({
 }) {
   const anchor = id ?? slugify(title);
   return (
-    <section className={cn("mt-8 border-t border-border pt-3 first-of-type:mt-0", className)} aria-labelledby={anchor}>
-      <h2
-        id={anchor}
-        data-toc={title}
-        className={cn(
-          "group flex items-baseline gap-2 text-2xl font-bold tracking-tight",
-          !/^\d/.test(title) &&
-            "[counter-increment:sec] before:w-4 before:shrink-0 before:font-mono before:text-mono before:font-normal before:text-text-muted before:content-[counter(sec,decimal-leading-zero)]",
-        )}
-      >
+    <section className={cn("pt-6 first-of-type:pt-0", className)} aria-labelledby={anchor}>
+      <h2 id={anchor} data-toc={title} className="group flex scroll-mt-12 items-center gap-1 text-xl font-bold tracking-tight">
         {title}
         <a href={`#${anchor}`} className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100" aria-label={`Link to ${title}`}>
           #
         </a>
       </h2>
-      {intro && <p className="max-w-prose pt-1 text-base text-text-secondary">{intro}</p>}
+      {intro && <p className="max-w-prose pt-1 text-base text-text-muted">{intro}</p>}
       <div className="pt-3">{children}</div>
     </section>
   );
 }
 
 export function H3({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h3 className={cn("pt-4 pb-1 text-xl font-bold", className)}>{children}</h3>;
+  return <h3 className={cn("pt-3 pb-1 text-base font-bold", className)}>{children}</h3>;
 }
 
 export function P({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -89,8 +75,10 @@ export function List({ items, className }: { items: React.ReactNode[]; className
   return (
     <ul className={cn("flex max-w-prose flex-col gap-1 pb-2", className)}>
       {items.map((it, i) => (
-        <li key={i} className="flex gap-1 text-base text-text-secondary">
-          <span aria-hidden className="flex h-3 shrink-0 items-center"><span className="size-half rounded-pill bg-primary" /></span>
+        <li key={i} className="flex gap-2 text-base text-text-secondary">
+          <span aria-hidden className="flex h-3 shrink-0 items-center">
+            <span className="h-px w-1 bg-text-muted" />
+          </span>
           <span>{it}</span>
         </li>
       ))}
@@ -99,9 +87,9 @@ export function List({ items, className }: { items: React.ReactNode[]; className
 }
 
 const calloutStyles = {
-  info: { icon: InformationCircleIcon, box: "bg-primary-soft", ink: "text-primary" },
-  rule: { icon: CheckCircleIcon, box: "bg-gold-soft", ink: "text-gold-ink" },
-  warn: { icon: ExclamationTriangleIcon, box: "bg-danger-soft", ink: "text-danger" },
+  info: { icon: InformationCircleIcon, ink: "text-primary" },
+  rule: { icon: LightBulbIcon, ink: "text-gold-ink" },
+  warn: { icon: ExclamationTriangleIcon, ink: "text-danger" },
 };
 
 export function Callout({
@@ -116,11 +104,11 @@ export function Callout({
   const s = calloutStyles[tone];
   const Icon = s.icon;
   return (
-    <div className={cn("my-3 flex max-w-content gap-2 rounded-md p-3", s.box)}>
-      <Icon className={cn("size-3 shrink-0", s.ink)} />
-      <div>
-        <p className={cn("font-bold", s.ink)}>{title}</p>
-        <div className="pt-half text-base text-text-secondary">{children}</div>
+    <div className="my-3 flex max-w-content gap-2 rounded-md border border-border p-2">
+      <Icon className={cn("mt-half size-2 shrink-0", s.ink)} />
+      <div className="text-sm">
+        <p className="font-bold text-text">{title}</p>
+        <div className="pt-half text-text-secondary">{children}</div>
       </div>
     </div>
   );
@@ -143,14 +131,16 @@ export function DoDont({
         { ok: true, ex: doExample, text: doText },
         { ok: false, ex: dontExample, text: dontText },
       ].map(({ ok, ex, text }) => (
-        <figure key={String(ok)} className="overflow-hidden rounded-md border border-border bg-surface">
-          <div className="grid min-h-30 place-items-center bg-bg-muted p-3">{ex}</div>
-          <figcaption className={cn("border-t-4 p-2", ok ? "border-success" : "border-danger")}>
-            <span className={cn("flex items-center gap-1 text-sm font-bold", ok ? "text-success" : "text-danger")}>
-              {ok ? <CheckCircleIcon className="size-2" /> : <XCircleIcon className="size-2" />}
-              {ok ? "Do" : "Don't"}
+        <figure key={String(ok)}>
+          <div className="blueprint grid min-h-24 place-items-center rounded-md border border-border p-3">{ex}</div>
+          <figcaption className="flex gap-1 pt-2 text-sm">
+            <span className={cn("grid size-2 shrink-0 translate-y-half place-items-center rounded-pill text-white", ok ? "bg-success" : "bg-danger")}>
+              {ok ? <CheckIcon className="size-[12px]" /> : <XMarkIcon className="size-[12px]" />}
             </span>
-            <p className="pt-half text-sm text-text-secondary">{text}</p>
+            <span className="text-text-secondary">
+              <span className="font-bold text-text">{ok ? "Do. " : "Don't. "}</span>
+              {text}
+            </span>
           </figcaption>
         </figure>
       ))}
@@ -170,16 +160,12 @@ export function Preview({
   plain?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-md border border-border">
-      {label && (
-        <div className="flex h-5 items-center border-b border-border bg-surface px-2 font-mono text-mono text-text-muted">
-          {label}
-        </div>
-      )}
-      <div className={cn(plain ? "bg-bg" : "blueprint", "flex flex-wrap items-center justify-center gap-2 p-4 md:p-6", className)}>
+    <figure className="pb-3">
+      <div className={cn(plain ? "bg-bg" : "blueprint", "flex flex-wrap items-center justify-center gap-2 rounded-md border border-border p-4 md:p-6", className)}>
         {children}
       </div>
-    </div>
+      {label && <figcaption className="pt-1 text-sm text-text-muted">{label}</figcaption>}
+    </figure>
   );
 }
 
@@ -193,12 +179,12 @@ export function Table({
   mono?: number[];
 }) {
   return (
-    <div className="mb-3 overflow-x-auto rounded-md border border-border bg-surface">
+    <div className="mb-3 overflow-x-auto rounded-md border border-border">
       <table className="w-full min-w-60 border-collapse text-left text-sm">
         <thead>
           <tr className="bg-bg-muted">
             {head.map((h) => (
-              <th key={h} scope="col" className="h-5 px-2 font-mono text-mono font-normal text-text-muted uppercase">
+              <th key={h} scope="col" className="h-5 px-2 font-medium text-text">
                 {h}
               </th>
             ))}
@@ -208,7 +194,7 @@ export function Table({
           {rows.map((r, i) => (
             <tr key={i} className="border-t border-border align-top">
               {r.map((c, j) => (
-                <td key={j} className={cn("px-2 py-1", mono.includes(j) && "font-mono text-caption whitespace-nowrap")}>
+                <td key={j} className={cn("px-2 py-1 text-text-secondary", mono.includes(j) && "font-mono text-caption whitespace-nowrap text-text")}>
                   {c}
                 </td>
               ))}
@@ -226,7 +212,7 @@ export function Code({ children }: { children: React.ReactNode }) {
 
 export function Grid({ children, cols = 3, className }: { children: React.ReactNode; cols?: 2 | 3 | 4; className?: string }) {
   const c = { 2: "md:grid-cols-2", 3: "md:grid-cols-2 xl:grid-cols-3", 4: "grid-cols-2 md:grid-cols-4" }[cols];
-  return <div className={cn("grid gap-3 pb-3", c, className)}>{children}</div>;
+  return <div className={cn("grid gap-x-4 gap-y-3 pb-3", c, className)}>{children}</div>;
 }
 
 export function InfoCard({
@@ -241,10 +227,10 @@ export function InfoCard({
   className?: string;
 }) {
   return (
-    <div className={cn("border-t-2 border-text pt-2", className)}>
-      {kicker && <p className="font-mono text-mono text-text-muted uppercase">{kicker}</p>}
-      <p className="pt-half text-lg font-bold">{title}</p>
-      <div className="pt-1 text-sm text-text-secondary">{children}</div>
+    <div className={cn("flex flex-col gap-half", className)}>
+      {kicker && <p className="text-sm font-medium text-primary">{kicker}</p>}
+      <p className="text-base font-bold">{title}</p>
+      <div className="text-sm text-text-muted">{children}</div>
     </div>
   );
 }

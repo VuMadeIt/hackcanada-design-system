@@ -21,7 +21,7 @@ const sizes: Record<ButtonSize, string> = {
 
 export const buttonClasses = (variant: ButtonVariant = "primary", size: ButtonSize = "md") =>
   cn(
-    "inline-flex shrink-0 items-center justify-center font-bold whitespace-nowrap select-none",
+    "inline-flex shrink-0 items-center justify-center font-medium whitespace-nowrap select-none",
     "transition-[background-color,border-color,color,transform,filter] duration-200 ease-standard",
     "active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40",
     variants[variant],

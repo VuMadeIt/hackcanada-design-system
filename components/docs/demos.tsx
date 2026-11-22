@@ -39,7 +39,7 @@ const board = [
 function Shell({ children, controls }: { children: React.ReactNode; controls?: React.ReactNode }) {
   return (
     <div className={frame}>
-      <div className="blueprint flex min-h-30 flex-wrap items-center justify-center gap-2 p-4 md:p-6">{children}</div>
+      <div className="blueprint flex min-h-40 flex-wrap items-center justify-center gap-3 p-4 md:p-6">{children}</div>
       {controls && <ControlBar>{controls}</ControlBar>}
     </div>
   );
@@ -47,7 +47,7 @@ function Shell({ children, controls }: { children: React.ReactNode; controls?: R
 
 function Matrix({ items, cols = 4 }: { items: [string, React.ReactNode][]; cols?: 2 | 3 | 4 }) {
   return (
-    <div className={cn("grid gap-1 rounded-md border border-border bg-surface p-1 sm:grid-cols-2", cols === 3 && "lg:grid-cols-3", cols === 4 && "lg:grid-cols-4")}>
+    <div className={cn("grid overflow-hidden rounded-md border border-border sm:grid-cols-2 [&>*]:shadow-[1px_0_0_var(--hc-border),0_1px_0_var(--hc-border)]", cols === 3 && "lg:grid-cols-3", cols === 4 && "lg:grid-cols-4")}>
       {items.map(([l, n]) => (
         <Stage key={l} label={l}>{n}</Stage>
       ))}
@@ -411,8 +411,8 @@ export function DemoThumb({ slug }: { slug: string }) {
   const s = specs[slug];
   const w = specWidth[slug] ?? 288;
   return (
-    <div aria-hidden inert className="blueprint pointer-events-none relative grid h-20 place-items-center overflow-hidden rounded-sm border border-border">
-      {s && <div className="grid shrink-0 place-items-center [&_*]:!transition-none" style={{ width: w, transform: `scale(${Math.min(0.6, 224 / w)})` }}>{s()}</div>}
+    <div aria-hidden inert className="blueprint pointer-events-none relative grid h-24 place-items-center overflow-hidden bg-bg-muted/40">
+      {s && <div className="grid shrink-0 place-items-center [&_*]:!transition-none" style={{ width: w, transform: `scale(${Math.min(0.8, 256 / w)})` }}>{s()}</div>}
     </div>
   );
 }

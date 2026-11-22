@@ -32,7 +32,7 @@ function onGrid(v: number) {
 function Readout({ label, value, grid, hug }: { label: string; value: string; grid?: boolean; hug?: boolean }) {
   return (
     <div className="flex min-w-12 flex-col gap-half">
-      <dt className="font-mono text-mono text-text-muted uppercase">{label}</dt>
+      <dt className="text-caption text-text-muted capitalize">{label}</dt>
       <dd className="flex items-center gap-half font-mono text-sm font-bold text-text tabular">
         {value}
         {hug ? (
@@ -134,15 +134,15 @@ export function Spec({
 
   return (
     <figure className="overflow-hidden rounded-md border border-border">
-      <div className="flex h-5 items-center gap-2 border-b border-border bg-surface px-2">
-        <span className="font-mono text-mono text-text-muted">{label ?? "Spec"}</span>
+      <div className="flex h-5 items-center gap-2 border-b border-border px-2">
+        <span className="text-caption font-medium text-text-muted">{label ?? "Spec"}</span>
         {z !== 1 && <span className="rounded-xs bg-spec-soft px-half font-mono text-mono text-spec-ink">{z}× zoom</span>}
         <label className="ml-auto flex cursor-pointer items-center gap-1 text-caption text-text-muted">
           <input type="checkbox" checked={on} onChange={(e) => setOn(e.target.checked)} className="accent-[var(--hc-spec)]" />
           Measurements
         </label>
       </div>
-      <div ref={wrap} className={cn("blueprint relative flex min-h-36 items-center justify-center-safe overflow-x-auto px-12 py-12", className)}>
+      <div ref={wrap} className={cn("blueprint relative flex min-h-40 items-center justify-center-safe overflow-x-auto px-12 py-12", className)}>
         <div ref={holder} className="relative shrink-0 [&>*]:max-w-none" style={{ width, ...(z !== 1 ? { transform: `scale(${z})`, margin: `${((z - 1) * realH) / 2}px ${((z - 1) * realW) / 2}px` } : {}) }}>
           {children}
         </div>
@@ -178,7 +178,7 @@ export function Spec({
         )}
       </div>
       {m && (
-        <dl className="flex flex-wrap gap-x-4 gap-y-2 border-t border-border bg-surface px-3 py-2">
+        <dl className="flex flex-wrap gap-x-4 gap-y-2 border-t border-border px-3 py-2">
           <Readout label="Width" value={`${realW}`} grid={onGrid(realW)} hug={hugWidth && !onGrid(realW)} />
           <Readout label="Height" value={`${realH}`} grid={onGrid(realH)} />
           <Readout label="Padding" value={m.pad.t === m.pad.b && m.pad.l === m.pad.r ? (m.pad.t === m.pad.l ? `${r(m.pad.t)}` : `${r(m.pad.t)} ${r(m.pad.l)}`) : `${r(m.pad.t)} ${r(m.pad.r)} ${r(m.pad.b)} ${r(m.pad.l)}`} grid={[m.pad.t, m.pad.r, m.pad.b, m.pad.l].every(onGrid)} />

@@ -2,31 +2,27 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRightIcon, MagnifyingGlassIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/hc/Button";
 import { Badge } from "@/components/hc/Badge";
 import { PointsPill } from "@/components/hc/PointsPill";
 import { Switch } from "@/components/hc/Choice";
-import { SegmentedControl } from "@/components/hc/Segmented";
+import { SegmentedControl, Tabs } from "@/components/hc/Segmented";
 import { Input } from "@/components/hc/Field";
-import { Progress } from "@/components/hc/Display";
+import { Countdown, Progress } from "@/components/hc/Display";
 import { AvatarGroup } from "@/components/hc/Avatar";
-import { ChallengeCard, ShopItemCard, demoShop } from "@/components/hc/Domain";
+import { ChallengeCard, MarketCard, ShopItemCard, demoShop } from "@/components/hc/Domain";
 import { cn } from "@/lib/utils";
 
-function Cell({ href, name, spec, className, children }: { href: string; name: string; spec: string; className?: string; children: React.ReactNode }) {
+function Tile({ href, name, kind, className, children }: { href: string; name: string; kind: string; className?: string; children: React.ReactNode }) {
   return (
-    <div className={cn("group relative flex flex-col bg-surface", className)}>
-      <div className="flex flex-1 items-center justify-center p-4">{children}</div>
-      <Link
-        href={href}
-        className="flex items-center justify-between gap-1 border-t border-border px-2 py-1 text-sm font-bold outline-none hover:text-primary-ink focus-visible:bg-primary-soft"
-      >
-        <span>{name}</span>
-        <span className="flex items-center gap-1 font-mono text-mono font-normal text-text-muted">
-          {spec}
-          <ArrowRightIcon className="size-2 transition-transform duration-200 group-hover:translate-x-half" />
-        </span>
+    <div className={cn("group flex flex-col gap-1", className)}>
+      <div className="blueprint flex min-h-30 flex-1 items-center justify-center rounded-md border border-border p-4 transition-colors duration-200 group-hover:border-border-strong">
+        {children}
+      </div>
+      <Link href={href} className="flex items-baseline justify-between gap-1 rounded-xs text-sm">
+        <span className="font-medium text-text group-hover:text-primary">{name}</span>
+        <span className="text-text-muted">{kind}</span>
       </Link>
     </div>
   );
@@ -35,57 +31,66 @@ function Cell({ href, name, spec, className, children }: { href: string; name: s
 export function Specimens() {
   const [on, setOn] = useState(true);
   const [tab, setTab] = useState("Open");
+  const [view, setView] = useState("all");
+  const [target] = useState(() => Date.now() + (19 * 60 + 42) * 60 * 1000);
   return (
-    <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-6">
-      <Cell href="/components/button" name="Button" spec="h 40 · r 8" className="md:col-span-2">
-        <div className="flex flex-wrap justify-center gap-1">
+    <div className="grid gap-x-3 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Tile href="/components/button" name="Button" kind="Actions">
+        <div className="flex flex-wrap items-center justify-center gap-1">
           <Button>Start challenge</Button>
           <Button variant="secondary">Details</Button>
         </div>
-      </Cell>
-      <Cell href="/components/points-pill" name="Points pill" spec="h 32 · r pill" className="md:col-span-2">
+      </Tile>
+      <Tile href="/components/points-pill" name="Points pill" kind="Hack Canada">
         <PointsPill value={1240} />
-      </Cell>
-      <Cell href="/components/badge" name="Badge" spec="h 24 · pad 8" className="md:col-span-2">
-        <div className="flex flex-wrap justify-center gap-1">
+      </Tile>
+      <Tile href="/components/badge" name="Badge" kind="Display">
+        <div className="flex flex-wrap items-center justify-center gap-1">
           <Badge tone="primary">Social</Badge>
           <Badge tone="gold">+40 pts</Badge>
           <Badge tone="success" dot>Done</Badge>
-          <Badge tone="danger">Only 4 left</Badge>
         </div>
-      </Cell>
-      <Cell href="/components/challenge-card" name="Challenge card" spec="w 320 · pad 24" className="md:col-span-3 md:row-span-2">
+      </Tile>
+      <Tile href="/components/challenge-card" name="Challenge card" kind="Hack Canada" className="lg:row-span-2">
         <div className="w-full max-w-40">
-          <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="in_progress" qr />
+          <ChallengeCard title="Meet a sponsor" category="Sponsor" points={25} difficulty="Easy" status="in_progress" qr />
         </div>
-      </Cell>
-      <Cell href="/components/shop-item-card" name="Shop item card" spec="w 288 · r 16" className="md:col-span-3 md:row-span-2">
-        <div className="w-full max-w-30">
-          <ShopItemCard item={demoShop[4]} balance={300} />
-        </div>
-      </Cell>
-      <Cell href="/components/segmented-control" name="Segmented control" spec="h 40 · pad 4" className="md:col-span-2">
-        <SegmentedControl label="Market filter" options={["Open", "Closed", "Mine"]} value={tab} onChange={setTab} />
-      </Cell>
-      <Cell href="/components/switch" name="Switch" spec="w 40 · h 24" className="md:col-span-2">
-        <Switch label="Sounds" checked={on} onChange={setOn} />
-      </Cell>
-      <Cell href="/components/avatar" name="Avatar group" spec="32 · overlap 8" className="md:col-span-2">
-        <AvatarGroup names={["Lucas Vu", "Maya Chen", "Sam Okafor", "Priya Nair", "Leo Tran"]} />
-      </Cell>
-      <Cell href="/components/input" name="Input" spec="h 40 · pad 16" className="md:col-span-3">
+      </Tile>
+      <Tile href="/components/segmented-control" name="Segmented control" kind="Inputs">
+        <SegmentedControl label="Filter" options={["Open", "Closed", "Mine"]} value={tab} onChange={setTab} />
+      </Tile>
+      <Tile href="/components/shop-item-card" name="Shop item card" kind="Hack Canada" className="lg:row-span-2">
         <div className="w-full max-w-36">
+          <ShopItemCard item={demoShop[4]} balance={240} />
+        </div>
+      </Tile>
+      <Tile href="/components/switch" name="Switch" kind="Inputs">
+        <Switch label="Sounds" checked={on} onChange={setOn} />
+      </Tile>
+      <Tile href="/components/input" name="Input" kind="Inputs">
+        <div className="w-full max-w-30">
           <Input label="Find a team" placeholder="Name or skill" leading={<MagnifyingGlassIcon />} />
         </div>
-      </Cell>
-      <Cell href="/components/progress" name="Progress" spec="h 8 · r pill" className="md:col-span-3">
-        <div className="flex w-full max-w-36 items-center gap-2">
-          <TrophyIcon className="size-3 shrink-0 text-gold-ink" />
-          <div className="flex-1">
-            <Progress value={5} max={8} label="5 of 8 challenges" tone="gold" />
-          </div>
+      </Tile>
+      <Tile href="/components/progress" name="Progress" kind="Feedback">
+        <div className="w-full max-w-30">
+          <Progress label="Toward Charger" value={180} max={250} tone="gold" />
         </div>
-      </Cell>
+      </Tile>
+      <Tile href="/components/countdown" name="Countdown" kind="Display">
+        <Countdown target={target} />
+      </Tile>
+      <Tile href="/components/market-card" name="Market card" kind="Hack Canada">
+        <div className="w-full max-w-40">
+          <MarketCard question="Will a team demo working hardware?" yes={62} pool={4200} closes="in 2h" />
+        </div>
+      </Tile>
+      <Tile href="/components/tabs" name="Tabs" kind="Navigation">
+        <Tabs label="Challenges" value={view} onChange={setView} tabs={[{ id: "all", label: "All", count: 8 }, { id: "open", label: "Open" }, { id: "done", label: "Done" }]} />
+      </Tile>
+      <Tile href="/components/avatar" name="Avatar group" kind="Display">
+        <AvatarGroup names={["Ada Park", "Mia Chen", "Sam Okafor", "Priya N", "Lucas Vu", "Jo Kim"]} size="md" />
+      </Tile>
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function UxLaws() {
           </Section>
         ))}
       <Section title="More laws" intro="No demo needed. Here is what each one changes.">
-        <dl className="divide-y divide-border border-y border-border">
+        <dl className="hairline-divide hairline-y">
           {laws
             .filter((l) => !l.demo)
             .map((l) => (

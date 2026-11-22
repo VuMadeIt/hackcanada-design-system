@@ -22,8 +22,8 @@ function SlotCard({ slot }: { slot: ImageSlot }) {
   const [size, setSize] = useState<string | null>(null);
   const replaced = Boolean(overrides[slot.id]);
   return (
-    <li className="flex flex-col overflow-hidden rounded-md border border-border bg-surface">
-      <div className={cn("relative grid aspect-[4/3] place-items-center border-b border-border p-3", slot.group === "Store" ? "bg-bg-muted dark:bg-[#b4c2d1]" : "blueprint")}>
+    <li className="flex flex-col overflow-hidden rounded-md hairline bg-surface">
+      <div className={cn("relative grid aspect-[4/3] place-items-center hairline-b p-3", slot.group === "Store" ? "bg-bg-muted dark:bg-[#b4c2d1]" : "blueprint")}>
         <Img
           id={slot.id}
           ref={(el) => {

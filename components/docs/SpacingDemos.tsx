@@ -10,7 +10,7 @@ export function SnapDemo() {
   const [raw, setRaw] = useState(13);
   const snapped = steps.reduce((a, b) => (Math.abs(b - raw) < Math.abs(a - raw) ? b : a));
   return (
-    <div className="grid gap-3 rounded-md border border-border bg-surface p-3 md:grid-cols-[1fr_1fr]">
+    <div className="grid gap-3 rounded-md hairline bg-surface p-3 md:grid-cols-[1fr_1fr]">
       <div className="flex flex-col gap-2">
         <label htmlFor="snap" className="font-bold">Drag to any value</label>
         <input id="snap" type="range" min={2} max={64} value={raw} onChange={(e) => setRaw(+e.target.value)} className="accent-[var(--hc-primary)]" />
@@ -40,8 +40,8 @@ export function SnapDemo() {
 export function InsideOutside() {
   const [on, setOn] = useState(true);
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
-      <button onClick={() => setOn((v) => !v)} className="self-start rounded-sm border border-border px-2 py-1 text-sm font-bold hover:border-border-strong">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
+      <button onClick={() => setOn((v) => !v)} className="self-start rounded-sm hairline px-2 py-1 text-sm font-bold hover:outline-border-strong">
         {on ? "Show equal spacing" : "Show inside < between"}
       </button>
       <div className={cn("flex flex-col transition-[gap] duration-300", on ? "gap-4" : "gap-2")}>

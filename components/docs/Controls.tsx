@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 
 export function ControlBar({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-wrap items-end gap-3 border-t border-border bg-bg-muted/60 p-2">{children}</div>;
+  return <div className="flex flex-wrap items-end gap-3 hairline-t bg-bg-muted/60 p-2">{children}</div>;
 }
 
 export function Choose<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: readonly T[]; onChange: (v: T) => void }) {

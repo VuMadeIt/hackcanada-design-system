@@ -46,7 +46,7 @@ export function HickDemo() {
     ? ["Sour Patch Kids", "LED Strips", "Screwdrivers", "Tamagotchi", "Pico", "Charger", "Stickers", "T-shirt", "Hoodie", "Mug", "Socks", "Tote"]
     : ["Snacks", "Hardware", "Merch"];
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
       <div className="flex items-center gap-1">
         <span className="text-sm font-bold">{many ? "12 choices at once" : "3 groups first"}</span>
         <Button size="sm" variant="ghost" className="ml-auto" onClick={() => setMany((m) => !m)}>Switch</Button>
@@ -72,7 +72,7 @@ export function DohertyDemo() {
     }, ms);
   };
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
       <div className="flex flex-wrap gap-1">
         <Button variant="secondary" onClick={() => run(2000, "slow")} disabled={state !== "idle"}>Slow, no feedback</Button>
         <Button onClick={() => run(300, "fast")} loading={state === "fast"} disabled={state !== "idle"}>Fast, with feedback</Button>
@@ -85,7 +85,7 @@ export function DohertyDemo() {
 export function GoalGradientDemo() {
   const [v, setV] = useState(5);
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
       <Progress label="Challenges done" value={v} max={8} tone="gold" />
       <p className="text-sm text-text-muted">{v >= 8 ? "All done. Confetti time." : `${8 - v} more for the bonus prize`}</p>
       <Button size="sm" className="self-start" onClick={() => setV((x) => Math.min(8, x + 1))}>Complete one</Button>
@@ -96,11 +96,11 @@ export function GoalGradientDemo() {
 export function MillerDemo() {
   return (
     <div className="grid gap-2 md:grid-cols-2">
-      <div className="rounded-md border border-border bg-surface p-3">
+      <div className="rounded-md hairline bg-surface p-3">
         <p className="font-mono text-mono text-text-muted">Raw</p>
         <p className="pt-1 font-mono text-xl font-bold tracking-wide">HC7Q2K9MX4</p>
       </div>
-      <div className="rounded-md border border-border bg-surface p-3">
+      <div className="rounded-md hairline bg-surface p-3">
         <p className="font-mono text-mono text-text-muted">Chunked</p>
         <p className="pt-1 font-mono text-xl font-bold tracking-wide">HC7 · Q2K · 9MX4</p>
       </div>
@@ -110,7 +110,7 @@ export function MillerDemo() {
 
 export function VonRestorffDemo() {
   return (
-    <div className="flex flex-wrap gap-1 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-wrap gap-1 rounded-md hairline bg-surface p-3">
       {["Sour Patch Kids", "LED Strips", "Charger", "Screwdrivers"].map((n, i) => (
         <span key={n} className={cn("flex h-5 items-center rounded-sm px-2 text-sm font-bold", i === 2 ? "bg-gold text-ink" : "bg-bg-muted text-text-secondary")}>
           {n}

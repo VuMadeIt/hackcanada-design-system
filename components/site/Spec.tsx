@@ -135,7 +135,7 @@ export function Spec({
   const realH = b ? r(b.h / z) : 0;
 
   return (
-    <figure className="overflow-hidden rounded-md border border-border">
+    <figure className="overflow-hidden rounded-md hairline">
       <div className="flex h-5 items-center gap-2 border-b border-border px-2">
         <span className="text-caption font-medium text-text-muted">{label ?? "Spec"}</span>
         {z !== 1 && <span className="rounded-xs bg-spec-soft px-half font-mono text-mono text-spec-ink">{z}× zoom</span>}
@@ -180,7 +180,7 @@ export function Spec({
         )}
       </div>
       {m && (
-        <dl className="flex flex-wrap gap-x-4 gap-y-2 border-t border-border px-3 py-2">
+        <dl className="flex flex-wrap gap-x-4 gap-y-2 hairline-t px-3 py-2">
           <Readout label="Width" value={`${realW}`} grid={onGrid(realW)} hug={hugWidth && !onGrid(realW)} />
           <Readout label="Height" value={`${realH}`} grid={onGrid(realH)} />
           <Readout label="Padding" value={m.pad.t === m.pad.b && m.pad.l === m.pad.r ? (m.pad.t === m.pad.l ? `${r(m.pad.t)}` : `${r(m.pad.t)} ${r(m.pad.l)}`) : `${r(m.pad.t)} ${r(m.pad.r)} ${r(m.pad.b)} ${r(m.pad.l)}`} grid={[m.pad.t, m.pad.r, m.pad.b, m.pad.l].every(onGrid)} />

@@ -13,7 +13,7 @@ export function ExampleTabs({ preview, code, themes, className }: { preview: Rea
   const id = useId();
   return (
     <div className={cn("pb-3", className)}>
-      <div role="tablist" aria-label="Example" className="flex h-5 items-end gap-3 border-b border-border">
+      <div role="tablist" aria-label="Example" className="flex h-5 items-end gap-3 hairline-b">
         {keys.map((t) => (
           <button
             key={t}

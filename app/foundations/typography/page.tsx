@@ -27,7 +27,7 @@ export default function Typography() {
       />
 
       <Section title="Satoshi" intro="A geometric sans with a friendly, slightly rounded feel. It's the face in the Hack Canada Figma file, and it holds up from 11 px captions to 56 px headlines.">
-        <div className="blueprint flex flex-col gap-2 rounded-md border border-border p-4">
+        <div className="blueprint flex flex-col gap-2 rounded-md hairline p-4">
           <p className="text-6xl font-black tracking-tight">Aa Bb Cc 0123</p>
           <p className="text-2xl break-all">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</p>
           <div className="flex flex-wrap gap-3 pt-1">
@@ -42,9 +42,9 @@ export default function Typography() {
       </Section>
 
       <Section title="The scale" intro="Sizes step up by about 1.25. Line heights are fixed numbers, not ratios, so they always land on the grid.">
-        <div className="overflow-hidden rounded-md border border-border bg-surface">
+        <div className="overflow-hidden rounded-md hairline bg-surface">
           {scale.map(([name, cls, size, weight, track, use]) => (
-            <div key={name} className="grid items-baseline gap-2 border-b border-border px-3 py-2 last:border-b-0 md:grid-cols-[160px_1fr_200px]">
+            <div key={name} className="grid items-baseline gap-2 hairline-b px-3 py-2 last:border-b-0 md:grid-cols-[160px_1fr_200px]">
               <div className="flex flex-col">
                 <span className="font-bold">{name}</span>
                 <span className="font-mono text-mono text-text-muted">{size} · {weight} · {track}</span>
@@ -58,7 +58,7 @@ export default function Typography() {
 
       <Section title="Line height on the grid" intro="Each line box is a multiple of 4, and most are a multiple of 8. Stack them and the baselines fall on the same rhythm as the spacing.">
         <div
-          className="rounded-md border border-border bg-surface p-3"
+          className="rounded-md hairline bg-surface p-3"
         >
           <p className="baseline-rule pb-1 text-3xl font-bold tracking-tight" style={{ "--rule-step": "40px", "--rule-at": "31px" } as React.CSSProperties}>Meet a sponsor</p>
           <p className="baseline-rule max-w-content text-base text-text-secondary" style={{ "--rule-step": "24px", "--rule-at": "17px" } as React.CSSProperties}>

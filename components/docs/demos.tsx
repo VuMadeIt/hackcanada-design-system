@@ -23,7 +23,7 @@ import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 import { Choose, ControlBar, Stage, TextControl, Toggle } from "./Controls";
 
-const frame = "overflow-hidden rounded-md border border-border";
+const frame = "overflow-hidden rounded-md hairline";
 const steps: Step[] = [
   { title: "Start the challenge", body: "Your QR code unlocks.", state: "done" },
   { title: "Find a volunteer", body: "They're in the main hall.", state: "current" },
@@ -48,7 +48,7 @@ function Shell({ children, controls }: { children: React.ReactNode; controls?: R
 function Matrix({ items, cols = 4 }: { items: [string, React.ReactNode][]; cols?: 2 | 3 | 4 }) {
   return (
     <div className="@container">
-      <div className={cn("grid overflow-hidden rounded-md border border-border @min-[480px]:grid-cols-2 [&>*]:shadow-[1px_0_0_var(--hc-border),0_1px_0_var(--hc-border)]", cols === 3 && "@min-[800px]:grid-cols-3", cols === 4 && "@min-[960px]:grid-cols-4")}>
+      <div className={cn("grid overflow-hidden rounded-md hairline @min-[480px]:grid-cols-2 [&>*]:shadow-[1px_0_0_var(--hc-border),0_1px_0_var(--hc-border)]", cols === 3 && "@min-[800px]:grid-cols-3", cols === 4 && "@min-[960px]:grid-cols-4")}>
         {items.map(([l, n]) => (
           <Stage key={l} label={l}>{n}</Stage>
         ))}
@@ -195,7 +195,7 @@ function SkeletonPlay() {
   const [loading, setLoading] = useState(true);
   return (
     <Shell controls={<Toggle label="loading" value={loading} onChange={setLoading} />}>
-      <div aria-busy={loading} className="flex w-full max-w-40 items-center gap-2 rounded-md border border-border bg-surface p-3">
+      <div aria-busy={loading} className="flex w-full max-w-40 items-center gap-2 rounded-md hairline bg-surface p-3">
         {loading ? <><Skeleton className="size-5 rounded-pill" /><div className="flex flex-1 flex-col gap-1"><Skeleton className="h-2 w-3/4" /><Skeleton className="h-2 w-1/2" /></div></> : <><Avatar name="Ada Park" /><div><p className="font-bold">Ada Park</p><p className="text-sm text-text-muted">Team Maple · 1,240 pts</p></div></>}
       </div>
     </Shell>
@@ -205,12 +205,12 @@ function SkeletonPlay() {
 function TableDemo() {
   const rows = [["Sat 10:12", "Meet a sponsor", "+25"], ["Sat 11:40", "Bet won · First demo", "+48"], ["Sat 13:05", "Redeemed LED Strips", "−60"]];
   return (
-    <div className="w-full max-w-60 overflow-hidden rounded-md border border-border bg-surface">
+    <div className="w-full max-w-60 overflow-hidden rounded-md hairline bg-surface">
       <table className="w-full text-sm">
         <thead className="bg-bg-muted text-left text-caption font-bold text-text-muted uppercase">
           <tr><th scope="col" className="h-5 px-2">Time</th><th scope="col" className="px-2">Reason</th><th scope="col" className="px-2 text-right">Points</th></tr>
         </thead>
-        <tbody className="divide-y divide-border">
+        <tbody className="hairline-divide">
           {rows.map((r) => (
             <tr key={r[0]} className="h-6 hover:bg-bg-muted/60">
               <td className="px-2 text-text-muted tabular">{r[0]}</td><td className="px-2 font-medium">{r[1]}</td>
@@ -286,7 +286,7 @@ const specs: Record<string, () => React.ReactNode> = {
   accordion: () => <div className="w-48"><Accordion items={[{ q: "Can I trade points?", a: "No." }]} /></div>,
   dialog: () => <div className="w-60 rounded-lg bg-surface p-4 shadow-float"><p className="text-xl font-bold">Redeem LED Strips?</p><div className="flex justify-end gap-1 pt-4"><Button variant="secondary">Cancel</Button><Button>Redeem</Button></div></div>,
   tooltip: () => <span className="rounded-sm bg-ink px-1 py-half text-caption font-medium text-white">Switch to dark mode</span>,
-  toast: () => <div className="flex w-40 items-start gap-1 rounded-md border border-border bg-surface-raised p-2 shadow-float"><SparklesIcon className="size-2 text-success" /><div><p className="text-sm font-bold">+25 pts</p><p className="text-sm text-text-muted">Meet a sponsor</p></div></div>,
+  toast: () => <div className="flex w-40 items-start gap-1 rounded-md hairline bg-surface-raised p-2 shadow-float"><SparklesIcon className="size-2 text-success" /><div><p className="text-sm font-bold">+25 pts</p><p className="text-sm text-text-muted">Meet a sponsor</p></div></div>,
   alert: () => <div className="w-48"><Alert tone="warning" title="Applications close Friday">Finish yours by 11:59 pm.</Alert></div>,
   progress: () => <div className="w-40"><Progress label="Toward Charger" value={180} max={250} /></div>,
   timeline: () => <div className="w-40"><Timeline steps={steps.slice(0, 2)} /></div>,
@@ -333,7 +333,7 @@ const variants: Record<string, () => React.ReactNode> = {
   badge: () => <Matrix items={(["neutral", "primary", "gold", "success", "warning", "danger"] as const).map((t) => [t, <Badge key={t} tone={t} dot>{t[0].toUpperCase() + t.slice(1)}</Badge>])} cols={3} />,
   avatar: () => <Matrix items={(["xs", "sm", "md", "lg", "xl"] as const).map((s) => [s, <Avatar key={s} name="Mia Chen" size={s} />])} cols={3} />,
   alert: () => <div className="grid gap-1 md:grid-cols-2">{(["info", "success", "warning", "danger"] as const).map((t) => <Alert key={t} tone={t} title={{ info: "Doors open at 9", success: "You're in", warning: "Store closes soon", danger: "Couldn't place bet" }[t]}>A short line that says what to do next.</Alert>)}</div>,
-  progress: () => <div className="grid gap-3 rounded-md border border-border bg-surface p-3 md:grid-cols-3">{(["primary", "gold", "success"] as const).map((t) => <Progress key={t} tone={t} label={t} value={64} />)}</div>,
+  progress: () => <div className="grid gap-3 rounded-md hairline bg-surface p-3 md:grid-cols-3">{(["primary", "gold", "success"] as const).map((t) => <Progress key={t} tone={t} label={t} value={64} />)}</div>,
   switch: () => <Matrix items={[["md · 40×24", <Switch key="a" label="Sound" checked onChange={() => {}} />], ["sm · 32×16", <Switch key="b" label="Sound" size="sm" checked onChange={() => {}} />]]} cols={2} />,
   "shop-item-card": () => <Matrix items={[["Available", <ShopItemCard key="a" item={demoShop[4]} balance={500} />], ["Low stock", <ShopItemCard key="b" item={demoShop[1]} />], ["Can't afford", <ShopItemCard key="c" item={demoShop[3]} balance={100} />], ["Sold out", <ShopItemCard key="d" item={demoShop[2]} />]]} />,
   "challenge-card": () => <Matrix items={[["Not started", <ChallengeCard key="a" title="Meet a sponsor" category="Sponsor" points={25} difficulty="Easy" status="not_started" qr />], ["In progress", <ChallengeCard key="b" title="Post on socials" category="Social" points={40} difficulty="Medium" status="in_progress" />], ["Completed", <ChallengeCard key="c" title="Ship a demo" category="Build" points={60} difficulty="Hard" status="completed" />]]} cols={3} />,
@@ -349,7 +349,7 @@ export function DemoThemes({ slug }: { slug: string }) {
   return (
     <div className="flex flex-col gap-2">
       {(["light", "dark"] as const).map((t) => (
-        <section key={t} data-theme={t} aria-label={`${t} theme`} className="flex min-w-0 flex-col gap-2 rounded-lg border border-border bg-bg p-2 text-text md:p-3">
+        <section key={t} data-theme={t} aria-label={`${t} theme`} className="flex min-w-0 flex-col gap-2 rounded-lg hairline bg-bg p-2 text-text md:p-3">
           <p className="text-sm font-medium capitalize text-text-muted">{t}</p>
           <div className="min-w-0 overflow-x-auto">{variants[slug] ? <DemoVariants slug={slug} /> : <DemoStates slug={slug} />}</div>
         </section>
@@ -402,7 +402,7 @@ const states: Record<string, () => React.ReactNode> = {
 export function DemoStates({ slug }: { slug: string }) {
   const s = states[slug];
   if (s) return <>{s()}</>;
-  return <div className={frame}><div className="blueprint flex flex-wrap items-center justify-center gap-2 p-4">{specs[slug]?.()}</div><p className="border-t border-border bg-surface p-2 text-sm text-text-muted">Default state shown. Hover and focus use the shared tokens: border-strong on hover, a 2 px primary focus ring, and 40% opacity when disabled.</p></div>;
+  return <div className={frame}><div className="blueprint flex flex-wrap items-center justify-center gap-2 p-4">{specs[slug]?.()}</div><p className="hairline-t bg-surface p-2 text-sm text-text-muted">Default state shown. Hover and focus use the shared tokens: border-strong on hover, a 2 px primary focus ring, and 40% opacity when disabled.</p></div>;
 }
 
 /* ---------- Do / Don't ---------- */

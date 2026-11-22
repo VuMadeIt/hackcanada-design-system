@@ -47,7 +47,7 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
             role="dialog"
             aria-modal="true"
             aria-label="Search"
-            className="w-full max-w-60 overflow-hidden rounded-md border border-border bg-surface shadow-float"
+            className="w-full max-w-60 overflow-hidden rounded-md hairline bg-surface shadow-float"
             initial={{ opacity: 0, y: 8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -78,7 +78,7 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
                 className="h-full flex-1 bg-transparent text-base outline-none placeholder:text-text-muted"
                 aria-label="Search"
               />
-              <kbd className="rounded-xs border border-border px-half font-mono text-mono text-text-muted">Esc</kbd>
+              <kbd className="rounded-xs hairline px-half font-mono text-mono text-text-muted">Esc</kbd>
             </div>
             <ul className="max-h-48 overflow-y-auto p-1" role="listbox">
               {results.length === 0 && <li className="p-2 text-sm text-text-muted">Nothing matches “{q}”.</li>}

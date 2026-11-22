@@ -104,7 +104,7 @@ export function Callout({
   const s = calloutStyles[tone];
   const Icon = s.icon;
   return (
-    <div className="my-3 flex max-w-content gap-2 rounded-md border border-border p-2">
+    <div className="my-3 flex max-w-content gap-2 rounded-md hairline p-2">
       <Icon className={cn("mt-half size-2 shrink-0", s.ink)} />
       <div className="text-sm">
         <p className="font-bold text-text">{title}</p>
@@ -132,7 +132,7 @@ export function DoDont({
         { ok: false, ex: dontExample, text: dontText },
       ].map(({ ok, ex, text }) => (
         <figure key={String(ok)}>
-          <div className="blueprint grid min-h-24 place-items-center rounded-md border border-border p-3">{ex}</div>
+          <div className="blueprint grid min-h-24 place-items-center rounded-md hairline p-3">{ex}</div>
           <figcaption className="flex gap-1 pt-2 text-sm">
             <span className={cn("grid size-2 shrink-0 translate-y-half place-items-center rounded-pill text-white", ok ? "bg-success" : "bg-danger")}>
               {ok ? <CheckIcon className="size-[12px]" /> : <XMarkIcon className="size-[12px]" />}
@@ -161,7 +161,7 @@ export function Preview({
 }) {
   return (
     <figure className="pb-3">
-      <div className={cn(plain ? "bg-bg" : "blueprint", "flex flex-wrap items-center justify-center gap-2 rounded-md border border-border p-4 md:p-6", className)}>
+      <div className={cn(plain ? "bg-bg" : "blueprint", "flex flex-wrap items-center justify-center gap-2 rounded-md hairline p-4 md:p-6", className)}>
         {children}
       </div>
       {label && <figcaption className="pt-1 text-sm text-text-muted">{label}</figcaption>}
@@ -179,7 +179,7 @@ export function Table({
   mono?: number[];
 }) {
   return (
-    <div className="mt-3 mb-3 overflow-x-auto rounded-md border border-border first:mt-0">
+    <div className="mt-3 mb-3 overflow-x-auto rounded-md hairline first:mt-0">
       <table className="w-full min-w-60 border-collapse text-left text-sm">
         <thead>
           <tr className="bg-bg-muted">
@@ -192,7 +192,7 @@ export function Table({
         </thead>
         <tbody>
           {rows.map((r, i) => (
-            <tr key={i} className="border-t border-border align-top">
+            <tr key={i} className="hairline-t align-top">
               {r.map((c, j) => (
                 <td key={j} className={cn("px-2 py-1 text-text-secondary", mono.includes(j) && "font-mono text-caption whitespace-nowrap text-text")}>
                   {c}

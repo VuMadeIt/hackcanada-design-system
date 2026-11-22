@@ -18,13 +18,13 @@ export default function DarkMode() {
       />
 
       <Section title="Side by side">
-        <div className="grid overflow-hidden rounded-md border border-border md:grid-cols-2">
+        <div className="grid overflow-hidden rounded-md hairline md:grid-cols-2">
           {(["light", "dark"] as const).map((t) => {
             const p = palette[t];
             return (
               <div key={t} className="flex flex-col gap-2 p-3" style={{ background: p.bg, color: p.text }}>
                 <span className="font-mono text-mono" style={{ color: p["text-muted"] }}>{t}</span>
-                <div className="flex flex-col gap-1 rounded-md p-3" style={{ background: p.surface, border: `1px solid ${p.border}` }}>
+                <div className="flex flex-col gap-1 rounded-md p-3" style={{ background: p.surface, outline: `1px solid ${p.border}`, outlineOffset: -1 }}>
                   <p className="text-xl font-semibold" style={{ color: p.text }}>Meet a sponsor</p>
                   <p className="text-sm" style={{ color: p["text-secondary"] }}>Get scanned at any booth for points.</p>
                   <div className="flex items-center gap-1 pt-1">

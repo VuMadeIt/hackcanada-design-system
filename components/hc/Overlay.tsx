@@ -10,7 +10,7 @@ export function Accordion({ items, defaultOpen }: { items: { q: string; a: React
   const [open, setOpen] = useState<number | null>(defaultOpen ?? null);
   const id = useId();
   return (
-    <div className="w-full divide-y divide-border rounded-md border border-border bg-surface">
+    <div className="w-full hairline-divide rounded-md hairline bg-surface">
       {items.map((it, i) => {
         const on = open === i;
         return (
@@ -209,7 +209,7 @@ export function ToastStack({ toasts, onDismiss }: { toasts: ToastItem[]; onDismi
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, x: 32 }}
               transition={{ type: "spring", stiffness: 500, damping: 40 }}
-              className="pointer-events-auto flex items-start gap-1 rounded-md border border-border bg-surface-raised p-2 shadow-float"
+              className="pointer-events-auto flex items-start gap-1 rounded-md hairline bg-surface-raised p-2 shadow-float"
             >
               <Icon className={cn("mt-half size-2 shrink-0", t.tone === "success" ? "text-success" : t.tone === "danger" ? "text-danger" : "text-primary")} />
               <div className="flex-1">

@@ -27,7 +27,7 @@ export default function GettingStarted() {
       </Section>
 
       <Section title="The three rules" intro="If you remember nothing else, remember these.">
-        <ol className="flex flex-col divide-y divide-border border-y border-border">
+        <ol className="flex flex-col hairline-divide hairline-y">
           {[
             ["Everything is a multiple of 8", "Spacing, sizes and line heights use 8, 16, 24, 32 and so on. 4 is the only half step, for tight spots inside a component."],
             ["Blue acts, gold rewards", "Primary blue means you can do something. Gold only ever means points. Red is only for errors and destructive actions."],

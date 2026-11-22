@@ -18,7 +18,7 @@ export default function Iconography() {
       />
 
       <Section title="Sizes" intro="Three sizes, all on the grid. The icon sits in a box of the same size, so it lines up with text and other icons.">
-        <div className="blueprint grid gap-4 rounded-md border border-border p-4 sm:grid-cols-3">
+        <div className="blueprint grid gap-4 rounded-md hairline p-4 sm:grid-cols-3">
           {[
             [16, "size-2", "20 solid set. Inline with 14 px text, inputs."],
             [24, "size-3", "24 outline set. Default: nav, buttons, cards."],
@@ -64,7 +64,7 @@ export default function Iconography() {
           dontText="Filled and outline mixed, a colored icon on a colored tile on a card."
           doExample={<Button variant="secondary" leading={<BellIcon />}>Notify me</Button>}
           dontExample={
-            <span className="flex items-center gap-1 rounded-md border border-border p-1">
+            <span className="flex items-center gap-1 rounded-md hairline p-1">
               <span className="grid size-6 place-items-center rounded-sm bg-success-soft"><BellIcon className="size-3 text-success" /></span>
               <span className="grid size-6 place-items-center rounded-sm bg-gold-soft text-xl">🔔</span>
             </span>

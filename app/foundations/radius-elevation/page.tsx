@@ -55,8 +55,8 @@ export default function RadiusElevation() {
       <Section title="Elevation" intro="Three levels. In light mode, height is a soft shadow. In dark mode shadows barely show, so higher surfaces are also lighter.">
         <div className="grid gap-3 md:grid-cols-3">
           {[
-            ["0 · Flat", "border border-border bg-surface", "Cards that sit in the page. Border only."],
-            ["1 · Card", "bg-surface shadow-card border border-border", "Cards you can click, sticky bars."],
+            ["0 · Flat", "hairline bg-surface", "Cards that sit in the page. Border only."],
+            ["1 · Card", "bg-surface shadow-card hairline", "Cards you can click, sticky bars."],
             ["2 · Float", "bg-surface-raised shadow-float", "Dialogs, menus, toasts, tooltips."],
           ].map(([t, cls, use]) => (
             <div key={t} className="flex flex-col gap-2 rounded-md bg-bg-muted p-3">

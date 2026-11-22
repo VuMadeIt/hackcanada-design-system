@@ -12,7 +12,7 @@ const bps = [
 function Frame({ b }: { b: (typeof bps)[number] }) {
   return (
     <figure className="flex flex-col gap-1">
-      <div className="relative h-20 overflow-hidden rounded-md border border-border bg-surface">
+      <div className="relative h-20 overflow-hidden rounded-md hairline bg-surface">
         <div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${b.cols}, 1fr)`, columnGap: `${(b.gutter / b.w) * 100}%`, padding: `0 ${(b.margin / b.w) * 100}%` }}>
           {Array.from({ length: b.cols }).map((_, i) => <span key={i} className="bg-primary/10" />)}
         </div>
@@ -57,7 +57,7 @@ export default function GridPage() {
       </Section>
 
       <Section title="The dashboard shell" intro="The frame every page sits in.">
-        <div className="blueprint overflow-hidden rounded-md border border-border">
+        <div className="blueprint overflow-hidden rounded-md hairline">
           <div className="grid h-40 grid-cols-[64px_1fr] md:grid-cols-[128px_1fr]">
             <div className="flex flex-col gap-1 border-r border-border bg-surface p-1">
               <span className="text-caption text-text-muted">256</span>
@@ -79,7 +79,7 @@ export default function GridPage() {
       </Section>
 
       <Section title="Common spans" intro="Desktop column counts for the layouts we use most.">
-        <div className="flex flex-col gap-1 rounded-md border border-border bg-surface p-2">
+        <div className="flex flex-col gap-1 rounded-md hairline bg-surface p-2">
           {[[12], [6, 6], [4, 4, 4], [3, 3, 3, 3], [8, 4], [9, 3]].map((row, i) => (
             <div key={i} className="grid grid-cols-12 gap-1">
               {row.map((s, j) => (

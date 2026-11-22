@@ -17,7 +17,7 @@ export default function ChallengeFlow() {
         </div>
       </Section>
       <Section title="Steps">
-        <div className="max-w-prose rounded-md border border-border bg-surface p-3">
+        <div className="max-w-prose rounded-md hairline bg-surface p-3">
           <Timeline
             steps={[
               { title: "Start the challenge", body: "Press Start. The card moves to In progress and your QR code unlocks.", state: "done" },

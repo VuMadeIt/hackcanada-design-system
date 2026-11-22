@@ -72,7 +72,7 @@ export default function Rules() {
               <h2 id={g.title} data-toc={g.title} className="text-xl font-bold tracking-tight">{g.title}</h2>
               <Link href={g.href} className="text-sm font-medium text-text-muted hover:text-text">Details</Link>
             </div>
-            <ul className="divide-y divide-border border-y border-border">
+            <ul className="hairline-divide hairline-y">
               {g.rules.map(([code, text]) => (
                 <li key={code} id={code.toLowerCase()} className="flex gap-3 py-2">
                   <span className="w-4 shrink-0 font-mono text-sm text-text-muted">{code}</span>

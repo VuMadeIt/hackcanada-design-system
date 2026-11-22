@@ -129,7 +129,7 @@ export default function Color() {
 
       {groups.map((g) => (
         <Section key={g.title} title={g.title} intro={g.intro}>
-          <ul className="divide-y divide-border border-y border-border">
+          <ul className="hairline-divide hairline-y">
             {g.items.map((s) => <Swatch key={s.token} s={s} />)}
           </ul>
         </Section>

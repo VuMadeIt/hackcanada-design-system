@@ -10,7 +10,7 @@ export function Card({
   return (
     <Tag
       className={cn(
-        "flex flex-col gap-2 rounded-md border border-border bg-surface p-3 shadow-card",
+        "flex flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-card",
         interactive &&
           "cursor-pointer transition-[transform,box-shadow,border-color] duration-200 ease-standard hover:-translate-y-half hover:border-border-strong hover:shadow-float",
         className,

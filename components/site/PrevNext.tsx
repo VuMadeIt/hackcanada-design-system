@@ -13,7 +13,7 @@ export function PrevNext() {
   const prev = flatNav[i - 1];
   const next = flatNav[i + 1];
   return (
-    <nav aria-label="Pages" className="mt-12 flex items-center justify-between gap-2 border-t border-border pt-3">
+    <nav aria-label="Pages" className="mt-12 flex items-center justify-between gap-2 hairline-t pt-3">
       {prev ? (
         <Link href={prev.href} className="group flex flex-col gap-half">
           <span className="flex items-center gap-1 text-caption text-text-muted">

@@ -32,7 +32,7 @@ export function EasingDemo() {
   const [run, setRun] = useState(0);
   const reduce = useReducedMotion();
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
       <button onClick={() => setRun((r) => r + 1)} className="flex h-4 items-center gap-1 self-start rounded-sm border border-border px-2 text-sm font-bold hover:border-border-strong">
         <ArrowPathIcon className="size-2" /> Replay
       </button>
@@ -63,7 +63,7 @@ export function EasingDemo() {
 export function DurationDemo() {
   const [open, setOpen] = useState(false);
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
       <button onClick={() => setOpen((o) => !o)} className="h-4 self-start rounded-sm bg-primary px-2 text-sm font-bold text-on-primary">{open ? "Reset" : "Play all"}</button>
       {durations.map(([ms, name, use]) => (
         <div key={ms} className="grid grid-cols-[112px_1fr] items-center gap-2">
@@ -83,7 +83,7 @@ export function DurationDemo() {
 export function SpringDemo() {
   const [on, setOn] = useState(false);
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+    <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
       <button onClick={() => setOn((o) => !o)} className="h-4 self-start rounded-sm border border-border px-2 text-sm font-bold">Toggle</button>
       {[
         ["Switch thumb", 700, 40],

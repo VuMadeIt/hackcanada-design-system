@@ -30,12 +30,12 @@ export default function Accessibility() {
 
       <Section title="Operable">
         <Grid cols={2}>
-          <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+          <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
             <p className="font-bold">Focus ring</p>
             <p className="text-sm text-text-secondary">Tab to these. 2 px of background, then 2 px of primary, so it shows on any surface.</p>
             <div className="flex gap-1"><Button>Primary</Button><Button variant="secondary">Secondary</Button></div>
           </div>
-          <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+          <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
             <p className="font-bold">Touch target</p>
             <p className="text-sm text-text-secondary">A 24 px icon gets a 48 px hit area on phones.</p>
             <span className="relative grid size-6 place-items-center rounded-sm outline outline-1 outline-dashed outline-spec">

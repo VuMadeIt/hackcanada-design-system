@@ -27,7 +27,7 @@ type Meta = { name: string; trigger: string; token: string; source: "Hack Canada
 function Micro({ name, trigger, token, source, children, onReplay, wide }: Meta) {
   return (
     <li className={cn("group flex flex-col gap-1", wide && "md:col-span-2")}>
-      <div className="blueprint relative grid min-h-30 flex-1 place-items-center overflow-hidden rounded-md border border-border p-3">
+      <div className="blueprint relative grid min-h-30 flex-1 place-items-center overflow-hidden rounded-md hairline p-3">
         {children}
         {onReplay && (
           <button onClick={onReplay} aria-label={`Replay ${name}`} className="absolute top-1 right-1 grid size-4 place-items-center rounded-sm text-text-muted hover:bg-bg-muted hover:text-text focus-visible:shadow-focus focus-visible:outline-none">
@@ -164,7 +164,7 @@ function CountdownDemo() {
 
 function TrailDemo() {
   return (
-    <div className="relative flex w-full max-w-40 flex-col gap-half overflow-hidden rounded-md border border-border bg-surface p-2">
+    <div className="relative flex w-full max-w-40 flex-col gap-half overflow-hidden rounded-md hairline bg-surface p-2">
       <BorderTrail className="bg-primary" size={64} />
       <span className="font-mono text-mono text-primary">In progress</span>
       <p className="font-bold">Meet a sponsor</p>
@@ -186,7 +186,7 @@ function MagneticDemo() {
 function TiltDemo() {
   return (
     <Tilt rotationFactor={8} isRevese className="w-full max-w-30">
-      <div className="overflow-hidden rounded-md border border-border bg-surface shadow-float">
+      <div className="overflow-hidden rounded-md hairline bg-surface shadow-float">
         <Img id="games.timber" alt="" className="aspect-[3/2] w-full" />
         <p className="p-1 text-sm font-bold">Timber Tycoon</p>
       </div>
@@ -249,7 +249,7 @@ function PanelDemo() {
 function BlurDemo() {
   return (
     <div className="relative h-24 w-full max-w-40 overflow-hidden rounded-md border border-border bg-surface">
-      <ul className="flex flex-col divide-y divide-border">
+      <ul className="flex flex-col hairline-divide">
         {["1 · Team Maple", "2 · Byte Beavers", "3 · Moose Mode", "4 · Loonie Labs", "5 · Poutine Stack", "6 · Northern Bits"].map((n) => (
           <li key={n} className="h-4 px-2 text-sm leading-[32px]">{n}</li>
         ))}

@@ -41,9 +41,9 @@ export default function Spacing() {
       </Section>
 
       <Section title="The scale" intro="Bars are drawn at real size.">
-        <div className="overflow-hidden rounded-md border border-border bg-surface">
+        <div className="overflow-hidden rounded-md hairline bg-surface">
           {scale.map(([t, px, use]) => (
-            <div key={t} className="grid items-center gap-2 border-b border-border px-3 py-1 last:border-b-0 md:grid-cols-[96px_64px_1fr_280px]">
+            <div key={t} className="grid items-center gap-2 hairline-b px-3 py-1 last:border-b-0 md:grid-cols-[96px_64px_1fr_280px]">
               <span className="font-mono text-mono font-bold">spacing-{t}</span>
               <span className="font-mono text-mono text-text-muted">{px} px</span>
               <span className="h-2 rounded-xs bg-primary" style={{ width: px }} />

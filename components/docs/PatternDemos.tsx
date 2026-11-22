@@ -27,7 +27,7 @@ export function FormDemo() {
   const bad = Object.values(errs).some(Boolean);
   if (done)
     return (
-      <div className="flex flex-col items-start gap-2 rounded-md border border-border bg-surface p-4">
+      <div className="flex flex-col items-start gap-2 rounded-md hairline bg-surface p-4">
         <CheckCircleIcon className="size-4 text-success" />
         <p className="text-xl font-bold">{team} is ready</p>
         <p className="text-sm text-text-secondary">Share the invite code with your teammates.</p>
@@ -42,7 +42,7 @@ export function FormDemo() {
         setTried(true);
         if (!bad) setDone(true);
       }}
-      className="flex max-w-prose flex-col gap-3 rounded-md border border-border bg-surface p-4"
+      className="flex max-w-prose flex-col gap-3 rounded-md hairline bg-surface p-4"
     >
       <div>
         <p className="text-xl font-semibold">Start a team</p>
@@ -60,7 +60,7 @@ export function FormDemo() {
         <Checkbox label="I agree to the Hack Canada rules" checked={rules} onChange={setRules} />
         {tried && errs.rules && <p className="pt-half pl-4 text-caption text-danger">{errs.rules}</p>}
       </div>
-      <div className="flex justify-end gap-1 border-t border-border pt-3">
+      <div className="flex justify-end gap-1 hairline-t pt-3">
         <Button type="button" variant="ghost">Cancel</Button>
         <Button type="submit">Create team</Button>
       </div>
@@ -77,7 +77,7 @@ export function StatesDemo() {
           <button key={k} role="radio" aria-checked={s === k} onClick={() => setS(k)} className={cn("h-4 rounded-xs px-2 text-sm font-bold capitalize", s === k ? "bg-surface shadow-card" : "text-text-muted")}>{k}</button>
         ))}
       </div>
-      <div className="grid min-h-48 place-items-center rounded-md border border-border bg-surface p-3">
+      <div className="grid min-h-48 place-items-center rounded-md hairline bg-surface p-3">
         <AnimatePresence mode="wait">
           <motion.div key={s} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="w-full">
             {s === "loading" && (
@@ -120,7 +120,7 @@ export function RedeemFlow() {
   return (
     <div className="grid gap-3 md:grid-cols-[288px_1fr]">
       <ShopItemCard item={item} balance={bal} onRedeem={() => setStep(1)} />
-      <div className="flex flex-col gap-2 rounded-md border border-border bg-surface p-3">
+      <div className="flex flex-col gap-2 rounded-md hairline bg-surface p-3">
         <ol className="flex gap-1 font-mono text-mono">
           {["Choose", "Confirm", "Pick up"].map((t, i) => (
             <li key={t} className={cn("flex h-3 items-center rounded-pill px-1", i <= step ? "bg-primary-soft text-primary-ink" : "bg-bg-muted text-text-muted")}>{i + 1} · {t}</li>
@@ -133,7 +133,7 @@ export function RedeemFlow() {
             <dl className="grid grid-cols-2 gap-y-1 text-sm">
               <dt className="text-text-muted">Balance now</dt><dd className="text-right font-bold tabular">{bal} pts</dd>
               <dt className="text-text-muted">Cost</dt><dd className="text-right font-bold tabular">−{item.price} pts</dd>
-              <dt className="border-t border-border pt-1 text-text-muted">After</dt><dd className="border-t border-border pt-1 text-right font-bold tabular">{bal - item.price} pts</dd>
+              <dt className="hairline-t pt-1 text-text-muted">After</dt><dd className="hairline-t pt-1 text-right font-bold tabular">{bal - item.price} pts</dd>
             </dl>
             <div className="flex justify-end gap-1">
               <Button variant="ghost" onClick={() => setStep(0)}>Cancel</Button>

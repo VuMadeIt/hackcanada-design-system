@@ -9,7 +9,7 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="mt-12 flex flex-col gap-6 border-t border-border pt-6 md:flex-row md:justify-between">
+    <footer className="mt-12 flex flex-col gap-6 hairline-t pt-6 md:flex-row md:justify-between">
       <div className="flex max-w-30 flex-col gap-1">
         <Link href="/" className="flex items-center gap-1 rounded-sm">
           <Img id="brand.logo" alt="" className="size-4" />

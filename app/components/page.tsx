@@ -11,7 +11,7 @@ const order = ["Actions", "Inputs", "Navigation", "Display", "Feedback", "Overla
 export default function ComponentsIndex() {
   return (
     <div>
-      <header className="flex flex-col items-center gap-2 border-b border-border pt-6 pb-8 text-center">
+      <header className="flex flex-col items-center gap-2 hairline-b pt-6 pb-8 text-center">
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Browse the library</h1>
         <p className="max-w-prose text-base text-text-secondary">
           Every Hack Canada component, live and measured, with examples for each variant and state.

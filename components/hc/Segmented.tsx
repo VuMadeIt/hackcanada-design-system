@@ -54,7 +54,7 @@ export function Tabs({
 }) {
   const id = useId();
   return (
-    <div role="tablist" aria-label={label} className="flex gap-3 border-b border-border">
+    <div role="tablist" aria-label={label} className="flex gap-3 hairline-b">
       {tabs.map((t) => {
         const on = t.id === value;
         return (

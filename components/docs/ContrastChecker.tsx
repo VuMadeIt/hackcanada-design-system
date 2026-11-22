@@ -16,13 +16,13 @@ export function ContrastChecker() {
   const g = grade(ratio);
   const sel = "h-5 rounded-sm border border-border bg-surface px-1 font-mono text-mono";
   return (
-    <div className="overflow-hidden rounded-md border border-border">
+    <div className="overflow-hidden rounded-md hairline">
       <div className="grid md:grid-cols-[1fr_240px]">
         <div className="flex min-h-30 flex-col justify-center gap-1 p-4" style={{ background: p[bg], color: p[fg] }}>
           <p className="text-3xl font-bold">Redeem for 60 pts</p>
           <p className="text-base">Body text at 16 px needs 4.5 : 1. Large text and icons need 3 : 1.</p>
         </div>
-        <div className="flex flex-col gap-2 border-t border-border bg-surface p-3 md:border-t-0 md:border-l">
+        <div className="flex flex-col gap-2 hairline-t bg-surface p-3 md:border-t-0 md:border-l">
           <div>
             <p className="font-mono text-mono text-text-muted">Ratio</p>
             <p className="text-4xl font-bold tabular">{ratio.toFixed(2)}<span className="text-xl text-text-muted"> : 1</span></p>

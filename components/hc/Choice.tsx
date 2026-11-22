@@ -68,8 +68,8 @@ export function RadioGroup({
         <label
           key={o.value}
           className={cn(
-            "flex cursor-pointer items-start gap-2 rounded-sm border p-2 transition-colors duration-200",
-            value === o.value ? "border-primary bg-primary-soft" : "border-border bg-surface hover:border-border-strong",
+            "flex cursor-pointer items-start gap-2 rounded-sm hairline p-2 transition-colors duration-200",
+            value === o.value ? "bg-primary-soft outline-primary" : "bg-surface hover:outline-border-strong",
           )}
         >
           <input

@@ -173,7 +173,7 @@ export function NavItem({ icon, label, active, badge }: { icon: React.ReactNode;
 
 export function StatCard({ label, value, delta, icon }: { label: string; value: string; delta?: string; icon?: React.ReactNode }) {
   return (
-    <div className="flex min-w-30 flex-col gap-1 rounded-md border border-border bg-surface p-3 shadow-card">
+    <div className="flex min-w-30 flex-col gap-1 rounded-md hairline bg-surface p-3 shadow-card">
       <div className="flex items-center gap-1 text-sm text-text-muted">
         {icon && <span className="grid size-4 place-items-center rounded-sm bg-primary-soft text-primary-ink [&>svg]:size-2">{icon}</span>}
         {label}

@@ -72,7 +72,7 @@ export function ChallengeCard({
   qr?: boolean;
 }) {
   return (
-    <article className="flex w-full max-w-40 flex-col gap-2 rounded-md border border-border bg-surface p-3 shadow-card transition-[transform,box-shadow] duration-200 hover:-translate-y-half hover:shadow-float">
+    <article className="flex w-full max-w-40 flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-card transition-[transform,box-shadow] duration-200 hover:-translate-y-half hover:shadow-float">
       <div className="flex items-center gap-1">
         <span className={cn("rounded-pill px-1 text-caption font-bold leading-[24px]", catTone[category])}>{category}</span>
         <span className="text-caption text-text-muted">{difficulty}</span>
@@ -83,7 +83,7 @@ export function ChallengeCard({
         {qr ? <QrCodeIcon className="size-2" /> : <UserGroupIcon className="size-2" />}
         {qr ? "Scan with a volunteer" : "Checked by an organizer"}
       </div>
-      <div className="flex items-center gap-1 border-t border-border pt-2">
+      <div className="flex items-center gap-1 hairline-t pt-2">
         {status === "completed" ? (
           <Badge tone="success" dot>Completed</Badge>
         ) : status === "in_progress" ? (
@@ -103,7 +103,7 @@ export function ChallengeCard({
 
 export function MarketCard({ question, yes, pool, closes, onPick }: { question: string; yes: number; pool: number; closes: string; onPick?: (side: "YES" | "NO") => void }) {
   return (
-    <article className="flex w-full max-w-48 flex-col gap-2 rounded-md border border-border bg-surface p-3 shadow-card">
+    <article className="flex w-full max-w-48 flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-card">
       <div className="flex items-center gap-1 text-caption text-text-muted">
         <ClockIcon className="size-2" /> Closes {closes}
         <span className="ml-auto tabular">{pool.toLocaleString()} pts in pool</span>
@@ -124,7 +124,7 @@ export function BetSlip({ side = "YES", balance = 240 }: { side?: "YES" | "NO"; 
   const [stake, setStake] = useState(25);
   const payout = Math.round(stake * (side === "YES" ? 1.6 : 2.4));
   return (
-    <div className="flex w-full max-w-40 flex-col gap-2 rounded-md border border-border bg-surface p-3 shadow-float">
+    <div className="flex w-full max-w-40 flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-float">
       <div className="flex items-center justify-between">
         <p className="text-lg font-bold">Your bet</p>
         <Badge tone={side === "YES" ? "primary" : "neutral"}>{side}</Badge>
@@ -152,7 +152,7 @@ export function BetSlip({ side = "YES", balance = 240 }: { side?: "YES" | "NO"; 
 
 export function Leaderboard({ rows }: { rows: { name: string; points: number; you?: boolean }[] }) {
   return (
-    <ol className="w-full max-w-48 divide-y divide-border overflow-hidden rounded-md border border-border bg-surface">
+    <ol className="w-full max-w-48 hairline-divide overflow-hidden rounded-md hairline bg-surface">
       {rows.map((r, i) => (
         <li key={r.name} className={cn("flex h-7 items-center gap-2 px-2", r.you && "bg-primary-soft")}>
           <span className={cn("grid size-3 place-items-center rounded-pill text-caption font-bold tabular", i === 0 ? "bg-gold text-ink" : i < 3 ? "bg-bg-muted text-text" : "text-text-muted")}>
@@ -174,7 +174,7 @@ export function Leaderboard({ rows }: { rows: { name: string; points: number; yo
 export function MiniGameCard({ title, body, image, plays }: { title: string; body: string; image: string; plays: string }) {
   const src = useSrc(image);
   return (
-    <article className="group flex w-full max-w-40 flex-col overflow-hidden rounded-lg border border-border bg-surface shadow-card transition-[transform,box-shadow] duration-300 ease-standard hover:-translate-y-half hover:shadow-float">
+    <article className="group flex w-full max-w-40 flex-col overflow-hidden rounded-lg hairline bg-surface shadow-card transition-[transform,box-shadow] duration-300 ease-standard hover:-translate-y-half hover:shadow-float">
       <div className="relative aspect-[3/2] overflow-hidden bg-ink">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt="" className="size-full" />

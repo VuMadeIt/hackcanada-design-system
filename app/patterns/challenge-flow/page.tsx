@@ -10,7 +10,7 @@ export default function ChallengeFlow() {
     <article>
       <PageHeader eyebrow="Patterns" title="Challenge flow" lead="How a hacker finds a challenge, starts it, gets checked and gets paid." />
       <Section title="The three states" intro="The same card, as it moves through the flow.">
-        <div className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pt-1 pb-2 md:mx-0 md:px-0 [&>*]:w-36 [&>*]:shrink-0 [&>*]:snap-start">
+        <div className="flex snap-x gap-3 overflow-x-auto pt-1 pb-2 [&>*]:w-36 [&>*]:shrink-0 [&>*]:snap-start">
           <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="not_started" qr />
           <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="in_progress" qr />
           <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="completed" qr />

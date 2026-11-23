@@ -196,9 +196,9 @@ function TiltDemo() {
 
 function SpotlightDemo() {
   return (
-    <div className="relative h-20 w-full max-w-40 overflow-hidden rounded-md bg-ink p-2 text-white">
+    <div className="relative min-h-20 w-full max-w-56 overflow-hidden rounded-md bg-ink p-2 text-white">
       <Spotlight className="from-primary/80 via-primary/40 to-transparent" size={160} />
-      <p className="relative font-mono text-mono text-white/70">Top prize</p>
+      <p className="relative font-mono text-mono text-white/80">Top prize</p>
       <p className="relative text-xl font-bold text-white">Anker MagGo charger</p>
     </div>
   );

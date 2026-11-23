@@ -191,7 +191,7 @@ export function ChallengeFlowDemo() {
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(288px,1fr))] gap-3">
         {states.map((st, i) => (
           <li key={i} className="flex min-w-0 flex-col gap-1">
-            <span className="font-mono text-mono font-bold tracking-[0.08em] text-text-muted uppercase">{flowNames[i]}</span>
+            <span className="font-mono text-mono font-bold tracking-[0.08em] text-text-muted uppercase">{flowNames[flowStart.indexOf(states[i])]}</span>
             <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status={st} qr onAction={() => act(i)} className="max-w-none" />
           </li>
         ))}

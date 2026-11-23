@@ -85,7 +85,7 @@ export function Stepper({ steps }: { steps: Step[] }) {
 }
 
 export function Skeleton({ className }: { className?: string }) {
-  return <span aria-hidden className={cn("block animate-pulse rounded-sm bg-bg-muted", className)} />;
+  return <span aria-hidden className={cn("block animate-pulse rounded-sm bg-border", className)} />;
 }
 
 export function Breadcrumb({ items }: { items: string[] }) {

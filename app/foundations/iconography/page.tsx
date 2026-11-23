@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HomeIcon as HomeOutline, TrophyIcon, BellIcon } from "@heroicons/react/24/outline";
-import { HomeIcon as HomeSolid } from "@heroicons/react/24/solid";
+import { HomeIcon as HomeSolid, BellIcon as BellSolid } from "@heroicons/react/24/solid";
 import { PageHeader, Section, P, Table, Callout, DoDont, Grid, InfoCard } from "@/components/site/Doc";
 import { IconGallery } from "@/components/docs/IconGallery";
 import { Button } from "@/components/hc/Button";
@@ -66,7 +66,7 @@ export default function Iconography() {
           dontExample={
             <span className="flex items-center gap-1 rounded-md hairline p-1">
               <span className="grid size-6 place-items-center rounded-sm bg-success-soft"><BellIcon className="size-3 text-success" /></span>
-              <span className="grid size-6 place-items-center rounded-sm bg-gold-soft text-xl">🔔</span>
+              <span className="grid size-6 place-items-center rounded-sm bg-gold-soft"><BellSolid className="size-3 text-gold" /></span>
             </span>
           }
         />

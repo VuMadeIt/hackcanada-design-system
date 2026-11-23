@@ -60,7 +60,7 @@ export default function Principles() {
         In a review, point to a principle by number: “this breaks 02, there are two primary buttons.” It turns taste into a reason.
       </Callout>
       {principles.map((p) => (
-        <Section key={p.n} id={`p-${p.n}`} title={`${p.n} · ${p.t}`}>
+        <Section key={p.n} id={`p-${p.n}`} title={p.t} eyebrow={`Principle ${p.n}`}>
           <P className="text-lg text-text">{p.lead}</P>
           <List items={p.means} />
           <p className="text-sm text-text-muted">

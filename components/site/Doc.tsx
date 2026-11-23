@@ -39,12 +39,14 @@ export function PageHeader({
 export function Section({
   title,
   id,
+  eyebrow,
   intro,
   children,
   className,
 }: {
   title: string;
   id?: string;
+  eyebrow?: string;
   intro?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
@@ -52,6 +54,7 @@ export function Section({
   const anchor = id ?? slugify(title);
   return (
     <section className={cn("pt-6 first-of-type:pt-0", className)} aria-labelledby={anchor}>
+      {eyebrow && <p className="pb-half font-mono text-mono text-text-muted">{eyebrow}</p>}
       <h2 id={anchor} data-toc={title} className="group flex scroll-mt-12 items-center gap-1 text-xl font-bold tracking-tight">
         {title}
         <a href={`#${anchor}`} className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100" aria-label={`Link to ${title}`}>

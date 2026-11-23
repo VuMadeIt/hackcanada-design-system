@@ -16,7 +16,7 @@ const foundations = [
 function Swatches() {
   return (
     <div className="flex">
-      {["bg-primary", "bg-gold", "bg-ink", "bg-success", "bg-danger"].map((c) => (
+      {["bg-primary", "bg-gold", "bg-ink dark:ring-1 dark:ring-border-strong", "bg-success", "bg-danger"].map((c) => (
         <span key={c} className={cn("-ml-1 size-6 rounded-pill border-2 border-bg-muted first:ml-0", c)} />
       ))}
     </div>

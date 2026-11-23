@@ -276,7 +276,7 @@ export function PageLayoutDemo() {
             </div>
             <ul className="flex flex-col">
               {demoShop.filter((it, i) => filter === "All" || (filter === "Snacks" ? i === 0 : i > 0)).slice(0, 3).map((it) => (
-                <li key={it.name} className="flex items-center gap-2 hairline-b py-1 last:border-0">
+                <li key={it.name} className="flex items-center gap-2 py-1 [&:not(:last-child)]:hairline-b">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={asset(it.image ?? "")} alt="" className="size-6 shrink-0 rounded-sm bg-bg-muted object-contain p-half mix-blend-multiply dark:bg-[#b4c2d1]" />
                   <div className="min-w-0 flex-1">

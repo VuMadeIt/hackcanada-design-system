@@ -26,7 +26,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     else delete document.documentElement.dataset.grid;
   }, [grid]);
   const home = pathname.replace(/\/$/, "") === "";
-  const wide = /^\/(blueprints\/(store|bets)|components)\/?$/.test(pathname);
+  const wide = /^\/components\/?$/.test(pathname);
   const detail = /^\/components\/[^/]+\/?$/.test(pathname);
 
   useEffect(() => {

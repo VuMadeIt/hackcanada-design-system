@@ -52,7 +52,7 @@ const groups: { title: string; href: string; rules: [string, string][] }[] = [
     title: "Interaction",
     href: "/foundations/motion",
     rules: [
-      ["I1", "One primary button per view."],
+      ["I1", "One primary button per view. In a button row it comes first, on the left."],
       ["I2", "Every control has hover, pressed, focus-visible and disabled states."],
       ["I3", "Touch targets are at least 44 × 44."],
       ["I4", "Motion is 100, 200, 300 or 500 ms. Longer only for games and celebrations."],

@@ -107,7 +107,7 @@ export function Dialog({
               </button>
             </div>
             {children && <div className="pt-3">{children}</div>}
-            {footer && <div className="flex flex-col-reverse gap-1 pt-4 sm:flex-row sm:justify-end">{footer}</div>}
+            {footer && <div className="flex flex-col-reverse gap-1 pt-4 sm:flex-row sm:justify-start">{footer}</div>}
           </motion.div>
         </motion.div>
       )}

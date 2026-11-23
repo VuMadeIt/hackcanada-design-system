@@ -2,9 +2,9 @@
 
 **[Try it → hackcanada-design-system.vercel.app](https://hackcanada-design-system.vercel.app)**
 
-35 components, tokens and motion, optimized for designers, engineers, and Claude. Founded by Lucas Vu, and team.
+35 components, tokens and motion, optimized for designers, engineers, and Claude.
 
-The rules, tokens and components behind the Hack Canada hacker dashboard: principles, UX laws, contrast, color, type, a strict rule-of-8 spacing scale, grid, motion, 35 documented components with live redlines, patterns, micro-interactions and full-screen blueprints.
+The rules, tokens and components behind the Hack Canada hacker dashboard: principles, UX laws, contrast, color, type, a strict rule-of-8 spacing scale, grid, motion, 35 documented components with live redlines patterns and micro-interactions.
 
 ## Run it
 

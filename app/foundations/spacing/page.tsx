@@ -115,7 +115,6 @@ export default function Spacing() {
             ["68", "40 gaps", "64", "Section spacing"],
           ]}
         />
-        <P>The full audit, with radii and type, is in Blueprints › Figma audit.</P>
       </Section>
     </article>
   );

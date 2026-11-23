@@ -89,14 +89,6 @@ export const nav: NavGroup[] = [
     items: [{ title: "Micro-interactions", href: "/micro-interactions" }],
   },
   {
-    title: "Blueprints",
-    items: [
-      { title: "Store screen", href: "/blueprints/store" },
-      { title: "Bet Points screen", href: "/blueprints/bets" },
-      { title: "Figma audit", href: "/blueprints/figma-audit" },
-    ],
-  },
-  {
     title: "Resources",
     items: [
       { title: "Tokens", href: "/resources/tokens" },

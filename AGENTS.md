@@ -15,6 +15,7 @@ This repo documents and implements the Hack Canada hacker dashboard design syste
 - Spacing, sizes and line heights are multiples of 8. 4 px is the only half step (inside components). 1 px is for borders only. Tailwind spacing is remapped: `p-1` = 8 px, `p-2` = 16 px, `gap-0.5` = 4 px. `npm run check` fails on anything else.
 - Blue `#1a6dbd` (dark `#4a9eef`) is for actions and links. Gold `#e0a45e` only means points. Red only means errors or destructive actions.
 - One primary button per view. Labels are verbs in sentence case ("Redeem", "Place bet").
+- In a row of buttons the primary comes first, on the left, then the secondary ("Redeem", then "Cancel"). Button rows are left aligned. On phones, dialog buttons stack full width with the primary at the bottom, under the thumb.
 - Type: Satoshi for UI, JetBrains Mono for numbers in code and specs. Body 16/24, captions 14/24.
 - WCAG 2.2 AA in both themes: 4.5:1 text, 3:1 UI. Visible 2 px focus ring. Hit targets 40 px (44 on touch).
 - Motion: 100, 200, 300 or 500 ms with `ease-out`; respect `prefers-reduced-motion`.

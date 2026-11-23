@@ -12,7 +12,7 @@ const links = [
   { title: "Docs", href: "/getting-started", match: /^\/(getting-started|rules|principles|foundations)/ },
   { title: "Components", href: "/components", match: /^\/components/ },
   { title: "Motion", href: "/micro-interactions", match: /^\/micro-interactions/ },
-  { title: "Patterns", href: "/patterns/page-layout", match: /^\/(patterns|blueprints)/ },
+  { title: "Patterns", href: "/patterns/page-layout", match: /^\/patterns/ },
   { title: "Resources", href: "/resources/images", match: /^\/resources/ },
 ];
 

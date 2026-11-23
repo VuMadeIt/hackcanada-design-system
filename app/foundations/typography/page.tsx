@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader, Section, Table, Callout, DoDont, Grid, InfoCard, List } from "@/components/site/Doc";
+import { PageHeader, Section, DoDont, Grid, InfoCard, List } from "@/components/site/Doc";
 
 export const metadata: Metadata = { title: "Typography" };
 

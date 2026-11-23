@@ -26,12 +26,12 @@ export const imageSlots: ImageSlot[] = [
   { id: "teams.join", file: "/img/teams/join-team.png", label: "Join a team", group: "Teams", alt: "Beaver joining a team", usedOn: ["Home gallery"] },
   { id: "games.timber", file: "/img/games/timber-title.jpg", label: "Timber Tycoon", group: "Games", alt: "Timber Tycoon title card", usedOn: ["Mini game card", "Imagery", "Home gallery"] },
   { id: "games.cup", file: "/img/games/cup.svg", label: "Cup Shuffle cup", group: "Games", alt: "Blue cup from Cup Shuffle", usedOn: ["Mini game card", "Micro-interactions", "Imagery"] },
-  { id: "shop.candy", file: "/img/shop/sour-patch-kids.jpg", label: "Sour Patch Kids", group: "Store", alt: "Bag of Sour Patch Kids", usedOn: ["Shop item card", "Store blueprint"] },
-  { id: "shop.led", file: "/img/shop/led-strips.jpg", label: "LED strips", group: "Store", alt: "Roll of LED strips", usedOn: ["Shop item card", "Store blueprint"] },
-  { id: "shop.tamagotchi", file: "/img/shop/tamagotchi.jpg", label: "Tamagotchi", group: "Store", alt: "Tamagotchi", usedOn: ["Shop item card", "Store blueprint"] },
-  { id: "shop.charger", file: "/img/shop/charger.jpg", label: "Charger", group: "Store", alt: "Magnetic phone charger", usedOn: ["Shop item card", "Store blueprint"] },
-  { id: "shop.pico", file: "/img/shop/microcontroller.jpg", label: "Microcontroller", group: "Store", alt: "Raspberry Pi Pico", usedOn: ["Shop item card", "Store blueprint"] },
-  { id: "shop.screwdrivers", file: "/img/shop/screwdrivers.jpg", label: "Screwdrivers", group: "Store", alt: "Precision screwdriver set", usedOn: ["Shop item card", "Store blueprint"] },
+  { id: "shop.candy", file: "/img/shop/sour-patch-kids.jpg", label: "Sour Patch Kids", group: "Store", alt: "Bag of Sour Patch Kids", usedOn: ["Shop item card", "Redeem pattern"] },
+  { id: "shop.led", file: "/img/shop/led-strips.jpg", label: "LED strips", group: "Store", alt: "Roll of LED strips", usedOn: ["Shop item card", "Redeem pattern"] },
+  { id: "shop.tamagotchi", file: "/img/shop/tamagotchi.jpg", label: "Tamagotchi", group: "Store", alt: "Tamagotchi", usedOn: ["Shop item card", "Redeem pattern"] },
+  { id: "shop.charger", file: "/img/shop/charger.jpg", label: "Charger", group: "Store", alt: "Magnetic phone charger", usedOn: ["Shop item card", "Redeem pattern"] },
+  { id: "shop.pico", file: "/img/shop/microcontroller.jpg", label: "Microcontroller", group: "Store", alt: "Raspberry Pi Pico", usedOn: ["Shop item card", "Redeem pattern"] },
+  { id: "shop.screwdrivers", file: "/img/shop/screwdrivers.jpg", label: "Screwdrivers", group: "Store", alt: "Precision screwdriver set", usedOn: ["Shop item card", "Redeem pattern"] },
 ];
 
 export const imageGroups: ImageGroup[] = ["Mascot", "Brand", "Teams", "Games", "Store"];
@@ -45,7 +45,6 @@ export function mascotFor(pathname: string) {
   if (p.startsWith("/foundations")) return "mascot.pencil";
   if (p.startsWith("/components")) return "mascot.business";
   if (p.startsWith("/patterns") || p.startsWith("/micro-interactions")) return "mascot.star";
-  if (p.startsWith("/blueprints")) return "mascot.pencil";
   if (p.startsWith("/resources")) return "mascot.money";
   return "mascot.laptop";
 }

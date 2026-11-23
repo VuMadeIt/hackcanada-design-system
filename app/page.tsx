@@ -52,7 +52,7 @@ export default function Home() {
         </Link>
         <h1 className="max-w-content pt-1 text-4xl font-bold tracking-tight text-balance md:text-6xl">Hack Canada&apos;s Library</h1>
         <p className="max-w-prose text-lg text-pretty text-text-secondary">
-          {registry.length} components, tokens and motion, optimized for designers, engineers, and Claude. Founded by Lucas Vu, and team.
+          {registry.length} components, tokens and motion, optimized for designers, engineers, and Claude.
         </p>
         <div className="flex flex-wrap justify-center gap-1 pt-2">
           <Button variant="primary" size="lg" label="Get started" href="/getting-started" />

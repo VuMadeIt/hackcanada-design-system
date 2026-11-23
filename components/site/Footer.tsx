@@ -3,7 +3,7 @@ import { Img } from "./Images";
 
 const cols = [
   { title: "Docs", links: [["Getting started", "/getting-started"], ["Rules at a glance", "/rules"], ["Design principles", "/principles"], ["Color", "/foundations/color"]] },
-  { title: "Library", links: [["Components", "/components"], ["Micro-interactions", "/micro-interactions"], ["Page layout", "/patterns/page-layout"], ["Store blueprint", "/blueprints/store"]] },
+  { title: "Library", links: [["Components", "/components"], ["Micro-interactions", "/micro-interactions"], ["Page layout", "/patterns/page-layout"], ["Challenge flow", "/patterns/challenge-flow"]] },
   { title: "Resources", links: [["Images", "/resources/images"], ["Tokens", "/resources/tokens"], ["Use with Claude", "/resources/claude"], ["Changelog", "/resources/changelog"]] },
 ];
 

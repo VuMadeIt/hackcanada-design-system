@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "UX laws" };
 type Law = { t: string; rule: string; here: string; demo?: React.ReactNode; source: string };
 
 const laws: Law[] = [
-  { t: "Fitts's law", rule: "The time to hit a target depends on its size and distance. Big, close targets are faster.", here: "Buttons are at least 40 high, touch targets at least 44. Primary actions sit where the thumb already is: the bottom of a phone sheet, the right of a dialog.", demo: <FittsDemo />, source: "Paul Fitts, 1954" },
+  { t: "Fitts's law", rule: "The time to hit a target depends on its size and distance. Big, close targets are faster.", here: "Buttons are at least 40 high, touch targets at least 44. Primary actions sit where the thumb already is: the bottom of a phone sheet, first in a dialog's button row.", demo: <FittsDemo />, source: "Paul Fitts, 1954" },
   { t: "Hick's law", rule: "The more choices there are, the longer it takes to pick one.", here: "The store groups prizes before listing them. Bet Points shows Open, Closed and Mine instead of every filter at once.", demo: <HickDemo />, source: "Hick and Hyman, 1952" },
   { t: "Doherty threshold", rule: "People stay in flow when the system answers in under 400 ms.", here: "Every click gets feedback within 100 ms, even if the server takes longer: a pressed state, a spinner, an optimistic update.", demo: <DohertyDemo />, source: "Doherty and Thadani, IBM, 1982" },
   { t: "Goal-gradient effect", rule: "People speed up as they get closer to a goal.", here: "Challenge progress and points toward a prize are always shown as a bar with “N more to go”.", demo: <GoalGradientDemo />, source: "Clark Hull, 1932" },

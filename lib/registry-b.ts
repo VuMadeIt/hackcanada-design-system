@@ -90,7 +90,7 @@ export const registryB: ComponentDoc[] = [
     content: ["The title is the question: “Redeem LED Strips for 60 pts?”", "The confirm button repeats the verb: “Redeem”."],
     code: `<Dialog open={open} onClose={close} title="Redeem LED Strips?" footer={<Button>Redeem</Button>} />`,
     related: ["button", "toast"],
-    doText: "Put the safe action on the left, the main action on the right.", dontText: "Don't open a dialog on top of another dialog.",
+    doText: "Put the main action first, on the left, and the safe action after it.", dontText: "Don't open a dialog on top of another dialog.",
   }),
   d({
     slug: "tooltip", name: "Tooltip", category: "Overlays",

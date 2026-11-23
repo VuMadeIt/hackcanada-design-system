@@ -63,6 +63,8 @@ export function ChallengeCard({
   difficulty,
   status,
   qr,
+  onAction,
+  className,
 }: {
   title: string;
   category: keyof typeof catTone;
@@ -70,9 +72,11 @@ export function ChallengeCard({
   difficulty: "Easy" | "Medium" | "Hard";
   status: "not_started" | "in_progress" | "completed";
   qr?: boolean;
+  onAction?: () => void;
+  className?: string;
 }) {
   return (
-    <article className="flex w-full max-w-40 flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-card transition-[transform,box-shadow] duration-200 hover:-translate-y-half hover:shadow-float">
+    <article className={cn("flex w-full max-w-40 flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-card transition-[transform,box-shadow] duration-200 hover:-translate-y-half hover:shadow-float", className)}>
       <div className="flex items-center gap-1">
         <span className={cn("rounded-pill px-1 text-caption font-bold leading-[24px]", catTone[category])}>{category}</span>
         <span className="text-caption text-text-muted">{difficulty}</span>
@@ -93,7 +97,7 @@ export function ChallengeCard({
             <LockClosedIcon className="size-[12px]" /> QR locked
           </Badge>
         )}
-        <Button size="sm" variant={status === "not_started" ? "primary" : "secondary"} className="ml-auto">
+        <Button size="sm" variant={status === "not_started" ? "primary" : "secondary"} className="ml-auto" onClick={onAction}>
           {status === "not_started" ? "Start challenge" : "View"}
         </Button>
       </div>

@@ -34,7 +34,7 @@ import { GiftIcon } from "@heroicons/react/24/outline";
 <Button variant="secondary">View details</Button>
 <Button size="lg" loading>Placing bet</Button>`,
     related: ["icon-button", "dialog", "shop-item-card"],
-    doText: "Pair one primary button with a quieter secondary one, with the primary on the right.",
+    doText: "Pair one primary button with a quieter secondary one, with the primary on the left.",
     dontText: "Don't put two primary buttons side by side. Neither one reads as the main action.",
   },
   {

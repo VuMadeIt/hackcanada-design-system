@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import {
-  ArrowRightIcon, BoltIcon, CalendarDaysIcon, GiftIcon, HomeIcon, MagnifyingGlassIcon, MoonIcon, QrCodeIcon, SparklesIcon, TrophyIcon, UserGroupIcon, XMarkIcon,
+  ArrowPathIcon, ArrowRightIcon, BoltIcon, CalendarDaysIcon, GiftIcon, HomeIcon, MagnifyingGlassIcon, MoonIcon, QrCodeIcon, SparklesIcon, PuzzlePieceIcon, TrophyIcon, UserGroupIcon, XCircleIcon, XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Button, type ButtonSize, type ButtonVariant } from "@/components/hc/Button";
 import { IconButton } from "@/components/hc/IconButton";
@@ -154,7 +154,7 @@ function DialogPlay() {
   return (
     <Shell>
       <Button leading={<GiftIcon />} onClick={() => setOpen(true)}>Redeem LED Strips</Button>
-      <Dialog open={open} onClose={() => setOpen(false)} title="Redeem LED Strips for 60 pts?" description="Pick it up at the prize desk. You'll have 60 pts left." footer={<><Button variant="secondary" onClick={() => setOpen(false)}>Cancel</Button><Button onClick={() => setOpen(false)}>Redeem</Button></>}>
+      <Dialog open={open} onClose={() => setOpen(false)} title="Redeem LED Strips for 60 pts?" description="Pick it up at the prize desk. You'll have 60 pts left." footer={<><Button onClick={() => setOpen(false)}>Redeem</Button><Button variant="secondary" onClick={() => setOpen(false)}>Cancel</Button></>}>
         <div className="flex items-center gap-2 rounded-sm bg-bg-muted p-2">
           <img src={asset("/img/shop/led-strips.jpg")} alt="" className="size-8 rounded-xs object-contain mix-blend-multiply dark:mix-blend-normal" />
           <div className="flex-1"><p className="font-bold">LED Strips</p><p className="text-sm text-text-muted">10 ft · 4 left</p></div>
@@ -284,7 +284,7 @@ const specs: Record<string, () => React.ReactNode> = {
   "segmented-control": () => <SegmentedControl label="f" options={["Open", "Closed", "Mine"]} value="Open" onChange={() => {}} />,
   tabs: () => <div className="w-48"><Tabs label="t" value="a" onChange={() => {}} tabs={[{ id: "a", label: "All", count: 8 }, { id: "b", label: "Done" }]} /></div>,
   accordion: () => <div className="w-48"><Accordion items={[{ q: "Can I trade points?", a: "No." }]} /></div>,
-  dialog: () => <div className="w-60 rounded-lg bg-surface p-4 shadow-float"><p className="text-xl font-bold">Redeem LED Strips?</p><div className="flex justify-end gap-1 pt-4"><Button variant="secondary">Cancel</Button><Button>Redeem</Button></div></div>,
+  dialog: () => <div className="w-60 rounded-lg bg-surface p-4 shadow-float"><p className="text-xl font-bold">Redeem LED Strips?</p><div className="flex gap-1 pt-4"><Button>Redeem</Button><Button variant="secondary">Cancel</Button></div></div>,
   tooltip: () => <span className="rounded-sm bg-ink px-1 py-half text-caption font-medium text-white">Switch to dark mode</span>,
   toast: () => <div className="flex w-40 items-start gap-1 rounded-md hairline bg-surface-raised p-2 shadow-float"><SparklesIcon className="size-2 text-success" /><div><p className="text-sm font-bold">+25 pts</p><p className="text-sm text-text-muted">Meet a sponsor</p></div></div>,
   alert: () => <div className="w-48"><Alert tone="warning" title="Applications close Friday">Finish yours by 11:59 pm.</Alert></div>,
@@ -408,18 +408,46 @@ export function DemoStates({ slug }: { slug: string }) {
 /* ---------- Do / Don't ---------- */
 
 const dd: Record<string, [React.ReactNode, React.ReactNode]> = {
-  button: [<div key="d" className="flex gap-1"><Button variant="secondary">Cancel</Button><Button>Redeem</Button></div>, <div key="n" className="flex gap-1"><Button>Cancel</Button><Button>Redeem</Button></div>],
+  button: [<div key="d" className="flex gap-1"><Button>Redeem</Button><Button variant="secondary">Cancel</Button></div>, <div key="n" className="flex gap-1"><Button>Redeem</Button><Button>Cancel</Button></div>],
   card: [<Card key="d" className="w-30"><p className="font-bold">Card</p><Tile>Flat tile inside</Tile></Card>, <Card key="n" className="w-30"><p className="font-bold">Card</p><Card className="p-2 shadow-float">Card inside a card</Card></Card>],
   input: [<div key="d" className="w-30"><Input label="Email" placeholder="name@school.ca" /></div>, <div key="n" className="w-30"><input aria-label="Email" placeholder="Email" className="h-6 w-full rounded-sm border border-border bg-surface px-2" /></div>],
   timeline: [<div key="d" className="w-30"><Timeline steps={steps.slice(0, 2)} /></div>, <div key="n" className="relative flex w-30 flex-col gap-3 pl-1"><span className="absolute top-1 bottom-1 left-[20px] w-[2px] -translate-x-1/2 bg-primary" /><span className="relative z-0 flex items-center gap-2"><span className="size-3 rounded-pill border-2 border-primary bg-transparent" />Start</span><span className="relative flex items-center gap-2"><span className="size-3 rounded-pill border-2 border-primary bg-transparent" />Scan</span></div>],
   "market-card": [<div key="d" className="grid w-30 grid-cols-2 gap-1"><Button>Yes</Button><Button variant="secondary">No</Button></div>, <div key="n" className="grid w-30 grid-cols-2 gap-1"><Button>Yes</Button><button className="h-5 rounded-sm text-sm font-bold text-text-muted/50">No</button></div>],
   "shop-item-card": [<div key="d" className="grid size-16 place-items-center rounded-sm bg-surface p-2"><img src={asset("/img/shop/charger.jpg")} alt="" className="size-full object-contain mix-blend-multiply dark:mix-blend-normal" /></div>, <div key="n" className="size-16 overflow-hidden rounded-sm"><img src={asset("/img/shop/charger.jpg")} alt="" className="size-full scale-150 object-cover" /></div>],
   badge: [<Badge key="d" tone="success" dot>Completed</Badge>, <div key="n" className="flex gap-half"><Badge tone="success">Done</Badge><Badge tone="gold">Hot</Badge><Badge tone="danger">New</Badge></div>],
+  "icon-button": [specs["icon-button"](), <IconButton key="n" label="Sync" variant="outline"><ArrowPathIcon /></IconButton>],
+  "points-pill": [<div key="d" className="flex flex-col items-start gap-1"><PointsPill value={265} /><div className="flex items-start gap-1 rounded-md hairline bg-surface-raised p-2 shadow-float"><SparklesIcon className="size-2 text-success" /><p className="text-sm font-bold">+25 pts for Meet a sponsor</p></div></div>, <div key="n" className="flex gap-1"><span className="inline-flex h-4 items-center rounded-pill bg-success-soft px-2 text-sm font-bold text-success tabular">265 pts</span><span className="inline-flex h-4 items-center rounded-pill bg-danger-soft px-2 text-sm font-bold text-danger tabular">215 pts</span></div>],
+  avatar: [<AvatarGroup key="d" names={["Ada Park", "Sam Okafor", "Lucas Vu", "Mia Chen", "Noor Ali", "Ben Roy"]} />, <div key="n" className="flex items-center -space-x-1"><Avatar name="Ada Park" size="lg" /><Avatar name="Sam Okafor" size="sm" /><Avatar name="Lucas Vu" size="md" /></div>],
+  textarea: [<div key="d" className="w-40"><Textarea label="Pitch" maxLength={140} defaultValue="A beaver that reviews your pull requests." /></div>, <div key="n" className="flex w-40 flex-col gap-half"><span className="text-sm font-bold">Pitch</span><textarea readOnly rows={2} className="w-full resize-none overflow-hidden rounded-sm border border-border bg-surface px-2 py-1 text-sm" value="A beaver that reviews your pull requests, leaves kind comments, suggests fixes and then" /></div>],
+  select: [specs.select(), <div key="n" className="flex w-30 flex-col rounded-sm hairline bg-surface p-half text-sm shadow-float">{["XS", "S", "M", "L", "XL", "XXL"].map((x) => <span key={x} className={cn("rounded-xs px-1 leading-[32px]", x === "M" && "bg-bg-muted font-bold")}>{x}</span>)}</div>],
+  checkbox: [<div key="d" className="flex flex-col gap-1">{["Vegetarian", "Vegan", "Halal"].map((x, i) => <Checkbox key={x} label={x} checked={i === 0} onChange={() => {}} />)}</div>, <div key="n" className="flex gap-2">{["Vegetarian", "Vegan", "Halal", "Kosher"].map((x, i) => <Checkbox key={x} label={x} checked={i === 0} onChange={() => {}} />)}</div>],
+  radio: [specs.radio(), <div key="n" className="w-40"><RadioGroup label="Sound effects" value="y" onChange={() => {}} options={[{ value: "y", label: "Yes" }, { value: "n", label: "No" }]} /></div>],
+  switch: [specs.switch(), <div key="n" className="flex items-center gap-1"><Switch label="On" checked onChange={() => {}} /></div>],
+  "segmented-control": [specs["segmented-control"](), <SegmentedControl key="n" label="f" options={["All", "Open", "Closed", "Mine", "Team", "Past"]} value="Open" onChange={() => {}} />],
+  tabs: [specs.tabs(), <div key="n" className="flex w-30 flex-wrap gap-x-2 hairline-b text-sm font-bold">{["All challenges", "In progress", "Completed", "Sponsor"].map((x, i) => <span key={x} className={cn("leading-[32px]", i === 0 ? "text-primary" : "text-text-muted")}>{x}</span>)}</div>],
+  accordion: [specs.accordion(), <div key="n" className="flex w-48 items-center gap-1 rounded-md hairline bg-surface px-2 py-1"><span className="flex-1 font-bold">Team details</span><Badge tone="danger">3 required fields</Badge></div>],
+  dialog: [specs.dialog(), <div key="n" className="relative h-30 w-60"><div className="absolute inset-0 rounded-lg bg-surface p-3 shadow-float"><p className="text-xl font-bold">Redeem LED Strips?</p></div><div className="absolute top-8 left-8 w-40 rounded-lg hairline bg-surface p-2 shadow-float"><p className="font-bold">Are you sure?</p><div className="flex gap-1 pt-2"><Button size="sm">Yes</Button><Button size="sm" variant="secondary">No</Button></div></div></div>],
+  tooltip: [specs.tooltip(), <span key="n" className="flex items-center gap-1 rounded-sm bg-ink px-1 py-half text-caption font-medium text-white">Dark mode is on. <span className="underline">Undo</span><span className="rounded-xs bg-white/20 px-half">Settings</span></span>],
+  toast: [specs.toast(), <div key="n" className="flex w-40 items-start gap-1 rounded-md hairline bg-surface-raised p-2 shadow-float"><XCircleIcon className="size-2 shrink-0 text-danger" /><div><p className="text-sm font-bold">Your application didn&apos;t save</p><p className="text-sm text-text-muted">Fill in the 4 missing fields.</p></div></div>],
+  alert: [specs.alert(), <div key="n" className="flex w-48 flex-col gap-1"><Alert tone="warning" title="Applications close Friday">Finish yours.</Alert><Alert tone="info" title="New challenges">3 added.</Alert><Alert tone="danger" title="Check your email">It bounced.</Alert></div>],
+  progress: [specs.progress(), <div key="n" className="flex w-40 flex-col gap-half"><div className="flex justify-between text-sm"><span className="font-bold">Bets won</span><span className="text-text-muted tabular">128%</span></div><span className="block h-1 w-full rounded-pill bg-primary" /></div>],
+  skeleton: [specs.skeleton(), <div key="n" className="flex w-30 items-center gap-2"><span className="size-3 shrink-0 animate-spin rounded-pill border-2 border-primary border-t-transparent" /><div className="flex flex-1 flex-col gap-1"><Skeleton className="h-2 w-full" /><Skeleton className="h-2 w-2/3" /></div></div>],
+  table: [specs.table(), <table key="n" className="w-40 text-sm"><tbody>{[["Ada Park", "1,240"], ["Sam Okafor", "985"], ["Lucas Vu", "80"]].map(([n, v]) => <tr key={n} className="hairline-b"><td className="py-1">{n}</td><td className="py-1 text-center tabular">{v}</td></tr>)}</tbody></table>],
+  "empty-state": [specs["empty-state"](), <p key="n" className="text-sm text-text-muted">No data</p>],
+  breadcrumb: [specs.breadcrumb(), <div key="n" className="flex items-center gap-half text-sm text-primary underline">{["Bet Points", "Markets", "Demo"].map((x, i) => <span key={x} className="flex items-center gap-half">{i > 0 && <span className="text-text-muted no-underline">/</span>}{x}</span>)}</div>],
+  pagination: [specs.pagination(), <div key="n" className="flex gap-half">{Array.from({ length: 12 }, (_, i) => <span key={i} className={cn("grid size-4 place-items-center rounded-xs text-sm tabular", i === 1 ? "bg-primary text-on-primary" : "hairline")}>{i + 1}</span>)}</div>],
+  "nav-item": [specs["nav-item"](), <div key="n" className="w-30 [&_a]:text-primary"><NavItem icon={<HomeIcon />} label="Home" /></div>],
+  "stat-card": [specs["stat-card"](), <div key="n" className="flex gap-1">{["Points", "Rank", "Bets", "Wins", "Games", "Streak"].map((x) => <div key={x} className="w-10 rounded-sm hairline p-1"><p className="text-caption text-text-muted">{x}</p><p className="font-bold tabular">12</p></div>)}</div>],
+  countdown: [<div key="d" className="flex flex-col items-center gap-half"><span className="text-sm text-text-muted">Hacking ends in</span>{specs.countdown()}</div>, <span key="n" className="font-mono text-2xl font-bold tabular">02:59:41.372</span>],
+  "challenge-card": [specs["challenge-card"](), <ChallengeCard key="n" title="Meet a sponsor" category="Sponsor" points={25} difficulty="Easy" status="not_started" qr className="bg-gold-soft" />],
+  "bet-slip": [specs["bet-slip"](), <div key="n" className="flex w-40 flex-col gap-2 rounded-md hairline bg-surface p-3 shadow-float"><p className="text-lg font-bold">Your bet</p><div className="flex justify-between text-sm"><span className="text-text-muted">Stake</span><span className="font-bold tabular">300 pts</span></div><div className="flex justify-between text-sm"><span className="text-text-muted">Balance</span><span className="font-bold tabular">240 pts</span></div><Button>Place bet</Button></div>],
+  leaderboard: [specs.leaderboard(), <ol key="n" className="flex w-48 flex-col text-sm">{board.map((r, i) => <li key={r.name} className={cn("flex justify-between hairline-b py-1", i > 1 && "text-danger")}><span>{i + 1}. {r.name}</span><span className="font-bold tabular">{r.points}</span></li>)}</ol>],
+  "mini-game-card": [specs["mini-game-card"](), <div key="n" className="w-40 overflow-hidden rounded-md hairline bg-surface"><div className="grid aspect-[3/2] place-items-center bg-bg-muted text-text-muted"><PuzzlePieceIcon className="size-6" /></div><div className="p-2"><p className="font-bold">Cup Shuffle</p><p className="text-sm text-text-muted">Play now!</p></div></div>],
 };
 
 export function DemoDoDont({ slug, doText, dontText }: { slug: string; doText: string; dontText: string }) {
   const pair = dd[slug] ?? [specs[slug]?.(), null];
-  return <DoDont doExample={pair[0]} dontExample={pair[1] ?? <span className="text-sm text-text-muted">Shown in words below.</span>} doText={doText} dontText={dontText} />;
+  return <DoDont doExample={pair[0]} dontExample={pair[1]} doText={doText} dontText={dontText} />;
 }
 
 export function DemoThumb({ slug }: { slug: string }) {

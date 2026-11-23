@@ -22,7 +22,7 @@ export default function Forms() {
             ["Field to field", "24"],
             ["Group to group", "48, with a heading"],
             ["Input height", "48 (40 in dense tables)"],
-            ["Actions", "Right aligned, primary last"],
+            ["Actions", "Left aligned, primary first"],
           ]}
         />
       </Section>

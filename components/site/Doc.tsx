@@ -127,12 +127,12 @@ export function DoDont({
   dontText: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-x-3 gap-y-3 pb-3 md:grid-flow-col md:grid-cols-2 md:grid-rows-[1fr_auto] md:gap-y-0">
       {[
         { ok: true, ex: doExample, text: doText },
         { ok: false, ex: dontExample, text: dontText },
       ].map(({ ok, ex, text }) => (
-        <figure key={String(ok)} className="min-w-0">
+        <figure key={String(ok)} className="row-span-2 grid min-w-0 grid-rows-subgrid">
           <div className="blueprint grid min-h-24 grid-cols-1 place-items-center rounded-md hairline p-3">
             <FitToWidth>{ex}</FitToWidth>
           </div>

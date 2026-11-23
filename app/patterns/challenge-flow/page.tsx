@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader, Section, List } from "@/components/site/Doc";
-import { ChallengeCard } from "@/components/hc/Domain";
+import { ChallengeFlowDemo } from "@/components/docs/PatternDemos";
 import { Timeline } from "@/components/hc/Display";
 
 export const metadata: Metadata = { title: "Challenge flow" };
@@ -9,12 +9,8 @@ export default function ChallengeFlow() {
   return (
     <article>
       <PageHeader eyebrow="Patterns" title="Challenge flow" lead="How a hacker finds a challenge, starts it, gets checked and gets paid." />
-      <Section title="The three states" intro="The same card, as it moves through the flow.">
-        <div className="flex snap-x gap-3 overflow-x-auto pt-1 pb-2 [&>*]:w-36 [&>*]:shrink-0 [&>*]:snap-start">
-          <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="not_started" qr />
-          <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="in_progress" qr />
-          <ChallengeCard title="Meet a sponsor" category="Sponsor" points={40} difficulty="Medium" status="completed" qr />
-        </div>
+      <Section title="The three states" intro="The same card as it moves through the flow. Press the buttons to try it.">
+        <ChallengeFlowDemo />
       </Section>
       <Section title="Steps">
         <div className="max-w-prose rounded-md hairline bg-surface p-3">

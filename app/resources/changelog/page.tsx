@@ -10,7 +10,7 @@ export default function Changelog() {
       <Section title="1.0 · November 2026">
         <List
           items={[
-            "First release: principles, 11 foundations, 35 components, 5 patterns, 3 blueprints.",
+            "First release: principles, 11 foundations, 35 components, 5 patterns.",
             "Spacing scale replaced with the rule of 8, with 4 as the only half step.",
             "New tokens: primary-ink for blue text on blue tints, border-input for 3 : 1 control borders.",
             "Success darkened to #157043 to pass AA on its soft background.",

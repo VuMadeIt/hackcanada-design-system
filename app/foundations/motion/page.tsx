@@ -75,7 +75,6 @@ export default function MotionPage() {
             ["InfiniteSlider", "Component carousel"],
             ["AnimatedBackground", "Segmented controls, nav hover"],
             ["TextShimmer", "Loading labels"],
-            ["BorderTrail", "The active challenge card"],
             ["Magnetic", "The big Play button in the games hub"],
           ]}
         />

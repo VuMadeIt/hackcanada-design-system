@@ -12,10 +12,8 @@ import { ToastStack, useToasts } from "@/components/hc/Overlay";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 import { SlidingNumber } from "@/components/motion-primitives/sliding-number";
 import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
-import { BorderTrail } from "@/components/motion-primitives/border-trail";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { Tilt } from "@/components/motion-primitives/tilt";
-import { Spotlight } from "@/components/motion-primitives/spotlight";
 import { GlowEffect } from "@/components/motion-primitives/glow-effect";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { TransitionPanel } from "@/components/motion-primitives/transition-panel";
@@ -109,7 +107,7 @@ function SegmentDemo() {
     <div className="flex rounded-sm bg-bg-muted p-half">
       <AnimatedBackground defaultValue="Open" className="rounded-xs bg-surface shadow-card" transition={{ type: "spring", stiffness: 400, damping: 32 }}>
         {["Open", "Closed", "Mine"].map((t) => (
-          <button key={t} data-id={t} className="h-4 px-2 text-sm font-bold text-text-secondary data-[checked=true]:text-text">{t}</button>
+          <button key={t} data-id={t} className="h-4 items-center justify-center px-2 text-sm font-bold text-text-secondary data-[checked=true]:text-text">{t}</button>
         ))}
       </AnimatedBackground>
     </div>
@@ -121,7 +119,7 @@ function HoverListDemo() {
     <div className="flex w-full max-w-40 flex-col">
       <AnimatedBackground className="rounded-sm bg-bg-muted" transition={{ type: "spring", stiffness: 500, damping: 40 }} enableHover>
         {["Home", "Challenges", "Store", "Bet Points"].map((t) => (
-          <button key={t} data-id={t} className="h-5 w-full px-2 text-left text-sm font-medium">{t}</button>
+          <button key={t} data-id={t} className="h-5 w-full items-center px-2 text-left text-sm font-medium">{t}</button>
         ))}
       </AnimatedBackground>
     </div>
@@ -162,17 +160,6 @@ function CountdownDemo() {
   );
 }
 
-function TrailDemo() {
-  return (
-    <div className="relative flex w-full max-w-40 flex-col gap-half overflow-hidden rounded-md hairline bg-surface p-2">
-      <BorderTrail className="bg-primary" size={64} />
-      <span className="font-mono text-mono text-primary">In progress</span>
-      <p className="font-bold">Meet a sponsor</p>
-      <p className="text-sm text-text-muted">Get scanned at any booth</p>
-    </div>
-  );
-}
-
 function MagneticDemo() {
   return (
     <Magnetic intensity={0.3} range={120}>
@@ -191,16 +178,6 @@ function TiltDemo() {
         <p className="p-1 text-sm font-bold">Timber Tycoon</p>
       </div>
     </Tilt>
-  );
-}
-
-function SpotlightDemo() {
-  return (
-    <div className="relative min-h-20 w-full max-w-56 overflow-hidden rounded-md hairline bg-ink p-2 text-white">
-      <Spotlight className="from-primary/80 via-primary/40 to-transparent" size={160} />
-      <p className="relative font-mono text-mono text-white/80">Top prize</p>
-      <p className="relative text-xl font-bold text-white">Anker MagGo charger</p>
-    </div>
   );
 }
 
@@ -389,7 +366,7 @@ function CupsDemo() {
               aria-label={`Cup ${order.indexOf(cup) + 1}`}
             >
               <motion.img src={cupSrc} alt="" className="relative z-10 h-12 w-auto" animate={{ y: up ? -24 : 0 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} />
-              {cup === ball && <span className="absolute bottom-0 size-2 rounded-pill bg-gold" />}
+              {cup === ball && <motion.span className="absolute bottom-0 size-2 rounded-pill bg-gold" initial={false} animate={{ opacity: up ? 1 : 0 }} transition={{ duration: up ? 0.2 : 0.1, ease: "easeOut" }} />}
             </motion.button>
           );
         })}
@@ -415,10 +392,8 @@ export function MicroGallery() {
       <Micro name="Tab underline" trigger="Change tab" token="200 ms · ease-standard" source="Hack Canada"><TabsDemo /></Micro>
       <Micro name="Toast" trigger="Something finished" token="300 ms spring · stays 4 s" source="Hack Canada"><ToastDemo /></Micro>
       <Micro name="Sliding number" trigger="Every second" token="spring 280/18" source="Motion Primitives"><CountdownDemo /></Micro>
-      <Micro name="Border trail" trigger="Challenge in progress" token="loop 5 s, linear" source="Motion Primitives"><TrailDemo /></Micro>
       <Micro name="Magnetic" trigger="Pointer near the Play button" token="intensity 0.3 · range 120" source="Motion Primitives"><MagneticDemo /></Micro>
       <Micro name="Tilt" trigger="Hover a game card" token="rotation 8" source="Motion Primitives"><TiltDemo /></Micro>
-      <Micro name="Spotlight" trigger="Hover the top prize" token="size 96 · spring" source="Motion Primitives"><SpotlightDemo /></Micro>
       <Micro name="Glow" trigger="You won" token="color shift 4 s" source="Motion Primitives"><GlowDemo /></Micro>
       <Micro name="Text reveal" trigger="Hero enters" token="per word · fade + blur" source="Motion Primitives" onReplay={() => bump("text")}><TextEffectDemo k={r.text} /></Micro>
       <Micro name="Step panel" trigger="Next step" token="300 ms · x 24" source="Motion Primitives"><PanelDemo /></Micro>
